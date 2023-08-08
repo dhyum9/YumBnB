@@ -36,7 +36,14 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         len: [1, 100],
-        isAlpha: true
+        isCapital(value){
+          let nameParts = value.split(" ");
+          for (let namePart of nameParts){
+            if (namePart[0] !== namePart[0].toUpperCase()){
+              throw new Error('City must be capitalized.');
+            }
+          }
+        }
       }
     },
     state: {
@@ -44,7 +51,14 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         len: [1, 100],
-        isAlpha: true
+        isCapital(value){
+          let nameParts = value.split(" ");
+          for (let namePart of nameParts){
+            if (namePart[0] !== namePart[0].toUpperCase()){
+              throw new Error('State must be capitalized.');
+            }
+          }
+        }
       }
     },
     country: {
@@ -52,7 +66,14 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         len: [1, 100],
-        isAlpha: true
+        isCapital(value){
+          let nameParts = value.split(" ");
+          for (let namePart of nameParts){
+            if (namePart[0] !== namePart[0].toUpperCase()){
+              throw new Error('Country must be capitalized.');
+            }
+          }
+        }
       }
     },
     lat: {
