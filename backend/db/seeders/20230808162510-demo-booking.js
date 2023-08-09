@@ -40,10 +40,6 @@ module.exports = {
   async down (queryInterface, Sequelize) {
     options.tableName = 'Bookings';
     const Op = Sequelize.Op;
-    return queryInterface.bulkDelete(options, {
-      startDate: {
-        [Op.like]: '%-%'
-      }
-    }, {});
+    return queryInterface.bulkDelete(options, {}, {});
   }
 };
