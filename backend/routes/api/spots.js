@@ -279,7 +279,46 @@ router.post('/', requireAuth, validateCreateSpot, async (req, res) => {
   return res.status(201).json(finalSpot);
 });
 
+//add-an-image-to-a-spot-based-on-the-spots-id
+router.post('/:spotId/images', requireAuth, async (req, res, next) => {
+  let { url, preview } = req.body;
 
+  let spotId = req.params.spotId;
+  let spot = await Spot.findByPk(spotId);
+
+  let currentUserId = req.user.id;
+
+  if (!spot) {
+
+    const err = new Error("Spot couldn't be found");
+    res.status(404).json({
+      message: err.message
+    });
+
+  } else if (currentUserId !== spot.toJSON().ownerId) {
+
+    const err = new Error("Forbidden");
+    res.status(403).json({
+      message: err.message
+    });
+
+  } else {
+    const newImage = await SpotImage.create({
+      spotId,
+      url,
+      preview
+    });
+
+    let finalImage = {
+      id: newImage.id,
+      url: newImage.url,
+      preview: newImage.preview
+    }
+
+    res.json(finalImage);
+  }
+}
+);
 
 
 
