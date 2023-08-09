@@ -17,6 +17,12 @@ module.exports = {
         stars: 5
       },
       {
+        spotId: 1,
+        userId: 4,
+        review: "Been to better but overall good stay.",
+        stars: 4
+      },
+      {
         spotId: 2,
         userId: 4,
         review: "too pricey but beautiful property",
@@ -27,6 +33,12 @@ module.exports = {
         userId: 1,
         review: "terrible experience, almost got jumped",
         stars: 1
+      },
+      {
+        spotId: 3,
+        userId: 2,
+        review: "partner almost got jumped but RV had a lot of gas",
+        stars: 2
       },
       {
         spotId: 4,
