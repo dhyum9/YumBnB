@@ -110,8 +110,8 @@ router.get('/current', requireAuth, async (req, res) => {
     });
 
     let reviewsList = [];
-    reviews.forEach(spotReview => {
-      reviewsList.push(spotReview.toJSON());
+    reviews.forEach(review => {
+      reviewsList.push(review.toJSON());
     })
 
     for (let review of reviewsList) {
@@ -169,10 +169,10 @@ router.get('/:spotId', async (req, res, next) => {
   if (!spot) {
 
     const err = new Error("Spot couldn't be found");
-    res.status(404).json;
-    res.json({
+    res.status(404).json({
       message: err.message
     });
+
   }
 
   let easySpot = spot.toJSON();
@@ -303,6 +303,7 @@ router.post('/:spotId/images', requireAuth, async (req, res, next) => {
     });
 
   } else {
+
     const newImage = await SpotImage.create({
       spotId,
       url,
@@ -317,8 +318,47 @@ router.post('/:spotId/images', requireAuth, async (req, res, next) => {
 
     res.json(finalImage);
   }
-}
-);
+});
+
+//edit-a-spot
+router.put('/:spotId', requireAuth, validateCreateSpot, async (req, res, next) => {
+  let spotId = req.params.spotId;
+  let spot = await Spot.findByPk(spotId);
+  let { address, city, state, country, lat, lng, name, description, price } = req.body;
+
+  let currentUserId = req.user.id;
+
+  if (!spot) {
+
+    const err = new Error("Spot couldn't be found");
+    res.status(404).json({
+      message: err.message
+    });
+
+  } else if (currentUserId !== spot.toJSON().ownerId) {
+
+    const err = new Error("Forbidden");
+    res.status(403).json({
+      message: err.message
+    });
+
+  } else {
+
+    spot.address = address;
+    spot.city = city;
+    spot.state = state;
+    spot.country = country;
+    spot.lat = lat;
+    spot.lng = lng;
+    spot.name = name;
+    spot.description = description;
+    spot.price = price;
+
+    await spot.save();
+
+    res.json(spot);
+  }
+});
 
 
 
