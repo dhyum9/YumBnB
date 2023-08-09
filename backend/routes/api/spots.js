@@ -2,7 +2,7 @@ const express = require('express')
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { requireAuth } = require('../../utils/auth');
-const { Spot, SpotImage, Review, User, Booking } = require('../../db/models');
+const { Spot, SpotImage, Review, User, Booking, ReviewImage } = require('../../db/models');
 
 const router = express.Router();
 
@@ -391,5 +391,47 @@ router.delete('/:spotId', requireAuth, async (req, res, next) => {
   }
 });
 
+//get-all-reviews-by-a-spots-id
+router.get('/:spotId/reviews', async (req, res, next) => {
+  let spotId = req.params.spotId;
+
+  let spot = await Spot.findOne({
+    where: {
+      id: spotId
+    }
+  });
+
+  if (!spot) {
+    const err = new Error("Spot couldn't be found");
+    res.status(404).json({
+      message: err.message
+    });
+  }
+
+  const reviews = await Review.findAll({
+    where: {
+      spotId
+    },
+    include: [
+      {
+        model: User,
+        attributes: ["id", "firstName", "lastName"]
+      },
+      {
+        model: ReviewImage,
+        attributes: ["id", "url"]
+      }
+    ]
+  });
+
+  let reviewsList = [];
+  reviews.forEach(review => {
+    reviewsList.push(review.toJSON());
+  });
+
+  res.json({
+    Reviews: reviews
+  });
+});
 
 module.exports = router;

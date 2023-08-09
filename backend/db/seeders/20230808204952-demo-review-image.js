@@ -16,18 +16,26 @@ module.exports = {
       },
       {
         reviewId: 2,
-        url: "mansion-exterior.heic"
+        url: "apartment-bathroom.heic"
       },
       {
         reviewId: 3,
-        url: "inside-of-RV.jpg"
+        url: "mansion-balcony.jpg"
       },
       {
         reviewId: 4,
+        url: "busted-RV-tire.jpg"
+      },
+      {
+        reviewId: 5,
+        url: "partner-getting-jumped-outside-RV.jpg"
+      },
+      {
+        reviewId: 6,
         url: "cabin-pre-power-outage.jpg"
       },
       {
-        reviewId: 4,
+        reviewId: 6,
         url: "cabin-post-power-outage.jpg"
       }
     ], { validate: true });
