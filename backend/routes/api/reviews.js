@@ -89,6 +89,61 @@ router.get('/current', requireAuth, async (req, res, next) => {
   });
 });
 
+//add-an-image-to-a-review-based-on-the-reviews-id
+router.post('/:reviewId/images', requireAuth, async (req, res, next) => {
+  let { url } = req.body;
 
+  let reviewId = req.params.reviewId;
+  let review = await Review.findByPk(reviewId);
+
+  let currentUserId = req.user.id;
+
+  let reviewImages = await ReviewImage.findAll({
+    where: {
+      reviewId
+    }
+  });
+
+  let imageList = [];
+  reviewImages.forEach(reviewImage => {
+    imageList.push(reviewImage.toJSON());
+  })
+
+  if(imageList.length >= 10){
+    const err = new Error ("Maximum number of images for this resource was reached");
+    res.status(403).json({
+      message: err.message
+    });
+  }
+
+  if (!review) {
+
+    const err = new Error("Review couldn't be found");
+    res.status(404).json({
+      message: err.message
+    });
+
+  } else if (currentUserId !== review.toJSON().userId) {
+
+    const err = new Error("Forbidden");
+    res.status(403).json({
+      message: err.message
+    });
+
+  } else {
+
+    const newReviewImage = await ReviewImage.create({
+      reviewId,
+      url
+    });
+
+    let displayedImage = {
+      id: newReviewImage.id,
+      url: newReviewImage.url
+    }
+
+    res.json(displayedImage);
+  }
+});
 
 module.exports = router;
