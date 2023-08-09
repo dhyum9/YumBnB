@@ -15,7 +15,6 @@ router.get('/', async (req, res) => {
     spotsList.push(spot.toJSON());
   });
 
-
   let finalSpots = [];
   for (let spot of spotsList) {
     const spotId = spot.id;
@@ -72,7 +71,6 @@ router.get('/', async (req, res) => {
   res.json({
     Spots: finalSpots
   });
-
 });
 
 //get-all-spots-of-current-user
@@ -146,8 +144,83 @@ router.get('/current', requireAuth, async (req, res) => {
   res.json({
     Spots: finalSpots
   });
-
 });
+
+//get-details-of-a-spot-from-an-id
+router.get('/:spotId', async (req, res, next) => {
+  let spotId = req.params.spotId;
+
+  const spot = await Spot.findOne({
+    where: {
+      id: spotId
+    },
+    include: [
+      {
+        model: SpotImage,
+        attributes: ["id", "url", "preview"]
+      },
+      {
+        model: User,
+        attributes: ["id", "firstName", "lastName"]
+      }
+    ]
+  });
+
+  if (!spot) {
+
+    const err = new Error("Spot couldn't be found");
+    res.status(404).json;
+    res.json({
+      message: err.message
+    });
+  }
+
+  let easySpot = spot.toJSON();
+
+  let sumStars = 0;
+
+  const reviews = await Review.findAll({
+    where: {
+      spotId
+    }
+  });
+
+  let reviewsList = [];
+  reviews.forEach(review => {
+    reviewsList.push(review.toJSON());
+  })
+
+  for (let review of reviewsList) {
+    let reviewStars = review.stars;
+    sumStars += reviewStars;
+  }
+
+  let avgRating = sumStars / reviewsList.length;
+
+  let newSpot = {
+    id: easySpot.id,
+    ownerId: easySpot.ownerId,
+    address: easySpot.address,
+    city: easySpot.city,
+    state: easySpot.state,
+    country: easySpot.country,
+    lat: easySpot.lat,
+    lng: easySpot.lng,
+    name: easySpot.name,
+    description: easySpot.description,
+    price: easySpot.price,
+    createdAt: easySpot.createdAt,
+    updatedAt: easySpot.updatedAt,
+    numReviews: reviewsList.length,
+    avgStarRating: avgRating,
+    SpotImages: easySpot.SpotImages,
+    Owner: easySpot.User
+  }
+
+  res.json(newSpot);
+});
+
+
 
 
 
