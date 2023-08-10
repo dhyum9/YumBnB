@@ -488,4 +488,75 @@ router.post('/:spotId/reviews', requireAuth, validateCreateReview, async (req, r
   }
 });
 
+//get-all-bookings-for-a-spot-based-on-the-spots-id
+router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
+  const currentUserId = req.user.id;
+  const spotId = req.params.spotId;
+  const spot = await Spot.findByPk(spotId);
+
+  let bookings = await Booking.findAll({
+    where: {
+      spotId
+    },
+    include: [
+      {
+        model: User,
+        attributes: ['id', 'firstName', 'lastName']
+      }
+    ]
+  });
+
+  let bookingsList = [];
+  bookings.forEach(booking => {
+    bookingsList.push(booking.toJSON());
+  })
+
+  if (!spot) {
+    const err = new Error("Spot couldn't be found");
+    res.status(404).json({
+      message: err.message
+    });
+  }
+
+  if (spot.ownerId === currentUserId){
+
+    let finalBookings = [];
+
+    for (let booking of bookingsList){
+      let finalBooking = {
+        User: booking.User,
+        id: booking.id,
+        spotId: booking.spotId,
+        userId: booking.userId,
+        startDate: booking.startDate,
+        endDate: booking.endDate,
+        createdAt: booking.createdAt,
+        updatedAt: booking.updatedAt
+      }
+      finalBookings.push(finalBooking);
+    }
+
+    res.json({
+      Bookings: finalBookings
+    });
+
+  } else {
+
+    let finalBookings = [];
+
+    for (let booking of bookingsList){
+      let finalBooking = {
+        spotId: booking.spotId,
+        startDate: booking.startDate,
+        endDate: booking.endDate
+      }
+      finalBookings.push(finalBooking);
+    }
+
+    res.json({
+      Bookings: finalBookings
+    });
+  }
+});
+
 module.exports = router;
