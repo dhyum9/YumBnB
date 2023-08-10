@@ -111,7 +111,7 @@ router.post('/:reviewId/images', requireAuth, async (req, res, next) => {
 
   if(imageList.length >= 10){
     const err = new Error ("Maximum number of images for this resource was reached");
-    res.status(403).json({
+    return res.status(403).json({
       message: err.message
     });
   }
@@ -119,14 +119,14 @@ router.post('/:reviewId/images', requireAuth, async (req, res, next) => {
   if (!review) {
 
     const err = new Error("Review couldn't be found");
-    res.status(404).json({
+    return res.status(404).json({
       message: err.message
     });
 
   } else if (currentUserId !== review.toJSON().userId) {
 
     const err = new Error("Forbidden");
-    res.status(403).json({
+    return res.status(403).json({
       message: err.message
     });
 
@@ -168,14 +168,14 @@ router.put('/:reviewId', requireAuth, validateCreateReview, async (req, res, nex
   if (!targetReview) {
 
     const err = new Error("Review couldn't be found");
-    res.status(404).json({
+    return res.status(404).json({
       message: err.message
     });
 
   } else if (currentUserId !== targetReview.toJSON().userId) {
 
     const err = new Error("Forbidden");
-    res.status(403).json({
+    return res.status(403).json({
       message: err.message
     });
 
@@ -200,14 +200,14 @@ router.delete('/:reviewId', requireAuth, async (req, res, next) => {
   if (!review){
 
     const err = new Error("Review couldn't be found");
-    res.status(404).json({
+    return res.status(404).json({
       message: err.message
     });
 
   } else if (currentUserId !== review.toJSON().userId){
 
     const err = new Error("Forbidden");
-    res.status(403).json({
+    return res.status(403).json({
       message: err.message
     });
 

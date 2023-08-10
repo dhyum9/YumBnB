@@ -171,7 +171,7 @@ router.get('/:spotId', async (req, res, next) => {
   if (!spot) {
 
     const err = new Error("Spot couldn't be found");
-    res.status(404).json({
+    return res.status(404).json({
       message: err.message
     });
 
@@ -293,14 +293,14 @@ router.post('/:spotId/images', requireAuth, async (req, res, next) => {
   if (!spot) {
 
     const err = new Error("Spot couldn't be found");
-    res.status(404).json({
+    return res.status(404).json({
       message: err.message
     });
 
   } else if (currentUserId !== spot.toJSON().ownerId) {
 
     const err = new Error("Forbidden");
-    res.status(403).json({
+    return res.status(403).json({
       message: err.message
     });
 
@@ -333,14 +333,14 @@ router.put('/:spotId', requireAuth, validateCreateSpot, async (req, res, next) =
   if (!spot) {
 
     const err = new Error("Spot couldn't be found");
-    res.status(404).json({
+    return res.status(404).json({
       message: err.message
     });
 
   } else if (currentUserId !== spot.toJSON().ownerId) {
 
     const err = new Error("Forbidden");
-    res.status(403).json({
+    return res.status(403).json({
       message: err.message
     });
 
@@ -372,14 +372,14 @@ router.delete('/:spotId', requireAuth, async (req, res, next) => {
   if (!spot) {
 
     const err = new Error("Spot couldn't be found");
-    res.status(404).json({
+    return res.status(404).json({
       message: err.message
     });
 
   } else if (currentUserId !== spot.toJSON().ownerId) {
 
     const err = new Error("Forbidden");
-    res.status(403).json({
+    return res.status(403).json({
       message: err.message
     });
 
@@ -405,7 +405,7 @@ router.get('/:spotId/reviews', async (req, res, next) => {
 
   if (!spot) {
     const err = new Error("Spot couldn't be found");
-    res.status(404).json({
+    return res.status(404).json({
       message: err.message
     });
   }
@@ -456,7 +456,7 @@ router.post('/:spotId/reviews', requireAuth, validateCreateReview, async (req, r
 
   if (!spot) {
     const err = new Error("Spot couldn't be found");
-    res.status(404).json({
+    return res.status(404).json({
       message: err.message
     });
   }
@@ -513,7 +513,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
 
   if (!spot) {
     const err = new Error("Spot couldn't be found");
-    res.status(404).json({
+    return res.status(404).json({
       message: err.message
     });
   }
