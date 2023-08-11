@@ -3,12 +3,105 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { requireAuth } = require('../../utils/auth');
 const { Spot, SpotImage, Review, User, Booking, ReviewImage } = require('../../db/models');
-
+const { Op } = require('sequelize');
 const router = express.Router();
 
+const validateQuery = [
+  check('page')
+    .optional()
+    .isInt({min: 1})
+    .withMessage('Page must be greater than or equal to 1'),
+  check('size')
+    .optional()
+    .isInt({min: 1})
+    .withMessage('Size must be greater than or equal to 1'),
+  check('maxLat')
+    .optional()
+    .isFloat({min: -90, max: 90})
+    .withMessage('Maximum latitude is invalid'),
+  check('minLat')
+    .optional()
+    .isFloat({min: -90, max: 90})
+    .withMessage('Minimum latitude is invalid'),
+  check('maxLng')
+    .optional()
+    .isFloat({min: -180, max: 180})
+    .withMessage('Maximum longitude is invalid'),
+  check('minLng')
+    .optional()
+    .isFloat({min: -180, max: 180})
+    .withMessage('Minimum longitude is invalid'),
+  check('minPrice')
+    .optional()
+    .isInt({min: 0})
+    .withMessage('Minimum price must be greater than or equal to 0'),
+  check('maxPrice')
+    .optional()
+    .isInt({min: 0})
+    .withMessage('Maximum price must be greater than or equal to 0'),
+  handleValidationErrors
+];
+
 //get-all-spots
-router.get('/', async (req, res) => {
-  let spots = await Spot.findAll();
+router.get('/', validateQuery, async (req, res) => {
+  let { page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query;
+
+  if (!page) page = 1;
+  if (!size) size = 20;
+
+  if (page >= 10) page = 10;
+  if (size >= 20) size = 20;
+
+  page = parseInt(page);
+  size = parseInt(size);
+
+  let pagination = {};
+
+  pagination.limit = size;
+  pagination.offset = size * (page - 1);
+
+  let where = {};
+
+  if (minLat){
+    where.lat = {
+      [Op.gte]: minLat
+    }
+  }
+
+  if(maxLat){
+    where.lat = {
+      [Op.lte]: maxLat
+    }
+  }
+
+  if(minLng){
+    where.lng = {
+      [Op.gte]: minLng
+    }
+  }
+
+  if(maxLng){
+    where.lng = {
+      [Op.lte]: maxLng
+    }
+  }
+
+  if(minPrice){
+    where.price = {
+      [Op.gte]: minPrice
+    }
+  }
+
+  if(maxPrice){
+    where.price = {
+      [Op.lte]: maxPrice
+    }
+  }
+
+  let spots = await Spot.findAll({
+    where,
+    ...pagination
+  });
 
   let spotsList = [];
   spots.forEach(spot => {
@@ -70,7 +163,9 @@ router.get('/', async (req, res) => {
   };
 
   res.json({
-    Spots: finalSpots
+    Spots: finalSpots,
+    page: page,
+    size: size
   });
 });
 
