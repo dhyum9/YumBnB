@@ -11,11 +11,13 @@ const validateSignup = [
   check('email')
     .exists({ checkFalsy: true })
     .isEmail()
-    .withMessage('Please provide a valid email.'),
+    .withMessage('Invalid email'),
   check('username')
     .exists({ checkFalsy: true })
-    .isLength({ min: 4 })
-    .withMessage('Please provide a username with at least 4 characters.'),
+    .withMessage('Username is required'),
+  // check('username')
+  //   .isLength({ min: 4 })
+  //   .withMessage('Please provide a username with at least 4 characters.'),
   check('username')
     .not()
     .isEmail()
@@ -26,10 +28,10 @@ const validateSignup = [
     .withMessage('Password must be 6 characters or more.'),
   check('firstName')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a first name.'),
+    .withMessage('First Name is required'),
   check('lastName')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a last name.'),
+    .withMessage('Last Name is required'),
   handleValidationErrors
 ];
 
@@ -40,21 +42,57 @@ router.post(
   async (req, res) => {
     const { email, password, username, firstName, lastName } = req.body;
     const hashedPassword = bcrypt.hashSync(password);
-    const user = await User.create({ email, username, hashedPassword, firstName, lastName});
 
-    const safeUser = {
-      id: user.id,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      username: user.username,
-    };
-
-    await setTokenCookie(res, safeUser);
-
-    return res.json({
-      user: safeUser
+    let dupeUserEmail = await User.findOne({
+      where: {
+        email
+      }
     });
+
+    let dupeUserUsername = await User.findOne({
+      where: {
+        username
+      }
+    });
+
+    if(dupeUserEmail){
+
+      const err = new Error("User already exists");
+      return res.status(500).json({
+        message: err.message,
+        errors: {
+          email: "User with that email already exists"
+        }
+      });
+
+    } else if (dupeUserUsername) {
+
+      const err = new Error("User already exists");
+      return res.status(500).json({
+        message: err.message,
+        errors: {
+          email: "User with that username already exists"
+        }
+      });
+
+    } else {
+
+      const user = await User.create({ email, username, hashedPassword, firstName, lastName});
+
+      const safeUser = {
+        id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        username: user.username,
+      };
+
+      await setTokenCookie(res, safeUser);
+
+      return res.json({
+        user: safeUser
+      });
+    }
   }
 );
 
