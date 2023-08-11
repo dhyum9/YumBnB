@@ -119,7 +119,11 @@ router.get('/', validateQuery, async (req, res) => {
       }
     });
 
-    const previewImageUrl = previewImage.toJSON().url;
+    let previewImageUrl = null;
+
+    if(previewImage){
+      previewImageUrl = previewImage.toJSON().url;
+    }
 
     let sumStars = 0;
 
@@ -195,7 +199,11 @@ router.get('/current', requireAuth, async (req, res) => {
       }
     });
 
-    const previewImageUrl = previewImage.toJSON().url;
+    let previewImageUrl = null;
+
+    if(previewImage){
+      previewImageUrl = previewImage.toJSON().url;
+    }
 
     let sumStars = 0;
 

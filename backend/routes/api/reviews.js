@@ -46,7 +46,11 @@ router.get('/current', requireAuth, async (req, res, next) => {
       }
     });
 
-    const previewImageUrl = previewImage.toJSON().url;
+    let previewImageUrl = null;
+
+    if(previewImage){
+      previewImageUrl = previewImage.toJSON().url;
+    }
 
     let spot = await Spot.findOne({
       where: {
