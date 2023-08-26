@@ -32,8 +32,7 @@ function SignupFormModal() {
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) {
-            let newErrors = {...errors, ...data.errors};
-            setErrors(newErrors);
+            setErrors(data.errors);
           }
         });
     }
