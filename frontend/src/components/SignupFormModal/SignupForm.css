@@ -1,35 +1,72 @@
-/* .modal{
+#signup{
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: lavender;
-  margin: 30px auto;
-  width: 400px;
+  background-color: #f2e9e4;
+  padding: 5px 15px;
   border-radius: 10px;
+  font-family: 'Manrope', sans-serif;
 }
 
-form{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+#signup-title{
+  color: #22223b;
+  font-size: 24px;
+  margin: 15px 0 12px 0;
 }
 
-input, label{
+#signup-form{
+  width: 350px;
+}
+
+.signup-label{
+  color: #22223b;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.signup-input{
   display: block;
-  margin: 5px;
-  text-align: center;
+  border: 2px solid #22223b;
+  margin: 3px 0;
+  padding: 3px;
+  width: 100%;
+  font-family: 'Manrope', sans-serif;
+  background-color:white;
 }
 
-button{
-  margin: 5px;
-  margin-bottom: 30px;
-  width: 155px;
-  height: 25px;
-  background-color: lightgreen;
-  font-weight: bold;
+.signup-input-evens{
+  margin-bottom: 24px;
 }
 
-p{
-  font-size: 15px;
+#signup-button{
+  background-color: #9a8c98;
+  color: white;
+  border: 1px solid #22223b;
+  box-shadow: 2px 2px 0 #22223b;
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  font-family: 'Manrope', sans-serif;
+}
+
+#signup-button:disabled {
+  background-color: white;
+  color: grey;
+  border: 1px solid grey;
+  box-shadow: 2px 2px 0 grey;
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  font-family: 'Manrope', sans-serif;
+}
+
+.signup-errors{
   color: red;
-} */
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.signup-errors > p {
+  margin: 0 0 10px 0;
+}

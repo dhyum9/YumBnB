@@ -21,37 +21,44 @@ function LoginFormModal() {
         if (data && data.errors) {
           setErrors(data.errors);
         }
+        if (data && data.message === "The provided credentials were invalid.") {
+          setErrors(data);
+        }
       });
   };
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
+    <div id='login'>
+      <h1 id='login-title'>Log In</h1>
+      <div className='login-errors'>
+        {errors.credential && (<p>{errors.credential}</p>)}
+        {errors.password && (<p>{errors.password}</p>)}
+        {errors.message && (<p>{errors.message}</p>)}
+      </div>
+      <form id='login-form' onSubmit={handleSubmit}>
+        <label className='login-label'>
           Username or Email
           <input
             type="text"
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
             required
+            className="login-input"
           />
         </label>
-        <label>
+        <label className='login-label'>
           Password
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            className="login-input"
           />
         </label>
-        {errors.credential && (
-          <p>{errors.credential}</p>
-        )}
-        <button type="submit">Log In</button>
+        <button type="submit" id='login-button' disabled={(credential.length >= 4 && password.length >= 6) ? false : true}>Log In</button>
       </form>
-    </>
+    </div>
   );
 }
 
