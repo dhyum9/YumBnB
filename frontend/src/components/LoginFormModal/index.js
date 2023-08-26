@@ -21,12 +21,20 @@ function LoginFormModal() {
         if (data && data.errors) {
           setErrors(data.errors);
         }
+        if (data && data.message === "The provided credentials were invalid.") {
+          setErrors(data);
+        }
       });
   };
 
   return (
     <div id='login'>
       <h1 id='login-title'>Log In</h1>
+      <div className='errors'>
+        {errors.credential && (<p>{errors.credential}</p>)}
+        {errors.password && (<p>{errors.password}</p>)}
+        {errors.message && (<p>{errors.message}</p>)}
+      </div>
       <form id='login-form' onSubmit={handleSubmit}>
         <label className='login-label'>
           Username or Email
@@ -48,9 +56,6 @@ function LoginFormModal() {
             className="login-input"
           />
         </label>
-        {errors.credential && (
-          <p>{errors.credential}</p>
-        )}
         <button type="submit" id='login-button' disabled={(credential.length >= 4 && password.length >= 6) ? false : true}>Log In</button>
       </form>
     </div>

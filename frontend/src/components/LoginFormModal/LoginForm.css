@@ -11,7 +11,7 @@
 #login-title{
   color: #22223b;
   font-size: 24px;
-  margin: 15px;
+  margin: 15px 0 12px 0;
 }
 
 #login-form{
@@ -54,4 +54,15 @@
   padding: 8px;
   margin: 10px 0;
   font-family: 'Manrope', sans-serif;
+}
+
+.errors{
+  color: red;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.errors>p {
+  margin: 0 0 10px 0;
 }
