@@ -37,8 +37,19 @@
 #login-button{
   background-color: #9a8c98;
   color: white;
-  border: none;
+  border: 1px solid #22223b;
   box-shadow: 2px 2px 0 #22223b;
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  font-family: 'Manrope', sans-serif;
+}
+
+#login-button:disabled {
+  background-color: white;
+  color: grey;
+  border: 1px solid grey;
+  box-shadow: 2px 2px 0 grey;
   width: 100%;
   padding: 8px;
   margin: 10px 0;
