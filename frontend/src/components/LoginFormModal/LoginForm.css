@@ -15,7 +15,7 @@
 }
 
 #login-form{
-  width: 300px;
+  width: 350px;
 }
 
 .login-label{
@@ -56,13 +56,13 @@
   font-family: 'Manrope', sans-serif;
 }
 
-.errors{
+.login-errors{
   color: red;
   font-size: 12px;
   font-weight: 600;
   margin: 0;
 }
 
-.errors>p {
+.login-errors>p {
   margin: 0 0 10px 0;
 }

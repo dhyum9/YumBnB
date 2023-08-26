@@ -30,7 +30,7 @@ function LoginFormModal() {
   return (
     <div id='login'>
       <h1 id='login-title'>Log In</h1>
-      <div className='errors'>
+      <div className='login-errors'>
         {errors.credential && (<p>{errors.credential}</p>)}
         {errors.password && (<p>{errors.password}</p>)}
         {errors.message && (<p>{errors.message}</p>)}
