@@ -1,5 +1,6 @@
 const LOAD_SPOTS = "spot/loadSpots"
 const LOAD_SPOT = "spot/loadSpot"
+const ADD_SPOT = "spot/loadSpot"
 
 const loadSpots = (spots) => ({
   type: LOAD_SPOTS,
@@ -8,6 +9,11 @@ const loadSpots = (spots) => ({
 
 const loadSpot = (spot) => ({
   type: LOAD_SPOT,
+  spot
+});
+
+const addSpot = (spot) => ({
+  type: ADD_SPOT,
   spot
 });
 
@@ -26,6 +32,20 @@ export const fetchSpotDetails = (spotId) => async dispatch => {
   if (res.ok) {
     const data = await res.json();
     dispatch(loadSpot(data));
+  }
+};
+
+export const createSpot = (payload) => async dispatch => {
+  const res = await fetch(`/api/spots`, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(payload)
+  });
+
+  if (res.ok) {
+    const newSpot = await res.json();
+    dispatch(addSpot(newSpot));
+    return newSpot;
   }
 };
 

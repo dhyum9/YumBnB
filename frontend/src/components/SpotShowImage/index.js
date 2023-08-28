@@ -1,6 +1,6 @@
 const SpotShowImage = ({url}) => {
   return (
-    <img src={url}></img>
+    <img src={url} alt="Pics of the place go here"></img>
   );
 }
 
