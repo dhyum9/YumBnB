@@ -2,7 +2,6 @@ import './spotIndexItem.css'
 import { NavLink } from 'react-router-dom';
 
 const SpotIndexItem = ({ spot }) => {
-
   return (
     <NavLink to={`/spots/${spot.id}`} exact={true}>
       <div id='spot-card'>
@@ -10,7 +9,7 @@ const SpotIndexItem = ({ spot }) => {
         <div className='second-row'>
           <div>{spot.city}, {spot.state}</div>
           <div>
-            <i class="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
             {spot.avgRating}
           </div>
         </div>

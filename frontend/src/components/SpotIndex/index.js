@@ -17,7 +17,7 @@ const SpotIndex = () => {
     <main id='spots-grid'>
       {spots.map((spot) => {
         return (
-          <SpotIndexItem spot={spot}/>
+          <SpotIndexItem key={spot.id} spot={spot}/>
         );
       })}
     </main>
