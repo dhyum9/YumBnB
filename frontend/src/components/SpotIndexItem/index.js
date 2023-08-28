@@ -1,23 +1,21 @@
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-// import { deleteReport } from '../store/reportReducer';
+import './spotIndexItem.css'
 
-// const ReportIndexItem = ({ report }) => {
-//   const dispatch = useDispatch();
+const SpotIndexItem = ({ spot }) => {
+  return (
+    <div id='spot-card'>
+      <img src={spot.previewImage} alt='Preview SpotImage goes here'></img>
+      <div className='second-row'>
+        <div>{spot.city}, {spot.state}</div>
+        <div>
+          <i class="fa-solid fa-star"></i>
+          {spot.avgRating}
+        </div>
+      </div>
+      <div className='third-row'>
+        ${spot.price} night
+      </div>
+    </div>
+  );
+}
 
-//   const deleteReportOnClick = (e) => {
-//     e.preventDefault();
-
-//     dispatch(deleteReport(report));
-//   };
-
-//   return (
-//     <li>
-//       <Link to={`/spots/${spot.id}`}>Report #{report.id}</Link>
-//       <button onClick={deleteReportOnClick}>Delete</button>
-//     </li>
-//   );
-// };
-
-// export default ReportIndexItem;
+export default SpotIndexItem;

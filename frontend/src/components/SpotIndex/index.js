@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchSpots } from '../../store/spot';
+import './spotIndex.css'
+import SpotIndexItem from '../SpotIndexItem';
 
 const SpotIndex = () => {
   const dispatch = useDispatch();
@@ -12,22 +14,10 @@ const SpotIndex = () => {
   }, [dispatch])
 
   return (
-    <main>
+    <main id='spots-grid'>
       {spots.map((spot) => {
         return (
-          <div>
-            <img src={spot.previewImage}></img>
-            <div>
-              <div>{spot.city}, {spot.state}</div>
-              <div>
-                <i class="fa-solid fa-star"></i>
-                {spot.avgRating}
-              </div>
-            </div>
-            <div>
-              ${spot.price} night
-            </div>
-          </div>
+          <SpotIndexItem spot={spot}/>
         );
       })}
     </main>
