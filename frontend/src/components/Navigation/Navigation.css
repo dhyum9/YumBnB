@@ -2,14 +2,50 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-family: 'Manrope', sans-serif;
+  padding: 0 12px;
+  border-bottom: 1px solid #22223b;
+  color:#22223b;
 }
 
 #nav-bar > * {
   list-style-type: none;
+  text-decoration: none;
 }
 
-#nav-bar > i {
-  font-size: 65px;
+#nav-bar > *:visited {
+  color: #22223b;
+}
+
+#nav-bar-top-left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#nav-bar-top-left > i {
+  font-size: 60px;
+  margin-right: 5px;
+}
+
+#nav-bar-top-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #22223b;
+  border-radius: 30px;
+  padding: 8px 10px;
+}
+
+#nav-bar-top-right > * {
+  font-size: 30px;
+  background-color: #f2e9e4;
+  border: none;
+  margin-left: 2px;
+}
+
+#nav-bar-top-right > i {
+  margin-left: 8px;
 }
 
 .hidden{

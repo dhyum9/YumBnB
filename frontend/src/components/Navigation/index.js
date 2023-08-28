@@ -9,17 +9,17 @@ function Navigation({ isLoaded }){
 
   return (
     <ul id='nav-bar'>
-      <div id='nav-bar-top-left'>
-        <i class="fa-solid fa-person-running"></i>
-        <h1>YumBnB</h1>
-      </div>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-      </li>
+      <NavLink exact to='/'>
+        <div id='nav-bar-top-left'>
+          <i className="fa-solid fa-person-running"></i>
+          <h1>YumBnB</h1>
+        </div>
+      </NavLink>
       {isLoaded && (
-        <li>
+        <div id='nav-bar-top-right'>
+          <i className="fa-solid fa-bars"></i>
           <ProfileButton user={sessionUser} />
-        </li>
+        </div>
       )}
     </ul>
   );
