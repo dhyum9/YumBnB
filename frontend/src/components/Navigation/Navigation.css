@@ -9,7 +9,6 @@
 }
 
 #nav-bar > * {
-  list-style-type: none;
   text-decoration: none;
 }
 
@@ -37,15 +36,49 @@
   padding: 8px 10px;
 }
 
-#nav-bar-top-right > * {
+#nav-bar-top-right > i {
   font-size: 30px;
   background-color: #f2e9e4;
-  border: none;
-  margin-left: 2px;
+  margin-left: 10px;
 }
 
-#nav-bar-top-right > i {
-  margin-left: 8px;
+#dropdown{
+  position: relative;
+}
+
+#dropdown button {
+  border: none;
+  background-color: #f2e9e4;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  padding: 0;
+  margin-left: 5px;
+}
+
+#dropdown i {
+  font-size: 30px;
+}
+
+.profile-dropdown {
+  list-style-type: none;
+  padding: 10px;
+  position: absolute;
+  border: 1px solid white;
+  top: 50px;
+  right: -6px;
+  background-color: #22223b;
+  color: white;
+  text-align: center;
+}
+
+#login-signup-text{
+  width: 70px;
+}
+
+.profile-dropdown > li {
+  font-size: 19px;
+  margin: 5px 0;
 }
 
 .hidden{
