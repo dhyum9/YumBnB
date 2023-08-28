@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import SpotIndex from "./components/SpotIndex";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ function App() {
       {isLoaded &&
         <Switch>
           <Route exact path='/'>
-
+            <SpotIndex />
           </Route>
         </Switch>}
     </>

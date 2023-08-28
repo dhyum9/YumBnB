@@ -1,30 +1,25 @@
-// import { Link } from "react-router-dom";
-// import ReportIndexItem from "./ReportIndexItem";
-// import { useSelector, useDispatch } from "react-redux";
-// import { resetReport } from "../store/reportReducer";
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchSpots } from '../../store/spot';
 
-// const SpotIndex = () => {
-//    const reports = useSelector((state) => Object.values(state.reports));
+const SpotIndex = () => {
+  const dispatch = useDispatch();
+  const spotsObj = useSelector(state => state.spots.allSpots);
+  const spots = Object.values(spotsObj);
 
-//    const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchSpots());
+  }, [dispatch])
 
-//    const resetData = (e) => {
-//       e.preventDefault();
+  return (
+    <main>
+      {spots.map((spot) => {
+        return (
+          <div>{spot.address}</div>
+        );
+      })}
+    </main>
+  );
+}
 
-//       dispatch(resetReport());
-//    };
-
-//    return (
-//       <section>
-//          <ul>
-//             {reports.map((report) => (
-//                <ReportIndexItem report={report} key={report.id} />
-//             ))}
-//          </ul>
-//          <Link to="/reports/new">New Report</Link>
-//          <button onClick={resetData}>Reset Data</button>
-//       </section>
-//    );
-// };
-
-// export default ReportIndex;
+export default SpotIndex;
