@@ -15,7 +15,19 @@ const SpotIndex = () => {
     <main>
       {spots.map((spot) => {
         return (
-          <div>{spot.address}</div>
+          <div>
+            <img src={spot.previewImage}></img>
+            <div>
+              <div>{spot.city}, {spot.state}</div>
+              <div>
+                <i class="fa-solid fa-star"></i>
+                {spot.avgRating}
+              </div>
+            </div>
+            <div>
+              ${spot.price} night
+            </div>
+          </div>
         );
       })}
     </main>

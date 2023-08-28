@@ -12,12 +12,12 @@ module.exports = {
     await SpotImage.bulkCreate([
       {
         spotId: 1,
-        url: "modest-apartment-outside.jpg",
+        url: "https://metrodom.hu/uploads/images/Madar%C3%A1sz38/Mintalak%C3%A1s/MWP_0084.jpg",
         preview: true
       },
       {
         spotId: 2,
-        url: "huge-mansion-entrance.jpg",
+        url: "https://ktla.com/wp-content/uploads/sites/4/2023/03/GettyImages-506903162.jpg?strip=1",
         preview: true
       },
       {
@@ -27,12 +27,12 @@ module.exports = {
       },
       {
         spotId: 3,
-        url: "crappy-RV.jpg",
+        url: "https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,q_75,w_1200/v1/crm/albuquerque/Breaking-Bad-RV-Tours-21-cbb53c305056a36_cbb53d39-5056-a36a-0901a1132764be33.jpg",
         preview: true
       },
       {
         spotId: 4,
-        url: "log-cabin-outside.jpg",
+        url: "https://gallery.streamlinevrs.com/locations-images/image_48245.jpeg",
         preview: true
       },
       {
