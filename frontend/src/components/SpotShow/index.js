@@ -9,26 +9,27 @@ const SpotShow = () => {
   const {spotId} = useParams();
   const spot = useSelector(state => state.spots.singleSpot);
 
-
   useEffect(() => {
     dispatch(fetchSpotDetails(spotId))
   },[dispatch, spotId]);
 
-  if(!spot) return null;
+  if(Object.keys(spot).length === 0 || !spot) {
+    return null;
+  }
 
  return (
   <div>
     <h1>{spot.name}</h1>
     <div>{spot.city}, {spot.state}, {spot.country}</div>
+    <div>
+      Hosted by {spot.Owner.firstName} {spot.Owner.lastName}
+    </div>
     <div id="images-grid">
       {spot.SpotImages.map((spotImage) => {
         return (
-          <SpotShowImage url={spotImage.url}/>
+          <SpotShowImage url={spotImage.url} key={spotImage.id}/>
         );
       })}
-    </div>
-    <div>
-      Hosted by {spot.Owner.firstName} {spot.Owner.lastName}
     </div>
   </div>
  );

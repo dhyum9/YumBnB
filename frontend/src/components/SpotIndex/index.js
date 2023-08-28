@@ -13,6 +13,8 @@ const SpotIndex = () => {
     dispatch(fetchSpots());
   }, [dispatch]);
 
+  if (!spots) return null;
+
   return (
     <main id='spots-grid'>
       {spots.map((spot) => {

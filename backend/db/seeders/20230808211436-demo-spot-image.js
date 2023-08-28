@@ -12,17 +12,47 @@ module.exports = {
     await SpotImage.bulkCreate([
       {
         spotId: 1,
-        url: "https://metrodom.hu/uploads/images/Madar%C3%A1sz38/Mintalak%C3%A1s/MWP_0084.jpg",
+        url: "https://photos.zillowstatic.com/fp/017dbf7b708722b80bd6979136010c49-cc_ft_384.webp",
+        preview: true
+      },
+      {
+        spotId: 1,
+        url: "https://photos.zillowstatic.com/fp/6a62fd0297bb76017f230b06ce128bc5-cc_ft_384.webp",
+        preview: false
+      },
+      {
+        spotId: 1,
+        url: "https://photos.zillowstatic.com/fp/73b9e5c07b6d40067ccb7fe24b9af407-cc_ft_384.webp",
+        preview: false
+      },
+      {
+        spotId: 1,
+        url: "https://photos.zillowstatic.com/fp/523c0bbf23d03259303e908d10dd0208-cc_ft_384.webp",
+        preview: false
+      },
+      {
+        spotId: 2,
+        url: "https://photos.zillowstatic.com/fp/e998d30a3f1e7c656c1ab9ba0e97cd79-cc_ft_1344.webp",
         preview: true
       },
       {
         spotId: 2,
-        url: "https://ktla.com/wp-content/uploads/sites/4/2023/03/GettyImages-506903162.jpg?strip=1",
-        preview: true
+        url: "https://photos.zillowstatic.com/fp/3ab730de13a9661638048ed81b058135-uncropped_scaled_within_1344_1008.webp",
+        preview: false
       },
       {
         spotId: 2,
-        url: "huge-mansion-backyard.jpg",
+        url: "https://photos.zillowstatic.com/fp/bf87e753d0a9fb22f25220763d20e541-uncropped_scaled_within_1344_1008.webp",
+        preview: false
+      },
+      {
+        spotId: 2,
+        url: "https://photos.zillowstatic.com/fp/673868320635c86968cbbb93500bd449-uncropped_scaled_within_1344_1008.webp",
+        preview: false
+      },
+      {
+        spotId: 2,
+        url: "https://photos.zillowstatic.com/fp/532ceb7baffa59505feff0299e798034-uncropped_scaled_within_1344_1008.webp",
         preview: false
       },
       {
@@ -31,13 +61,33 @@ module.exports = {
         preview: true
       },
       {
+        spotId: 3,
+        url: "https://virtualbackgrounds.site/wp-content/uploads/2022/03/breaking-bad-rv-interior.jpg",
+        preview: false
+      },
+      {
+        spotId: 3,
+        url: "https://cdnb.artstation.com/p/assets/images/images/045/954/561/large/daniel-wogan-breaking-bx-rv-scene-4-v1.jpg?1643928401",
+        preview: false
+      },
+      {
         spotId: 4,
-        url: "https://gallery.streamlinevrs.com/locations-images/image_48245.jpeg",
+        url: "https://photos.zillowstatic.com/fp/06cb219fa4c6d253a613c1d5aca365ca-uncropped_scaled_within_1344_1008.webp",
         preview: true
       },
       {
         spotId: 4,
-        url: "log-cabin-kitchen.jpg",
+        url: "https://photos.zillowstatic.com/fp/854aa23d96828b7c896d71750536f2b6-cc_ft_384.webp",
+        preview: false
+      },
+      {
+        spotId: 4,
+        url: "https://photos.zillowstatic.com/fp/3609a78e2f3de5a4cb83cd9c3f059d74-uncropped_scaled_within_1344_1008.webp",
+        preview: false
+      },
+      {
+        spotId: 4,
+        url: "https://photos.zillowstatic.com/fp/0f373439fd38f87ff8d00b69295c6bc4-uncropped_scaled_within_1344_1008.webp",
         preview: false
       }
     ], { validate: true });
