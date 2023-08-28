@@ -11,7 +11,7 @@ const SpotIndex = () => {
 
   useEffect(() => {
     dispatch(fetchSpots());
-  }, [dispatch])
+  }, [dispatch]);
 
   return (
     <main id='spots-grid'>
