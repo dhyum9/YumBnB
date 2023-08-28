@@ -1,0 +1,28 @@
+#spot-card{
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  font-family: 'Manrope', sans-serif;
+  color: #22223b;
+  border: 1px solid darkblue;
+}
+
+#spot-card > img {
+  height: 300px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.second-row{
+  background-color: aliceblue;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.third-row{
+  background-color: lightgreen;
+  display: flex;
+  justify-content: left;
+  padding: 5px;
+}
