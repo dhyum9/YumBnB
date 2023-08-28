@@ -1,38 +1,52 @@
-/* .modal{
+#nav-bar{
   display: flex;
-  flex-direction: column;
   align-items: center;
-  background-color: lavender;
-  margin: 30px auto;
-  width: 400px;
-  border-radius: 10px;
+  justify-content: space-between;
+  font-family: 'Manrope', sans-serif;
+  padding: 0 12px;
+  border-bottom: 1px solid #22223b;
+  color:#22223b;
 }
 
-form{
+#nav-bar > * {
+  list-style-type: none;
+  text-decoration: none;
+}
+
+#nav-bar > *:visited {
+  color: #22223b;
+}
+
+#nav-bar-top-left {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 
-input, label{
-  display: block;
-  margin: 5px;
-  text-align: center;
+#nav-bar-top-left > i {
+  font-size: 60px;
+  margin-right: 5px;
 }
 
-button{
-  margin: 5px;
-  margin-bottom: 30px;
-  width: 155px;
-  height: 25px;
-  background-color: lightgreen;
-  font-weight: bold;
+#nav-bar-top-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #22223b;
+  border-radius: 30px;
+  padding: 8px 10px;
 }
 
-p{
-  font-size: 15px;
-  color: red;
-} */
+#nav-bar-top-right > * {
+  font-size: 30px;
+  background-color: #f2e9e4;
+  border: none;
+  margin-left: 2px;
+}
+
+#nav-bar-top-right > i {
+  margin-left: 8px;
+}
 
 .hidden{
   display: none;
