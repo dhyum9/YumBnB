@@ -13,7 +13,7 @@ const SpotShow = () => {
     dispatch(fetchSpotDetails(spotId))
   },[dispatch, spotId]);
 
-  if(Object.keys(spot).length === 0 || !spot) {
+  if(Object.keys(spot).length === 0) {
     return null;
   }
 
