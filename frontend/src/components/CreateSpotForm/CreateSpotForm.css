@@ -1,0 +1,75 @@
+#create-spot-form{
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: auto;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+}
+
+.create-spot-section-text h4{
+  color: #22223b;
+  margin: 0;
+}
+
+.create-spot-input{
+  font-size: 12px;
+  padding: 2px;
+  border: 1px solid #22223b;
+  margin: 4px 0;
+}
+
+.create-spot-block-input{
+  display: block;
+  width: 100%;
+}
+
+.create-spot-comma{
+  font-weight: bold;
+  text-align: left;
+  padding-top: 18px;
+  font-size: 20px;
+  margin-left: 2px;
+  margin-right: 5px;
+}
+
+#city-state-row {
+  display: flex;
+}
+
+#city{
+  width: 100%
+}
+
+#city-state-row input{
+  width: 100%;
+}
+
+#lat-lng-row{
+  display: flex;
+}
+
+#lat, #lng {
+  width: 100%;
+}
+
+#lat-lng-row input{
+  width: 100%;
+}
+
+
+
+
+
+
+
+.create-form-errors{
+  color: red;
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+.create-form-errors p{
+  margin: 0;
+}
