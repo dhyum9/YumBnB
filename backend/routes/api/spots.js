@@ -329,37 +329,40 @@ const validateCreateSpot = [
   check('address')
     .exists({ checkFalsy: true })
     .notEmpty()
-    .withMessage('Street address is required'),
+    .withMessage('Street address is required.'),
   check('city')
     .exists({ checkFalsy: true })
     .notEmpty()
-    .withMessage('City is required'),
+    .withMessage('City is required.'),
   check('state')
     .exists({ checkFalsy: true })
     .notEmpty()
-    .withMessage('State is required'),
+    .withMessage('State is required.'),
   check('country')
     .exists({ checkFalsy: true })
     .notEmpty()
-    .withMessage('Country is required'),
+    .withMessage('Country is required.'),
   check('lat')
     .exists({ checkFalsy: true })
     .isFloat({min: -90, max: 90})
-    .withMessage('Latitude is not valid'),
+    .withMessage('Latitude is not valid.'),
   check('lng')
     .exists({ checkFalsy: true })
     .isFloat({min: -180, max: 180})
-    .withMessage('Longitude is not valid'),
+    .withMessage('Longitude is not valid.'),
   check('name')
-    .isLength({ max: 50 })
-    .withMessage('Name must be less than 50 characters'),
-  check('description')
     .exists({ checkFalsy: true })
     .notEmpty()
-    .withMessage('Description is required'),
+    .withMessage('Name is required.'),
+  check('name')
+    .isLength({ max: 50 })
+    .withMessage('Name must be less than 50 characters.'),
+  check('description')
+    .isLength({ min: 30 })
+    .withMessage('Description needs a minimum of 30 characters.'),
   check('price')
     .exists({ checkFalsy: true })
-    .withMessage('Price per day is required'),
+    .withMessage('Price per day is required.'),
   handleValidationErrors
 ];
 
