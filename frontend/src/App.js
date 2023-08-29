@@ -21,7 +21,10 @@ function App() {
       {isLoaded &&
         <Switch>
           <Route exact path='/'>
-            <SpotIndex />
+            <SpotIndex type={"all"}/>
+          </Route>
+          <Route exact path='/spots/current'>
+            <SpotIndex type={"usersOnly"}/>
           </Route>
           <Route path='/spots/:spotId'>
             <SpotShow />
