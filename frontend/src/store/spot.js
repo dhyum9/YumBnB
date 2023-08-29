@@ -57,6 +57,11 @@ export const createSpotImage = (payload, spotId) => async dispatch => {
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(payload)
   });
+
+  if (res.ok) {
+    const newSpotImage = await res.json();
+    return newSpotImage;
+  }
 };
 
 const initialState = { allSpots: {}, singleSpot: {} };

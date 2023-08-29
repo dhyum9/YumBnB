@@ -26,7 +26,7 @@ const CreateSpotForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let errors = {};
+    setErrors({});
 
     const payload = {
       address,
@@ -40,9 +40,6 @@ const CreateSpotForm = () => {
       price
     };
 
-    previewImageUrl ? dispatch(createSpotImage({url: previewImageUrl, preview: true})) : errors[previewImageUrl]= "Preview image is required.";
-
-
     const createdSpot = await dispatch(createSpot(payload))
     .catch(async(res) => {
       const data = await res.json();
@@ -50,6 +47,8 @@ const CreateSpotForm = () => {
         setErrors(data.errors);
       }
     });
+
+    // previewImageUrl ? dispatch(createSpotImage({url: previewImageUrl, preview: true})) : setErrors({...errors, previewImageUrl: "Preview Image is required"});
 
     if (createdSpot) {
       await dispatch(fetchSpotDetails(createdSpot.id));
