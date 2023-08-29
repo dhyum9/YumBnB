@@ -4,25 +4,39 @@
   width: 400px;
   font-family: 'Manrope', sans-serif;
   color: #22223b;
-  border: 1px solid darkblue;
 }
 
-#spot-card > img {
+#spot-card img {
   height: 300px;
   border-radius: 20px;
   object-fit: cover;
 }
 
 .second-row{
-  background-color: aliceblue;
   display: flex;
   justify-content: space-between;
   padding: 5px;
 }
 
 .third-row{
-  background-color: lightgreen;
   display: flex;
   justify-content: left;
   padding: 5px;
+}
+
+.fourth-row{
+  background-color: blanchedalmond;
+  display: flex;
+  justify-content: center;
+}
+
+.fourth-row > button {
+  font-family: 'Manrope', sans-serif;
+  background-color: #9a8c98;
+  color: white;
+  border: 1px solid #22223b;
+  box-shadow: 2px 2px 0 #22223b;
+  padding: 4px;
+  width: 60px;
+  margin: 0 5px;
 }

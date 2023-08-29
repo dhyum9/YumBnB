@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const LOAD_SPOTS = "spot/loadSpots"
 const LOAD_SPOT = "spot/loadSpot"
 const ADD_SPOT = "spot/addSpot"
+const REMOVE_SPOT = "spot/removeSpot"
 
 const loadSpots = (spots) => ({
   type: LOAD_SPOTS,
@@ -17,6 +18,11 @@ const loadSpot = (spot) => ({
 const addSpot = (spot) => ({
   type: ADD_SPOT,
   spot
+});
+
+const removeSpot = (spotId) => ({
+  type: REMOVE_SPOT,
+  spotId
 });
 
 export const fetchSpots = () => async dispatch => {
@@ -73,6 +79,16 @@ export const createSpotImage = (payload, spotId) => async dispatch => {
   }
 };
 
+export const deleteSpot = (spotId) => async dispatch => {
+  const res = await csrfFetch(`/api/spots/${spotId}`, {
+    method: 'DELETE'
+  });
+
+  if (res.ok) {
+    dispatch(removeSpot(spotId));
+  }
+};
+
 const initialState = { allSpots: {}, singleSpot: {} };
 
 const spotsReducer = (state = initialState, action) => {
@@ -91,6 +107,11 @@ const spotsReducer = (state = initialState, action) => {
     case ADD_SPOT:
       newState = {...state};
       newState.allSpots[action.spot.id] = action.spot;
+      return newState;
+    case REMOVE_SPOT:
+      newState = {...state};
+      let spotId = action.spotId;
+      delete newState.allSpots[spotId];
       return newState;
     default:
       return state;
