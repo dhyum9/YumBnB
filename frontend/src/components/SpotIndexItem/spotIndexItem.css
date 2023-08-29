@@ -8,6 +8,7 @@
 
 #spot-card img {
   height: 300px;
+  width: 100%;
   border-radius: 20px;
   object-fit: cover;
 }
