@@ -2,7 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const LOAD_SPOTS = "spot/loadSpots"
 const LOAD_SPOT = "spot/loadSpot"
-const ADD_SPOT = "spot/loadSpot"
+const ADD_SPOT = "spot/addSpot"
 
 const loadSpots = (spots) => ({
   type: LOAD_SPOTS,
@@ -49,6 +49,14 @@ export const createSpot = (payload) => async dispatch => {
     dispatch(addSpot(newSpot));
     return newSpot;
   }
+};
+
+export const createSpotImage = (payload, spotId) => async dispatch => {
+  const res = await csrfFetch(`/api/spots/${spotId}/images`, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(payload)
+  });
 };
 
 const initialState = { allSpots: {}, singleSpot: {} };

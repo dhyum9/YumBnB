@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createSpot, fetchSpotDetails } from '../../store/spot';
+import { createSpot, createSpotImage, fetchSpotDetails } from '../../store/spot';
 import './CreateSpotForm.css';
 
 const CreateSpotForm = () => {
@@ -26,7 +26,7 @@ const CreateSpotForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors({});
+    let errors = {};
 
     const payload = {
       address,
@@ -39,6 +39,9 @@ const CreateSpotForm = () => {
       description,
       price
     };
+
+    previewImageUrl ? dispatch(createSpotImage({url: previewImageUrl, preview: true})) : errors[previewImageUrl]= "Preview image is required.";
+
 
     const createdSpot = await dispatch(createSpot(payload))
     .catch(async(res) => {
@@ -150,85 +153,107 @@ const CreateSpotForm = () => {
           <hr style={{margin: "10px 0px"}}></hr>
         </div>
         <div id='create-spot-section-two'>
-          <label>
-            Describe your place to guests
+          <div className='create-spot-section-text'>
+            <h4>Describe your place to guests</h4>
+            <div>Mention the best features of your space, any special amentities like fast wifi or parking, and what you love about the neighborhood.</div>
+          </div>
+          <label id='description'>
             <textarea
               placeholder="Please write at least 30 characters"
               value={description}
               onChange={e => setDescription(e.target.value)}
               className='create-spot-input create-spot-block-input'
             />
-            <div className='create-form-errors'>
+            <div className='inline-create-form-errors'>
               {errors.description && (<p>{errors.description}</p>)}
             </div>
           </label>
+          <hr style={{margin: "10px 0px"}}></hr>
         </div>
-        <label>
-          Create a title for your spot
-          <input
-            type="text"
-            placeholder="Name of your spot"
-            value={name}
-            onChange={e => setName(e.target.value)}
-            className='create-spot-input create-spot-block-input'
-          />
-          <div className='create-form-errors'>
-            {errors.name && (<p>{errors.name}</p>)}
+        <div id='create-spot-section-three'>
+          <div className='create-spot-section-text'>
+            <h4>Create a title for your spot</h4>
+            <div>Catch guests' attention with a spot title that highlights what makes your place special.</div>
           </div>
-        </label>
-        <label>
-          Set a base price for your spot
-          <input
-            type="number"
-            min="0"
-            placeholder="Price per night (USD)"
-            value={price}
-            onChange={e => setPrice(e.target.value)}
-            className='create-spot-input create-spot-block-input'
-          />
-          <div className='create-form-errors'>
-            {errors.price && (<p>{errors.price}</p>)}
+          <label id='name'>
+            <input
+              type="text"
+              placeholder="Name of your spot"
+              value={name}
+              onChange={e => setName(e.target.value)}
+              className='create-spot-input create-spot-block-input'
+            />
+            <div className='inline-create-form-errors'>
+              {errors.name && (<p>{errors.name}</p>)}
+            </div>
+          </label>
+          <hr style={{margin: "10px 0px"}}></hr>
+        </div>
+        <div id='create-spot-section-four'>
+          <div className='create-spot-section-text'>
+            <h4>Set a base price for your spot</h4>
+            <div>Competitive pricing can help your listing stand out and rank higher in search results.</div>
           </div>
-        </label>
-        <label>
-          Liven up your spot with photos
-          <input
-            type="text"
-            placeholder="Preview Image Url"
-            value={previewImageUrl}
-            onChange={e => setPreviewImageUrl(e.target.value)}
-            className='create-spot-input create-spot-block-input'
-          />
-          <input
-            type="text"
-            placeholder="Image Url"
-            value={imageUrl2}
-            onChange={e => setImageUrl2(e.target.value)}
-            className='create-spot-input create-spot-block-input'
-          />
-          <input
-            type="text"
-            placeholder="Image Url"
-            value={imageUrl3}
-            onChange={e => setImageUrl3(e.target.value)}
-            className='create-spot-input create-spot-block-input'
-          />
-          <input
-            type="text"
-            placeholder="Image Url"
-            value={imageUrl4}
-            onChange={e => setImageUrl4(e.target.value)}
-            className='create-spot-input create-spot-block-input'
-          />
-          <input
-            type="text"
-            placeholder="Image Url"
-            value={imageUrl5}
-            onChange={e => setImageUrl5(e.target.value)}
-            className='create-spot-input create-spot-block-input'
-          />
-        </label>
-        <button type='submit'>Create Spot</button>
+          <label id='price'>
+            <input
+              type="number"
+              min="0"
+              placeholder="Price per night (USD)"
+              value={price}
+              onChange={e => setPrice(e.target.value)}
+              className='create-spot-input create-spot-block-input'
+            />
+            <div className='inline-create-form-errors'>
+              {errors.price && (<p>{errors.price}</p>)}
+            </div>
+          </label>
+          <hr style={{margin: "10px 0px"}}></hr>
+        </div>
+        <div id='create-spot-section-five'>
+          <div className='create-spot-section-text'>
+            <h4>Liven up your spot with photos</h4>
+            <div>Submit a link to at least one photo to publish your spot.</div>
+          </div>
+          <label id='photos'>
+            <input
+              type="text"
+              placeholder="Preview Image Url"
+              value={previewImageUrl}
+              onChange={e => setPreviewImageUrl(e.target.value)}
+              className='create-spot-input create-spot-block-input'
+            />
+            <input
+              type="text"
+              placeholder="Image Url"
+              value={imageUrl2}
+              onChange={e => setImageUrl2(e.target.value)}
+              className='create-spot-input create-spot-block-input'
+            />
+            <input
+              type="text"
+              placeholder="Image Url"
+              value={imageUrl3}
+              onChange={e => setImageUrl3(e.target.value)}
+              className='create-spot-input create-spot-block-input'
+            />
+            <input
+              type="text"
+              placeholder="Image Url"
+              value={imageUrl4}
+              onChange={e => setImageUrl4(e.target.value)}
+              className='create-spot-input create-spot-block-input'
+            />
+            <input
+              type="text"
+              placeholder="Image Url"
+              value={imageUrl5}
+              onChange={e => setImageUrl5(e.target.value)}
+              className='create-spot-input create-spot-block-input'
+            />
+          </label>
+          <hr style={{margin: "10px 0px"}}></hr>
+        </div>
+        <button type='submit' id='create-spot-button'>Create Spot</button>
       </form>
     </section>
   );
