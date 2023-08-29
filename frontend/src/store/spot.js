@@ -44,8 +44,6 @@ export const createSpot = (payload) => async dispatch => {
     body: JSON.stringify(payload)
   });
 
-  console.log(res);
-
   if (res.ok) {
     const newSpot = await res.json();
     dispatch(addSpot(newSpot));
