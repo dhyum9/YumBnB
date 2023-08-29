@@ -1,0 +1,33 @@
+#delete-button-modal{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f2e9e4;
+  padding: 5px 15px;
+  border-radius: 10px;
+  font-family: 'Manrope', sans-serif;
+  box-shadow: 2px 2px 0 #22223b;
+  border-radius: 10px;
+  width: 400px;
+  text-align: center;
+}
+
+#yes-button{
+  background-color: red;
+  width: 125px;
+  font-family: 'Manrope', sans-serif;
+  color: white;
+  box-shadow: 2px 2px 0 black;
+  border-radius: 5px;
+  margin: 20px 7px;
+}
+
+#no-button{
+  background-color: white;
+  width: 125px;
+  font-family: 'Manrope', sans-serif;
+  color: grey;
+  box-shadow: 2px 2px 0 grey;
+  border-radius: 5px;
+  margin: 20px 7px;
+}
