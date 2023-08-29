@@ -15,7 +15,7 @@ const SpotIndex = ({type}) => {
     } else {
       dispatch(fetchUserSpots());
     }
-  }, [dispatch, type]);
+  }, [dispatch, type, spots]);
 
   if (spots.length === 0 || !spots) return null;
   return (

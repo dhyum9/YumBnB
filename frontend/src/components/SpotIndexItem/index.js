@@ -1,15 +1,10 @@
-import { useDispatch } from 'react-redux';
 import './spotIndexItem.css'
 import { NavLink } from 'react-router-dom';
-import { deleteSpot, fetchUserSpots } from '../../store/spot';
+import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
+import DeleteSpotModal from '../DeleteSpotModal';
+
 
 const SpotIndexItem = ({ spot, type }) => {
-  const dispatch = useDispatch();
-
-  const onClickDelete = (e) => {
-    e.preventDefault();
-    dispatch(deleteSpot(spot.id));
-  }
 
   return (
     <div id='spot-card'>
@@ -33,9 +28,14 @@ const SpotIndexItem = ({ spot, type }) => {
           <button id='update-button'>
             Update
           </button>
-          <button onClick={onClickDelete} id='delete-button'>
-            Delete
-          </button>
+          <div id='delete-button'>
+            <div id='delete-button-text'>
+              <OpenModalMenuItem
+                  itemText="Delete"
+                  modalComponent={<DeleteSpotModal spotId={spot.id}/>}
+              />
+            </div>
+          </div>
         </div>
       )}
     </div>
