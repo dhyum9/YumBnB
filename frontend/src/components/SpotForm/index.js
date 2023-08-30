@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createSpot, createSpotImage, fetchSpotDetails } from '../../store/spot';
-import './CreateSpotForm.css';
+import './SpotForm.css';
 
-const CreateSpotForm = () => {
+const SpotForm = ({formType}) => {
   const [country, setCountry] = useState('');
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
@@ -59,7 +59,7 @@ const CreateSpotForm = () => {
   return (
     <section>
       <form id='create-spot-form' onSubmit={handleSubmit}>
-        <h3>Create a New Spot</h3>
+        {formType==="Create" ? <h3>Create a New Spot</h3> : <h3>Update your Spot</h3>}
         <div id='create-spot-section-one'>
           <div className='create-spot-section-text'>
             <h4>Where's your place located?</h4>
@@ -258,7 +258,7 @@ const CreateSpotForm = () => {
   );
 }
 
-export default CreateSpotForm;
+export default SpotForm;
 
 
   // const pokeTypes = useSelector(state => state.pokemon.types);
