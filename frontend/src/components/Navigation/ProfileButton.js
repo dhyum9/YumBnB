@@ -42,7 +42,7 @@ function ProfileButton({ user }) {
 
   return (
     <div id='dropdown'>
-      <button onClick={openMenu}>
+      <button id='profile-button' onClick={openMenu}>
         <i className="fas fa-user-circle"/>
       </button>
       <ul className={ulClassName} ref={ulRef}>
@@ -51,28 +51,33 @@ function ProfileButton({ user }) {
             <li>Hello, {user.firstName}.</li>
             <li>{user.email}</li>
             <hr></hr>
-            <div style={{backgroundColor: "white"}}>
-              <NavLink exact={true} to='/spots/current'>
+            <NavLink activeStyle={{textDecoration:'none'}}exact={true} to='/spots/current'>
+              <div id='manage-spots-link'>
                 Manage Spots
-              </NavLink>
-            </div>
+              </div>
+            </NavLink>
             <hr></hr>
             <li>
-              <button onClick={logout}>Log Out</button>
+              <button id='log-out-button' onClick={logout}>Log Out</button>
             </li>
           </>
         ) : (
           <>
-            <OpenModalMenuItem
-              itemText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            />
-            <OpenModalMenuItem
-              itemText="Sign Up"
-              onItemClick={closeMenu}
-              modalComponent={<SignupFormModal />}
-            />
+            <div className='login-signup-dropdown-buttons'>
+              <OpenModalMenuItem
+                itemText="Log In"
+                onItemClick={closeMenu}
+                modalComponent={<LoginFormModal />}
+              />
+            </div>
+            <hr></hr>
+            <div className='login-signup-dropdown-buttons'>
+              <OpenModalMenuItem
+                itemText="Sign Up"
+                onItemClick={closeMenu}
+                modalComponent={<SignupFormModal />}
+              />
+            </div>
           </>
         )}
       </ul>

@@ -46,7 +46,7 @@
   position: relative;
 }
 
-#dropdown button {
+#profile-button {
   border: none;
   background-color: #f2e9e4;
   width: 40px;
@@ -64,10 +64,10 @@
   list-style-type: none;
   padding: 10px;
   position: absolute;
-  border: 1px solid white;
-  top: 50px;
+  border: 2px solid #22223b;
+  top: 55px;
   right: -6px;
-  background-color: #22223b;
+  background-color: #9a8c98;
   color: white;
   text-align: center;
 }
@@ -79,6 +79,51 @@
 .profile-dropdown > li {
   font-size: 19px;
   margin: 5px 0;
+}
+
+#manage-spots-link{
+  color: #22223b;
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: white;
+  border-radius: 40px;
+  padding: 5px 8px;
+  width: 115px;
+  margin: 2px auto;
+}
+
+#manage-spots-link:hover{
+  box-shadow: 0px 0px 10px #22223b;
+}
+
+#log-out-button{
+  color: #22223b;
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  background-color: white;
+  border-radius: 40px;
+  padding: 5px 8px;
+  margin-top: 2px;
+}
+
+#log-out-button:hover{
+  box-shadow: 0px 0px 10px #22223b;
+}
+
+.login-signup-dropdown-buttons{
+  color: #22223b;
+  font-weight: bold;
+  background-color: white;
+  border-radius: 40px;
+  padding: 5px 8px;
+  margin: 5px 5px;
+}
+
+.login-signup-dropdown-buttons:hover{
+  box-shadow: 0px 0px 10px #22223b;
 }
 
 .hidden{
