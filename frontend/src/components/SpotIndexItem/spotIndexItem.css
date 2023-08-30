@@ -6,6 +6,11 @@
   color: #22223b;
 }
 
+#spot-card:hover{
+  box-shadow: 0px 0px 10px #22223b;
+  border-radius: 20px;
+}
+
 #spot-card img {
   height: 300px;
   width: 100%;
@@ -26,9 +31,9 @@
 }
 
 .fourth-row{
-  background-color: blanchedalmond;
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 #update-button{
