@@ -4,21 +4,21 @@ import { useHistory } from 'react-router-dom';
 import { createSpot, createSpotImage, fetchSpotDetails } from '../../store/spot';
 import './SpotForm.css';
 
-const SpotForm = ({formType}) => {
-  const [country, setCountry] = useState('');
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [latitude, setLatitude] = useState('');
-  const [longitude, setLongitude] = useState('');
-  const [description, setDescription] = useState('');
-  const [name, setName] = useState('');
-  const [price, setPrice] = useState('');
-  const [previewImageUrl, setPreviewImageUrl] = useState('');
-  const [imageUrl2, setImageUrl2] = useState('');
-  const [imageUrl3, setImageUrl3] = useState('');
-  const [imageUrl4, setImageUrl4] = useState('');
-  const [imageUrl5, setImageUrl5] = useState('');
+const SpotForm = ({spot, formType}) => {
+  const [country, setCountry] = useState(spot.country);
+  const [address, setAddress] = useState(spot.address);
+  const [city, setCity] = useState(spot.city);
+  const [state, setState] = useState(spot.state);
+  const [latitude, setLatitude] = useState(spot.lat);
+  const [longitude, setLongitude] = useState(spot.lng);
+  const [description, setDescription] = useState(spot.description);
+  const [name, setName] = useState(spot.name);
+  const [price, setPrice] = useState(spot.price);
+  const [previewImageUrl, setPreviewImageUrl] = useState(spot.previewImageUrl);
+  const [imageUrl2, setImageUrl2] = useState(spot.imageUrl2);
+  const [imageUrl3, setImageUrl3] = useState(spot.imageUrl3);
+  const [imageUrl4, setImageUrl4] = useState(spot.imageUrl4);
+  const [imageUrl5, setImageUrl5] = useState(spot.imageUrl5);
   const [errors, setErrors] = useState({});
 
   const dispatch = useDispatch();
