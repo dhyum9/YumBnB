@@ -5,7 +5,7 @@
   font-family: 'Manrope', sans-serif;
   padding: 0 12px;
   border-bottom: 1px solid #22223b;
-  color:#22223b;
+  color: white;
 }
 
 #nav-bar > * {
@@ -27,18 +27,37 @@
   margin-right: 5px;
 }
 
+#nav-bar-top-right-with-link{
+  display: flex;
+  align-items: center;
+}
+
+#create-a-new-spot-link{
+  color: white;
+  font-weight: bold;
+  background-color: #9a8c98;
+  border-radius: 40px;
+  padding: 5px 8px;
+  margin: 15px;
+}
+
+#create-a-new-spot-link:visited{
+  text-decoration: none;
+}
+
 #nav-bar-top-right {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid #22223b;
+  border: 2px solid #22223b;
   border-radius: 30px;
   padding: 8px 10px;
+  background-color: #9a8c98;
 }
 
 #nav-bar-top-right > i {
   font-size: 30px;
-  background-color: #f2e9e4;
+  background-color: #9a8c98;
   margin-left: 10px;
 }
 
@@ -48,12 +67,13 @@
 
 #profile-button {
   border: none;
-  background-color: #f2e9e4;
+  background-color: #9a8c98;
   width: 40px;
   height: 40px;
   border-radius: 40px;
   padding: 0;
   margin-left: 5px;
+  color: white;
 }
 
 #dropdown i {
