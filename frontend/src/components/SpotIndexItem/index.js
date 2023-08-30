@@ -25,9 +25,11 @@ const SpotIndexItem = ({ spot, type }) => {
       </NavLink>
       {type==="usersOnly" && (
         <div className='fourth-row'>
-          <button id='update-button'>
-            Update
-          </button>
+          <NavLink to={`/spots/${spot.id}/edit`}>
+            <button id='update-button'>
+              Update
+            </button>
+          </NavLink>
           <div id='delete-button'>
             <div id='delete-button-text'>
               <OpenModalMenuItem

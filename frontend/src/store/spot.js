@@ -76,6 +76,8 @@ export const createSpotImage = (payload, spotId) => async dispatch => {
   if (res.ok) {
     const newSpotImage = await res.json();
     return newSpotImage;
+  } else {
+    return null;
   }
 };
 
