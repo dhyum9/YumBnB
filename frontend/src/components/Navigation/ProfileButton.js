@@ -51,7 +51,7 @@ function ProfileButton({ user }) {
             <li>Hello, {user.firstName}.</li>
             <li>{user.email}</li>
             <hr></hr>
-            <NavLink activeStyle={{textDecoration:'none'}}exact={true} to='/spots/current'>
+            <NavLink activeStyle={{textDecoration:'none'}} exact={true} to='/spots/current'>
               <div id='manage-spots-link'>
                 Manage Spots
               </div>

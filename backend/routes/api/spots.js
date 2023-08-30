@@ -363,6 +363,38 @@ const validateCreateSpot = [
   check('price')
     .exists({ checkFalsy: true })
     .withMessage('Price per day is required.'),
+    check('previewImageUrl')
+      .custom(value =>
+        (value.endsWith(".png") || value.endsWith(".jpg") || value.endsWith(".jpeg"))
+      )
+      .withMessage('Image URL must end in .png, .jpg, or .jpeg'),
+  check('previewImageUrl')
+    .exists({ checkFalsy: true })
+    .withMessage('Preview Image is required.'),
+  check('imageUrl2')
+    .optional()
+    .custom(value =>
+      (value.endsWith(".png") || value.endsWith(".jpg") || value.endsWith(".jpeg"))
+    )
+    .withMessage('Image URL must end in .png, .jpg, or .jpeg'),
+  check('imageUrl3')
+    .optional()
+    .custom(value =>
+      (value.endsWith(".png") || value.endsWith(".jpg") || value.endsWith(".jpeg"))
+    )
+    .withMessage('Image URL must end in .png, .jpg, or .jpeg'),
+  check('imageUrl4')
+    .optional()
+    .custom(value =>
+      (value.endsWith(".png") || value.endsWith(".jpg") || value.endsWith(".jpeg"))
+    )
+    .withMessage('Image URL must end in .png, .jpg, or .jpeg'),
+  check('imageUrl5')
+    .optional()
+    .custom(value =>
+      (value.endsWith(".png") || value.endsWith(".jpg") || value.endsWith(".jpeg"))
+    )
+    .withMessage('Image URL must end in .png, .jpg, or .jpeg'),
   handleValidationErrors
 ];
 

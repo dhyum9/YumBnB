@@ -1,13 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createSpot, updateSpot, fetchSpotDetails } from '../../store/spot';
+import { createSpot, createSpotImage, updateSpot, fetchSpotDetails } from '../../store/spot';
 import './SpotForm.css';
 
 const SpotForm = ({spot, formType}) => {
-  // let spotPreviewImage = spot.SpotImages.find((spotImage) => spotImage.preview === true);
-  // let spotPreviewImageUrl = spotPreviewImage.url;
-
   const [country, setCountry] = useState(spot.country);
   const [address, setAddress] = useState(spot.address);
   const [city, setCity] = useState(spot.city);
@@ -53,8 +50,20 @@ const SpotForm = ({spot, formType}) => {
       lng: longitude,
       name,
       description,
-      price
+      price,
+      previewImageUrl,
+      imageUrl2,
+      imageUrl3,
+      imageUrl4,
+      imageUrl5
     };
+
+    const spotImagePayload = [];
+    if(previewImageUrl) spotImagePayload.push({url: previewImageUrl, preview: true});
+    if(imageUrl2) spotImagePayload.push({url: imageUrl2, preview: false});
+    if(imageUrl3) spotImagePayload.push({url: imageUrl3, preview: false});
+    if(imageUrl4) spotImagePayload.push({url: imageUrl4, preview: false});
+    if(imageUrl5) spotImagePayload.push({url: imageUrl5, preview: false});
 
     if(formType==='Create'){
       const createdSpot = await dispatch(createSpot(payload))
@@ -66,6 +75,9 @@ const SpotForm = ({spot, formType}) => {
       });
 
       if (createdSpot) {
+        for (let spotImage of spotImagePayload){
+          await dispatch(createSpotImage(spotImage, createdSpot.id))
+        }
         await dispatch(fetchSpotDetails(createdSpot.id));
         history.push(`/spots/${createdSpot.id}`);
       }
@@ -83,8 +95,6 @@ const SpotForm = ({spot, formType}) => {
         history.push(`/spots/${updatedSpot.id}`);
       }
     }
-
-    // previewImageUrl ? dispatch(createSpotImage({url: previewImageUrl, preview: true})) : setErrors({...errors, previewImageUrl: "Preview Image is required"});
 
   };
 
@@ -240,50 +250,67 @@ const SpotForm = ({spot, formType}) => {
           </label>
           <hr style={{margin: "10px 0px"}}></hr>
         </div>
-        <div id='create-spot-section-five'>
-          <div className='create-spot-section-text'>
-            <h4>Liven up your spot with photos</h4>
-            <div>Submit a link to at least one photo to publish your spot.</div>
+        {formType==="Create" && (
+          <div id='create-spot-section-five'>
+            <div className='create-spot-section-text'>
+              <h4>Liven up your spot with photos</h4>
+              <div>Submit a link to at least one photo to publish your spot.</div>
+            </div>
+            <label id='photos'>
+              <input
+                type="text"
+                placeholder="Preview Image Url"
+                value={previewImageUrl}
+                onChange={e => setPreviewImageUrl(e.target.value)}
+                className='create-spot-input create-spot-block-input'
+              />
+              <div className='create-form-errors'>
+                {errors.previewImageUrl && (<p>{errors.previewImageUrl}</p>)}
+              </div>
+              <input
+                type="text"
+                placeholder="Image Url"
+                value={imageUrl2}
+                onChange={e => setImageUrl2(e.target.value)}
+                className='create-spot-input create-spot-block-input'
+              />
+              <div className='create-form-errors'>
+                {errors.imageUrl2 && (<p>{errors.imageUrl2}</p>)}
+              </div>
+              <input
+                type="text"
+                placeholder="Image Url"
+                value={imageUrl3}
+                onChange={e => setImageUrl3(e.target.value)}
+                className='create-spot-input create-spot-block-input'
+              />
+              <div className='create-form-errors'>
+                {errors.imageUrl3 && (<p>{errors.imageUrl3}</p>)}
+              </div>
+              <input
+                type="text"
+                placeholder="Image Url"
+                value={imageUrl4}
+                onChange={e => setImageUrl4(e.target.value)}
+                className='create-spot-input create-spot-block-input'
+              />
+              <div className='create-form-errors'>
+                {errors.imageUrl4 && (<p>{errors.imageUrl4}</p>)}
+              </div>
+              <input
+                type="text"
+                placeholder="Image Url"
+                value={imageUrl5}
+                onChange={e => setImageUrl5(e.target.value)}
+                className='create-spot-input create-spot-block-input'
+              />
+              <div className='create-form-errors'>
+                {errors.imageUrl5 && (<p>{errors.imageUrl5}</p>)}
+              </div>
+            </label>
+            <hr style={{margin: "10px 0px"}}></hr>
           </div>
-          <label id='photos'>
-            <input
-              type="text"
-              placeholder="Preview Image Url"
-              value={previewImageUrl}
-              onChange={e => setPreviewImageUrl(e.target.value)}
-              className='create-spot-input create-spot-block-input'
-            />
-            <input
-              type="text"
-              placeholder="Image Url"
-              value={imageUrl2}
-              onChange={e => setImageUrl2(e.target.value)}
-              className='create-spot-input create-spot-block-input'
-            />
-            <input
-              type="text"
-              placeholder="Image Url"
-              value={imageUrl3}
-              onChange={e => setImageUrl3(e.target.value)}
-              className='create-spot-input create-spot-block-input'
-            />
-            <input
-              type="text"
-              placeholder="Image Url"
-              value={imageUrl4}
-              onChange={e => setImageUrl4(e.target.value)}
-              className='create-spot-input create-spot-block-input'
-            />
-            <input
-              type="text"
-              placeholder="Image Url"
-              value={imageUrl5}
-              onChange={e => setImageUrl5(e.target.value)}
-              className='create-spot-input create-spot-block-input'
-            />
-          </label>
-          <hr style={{margin: "10px 0px"}}></hr>
-        </div>
+        )}
         {formType==="Create" ? <button type='submit' id='create-spot-button'>Create Spot</button> : <button type='submit' id='create-spot-button'>Update Spot</button>}
       </form>
     </section>
