@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createSpot, createSpotImage, fetchSpotDetails } from '../../store/spot';
+import { createSpot, fetchSpotDetails } from '../../store/spot';
 import './SpotForm.css';
 
 const SpotForm = ({spot, formType}) => {
+  // let spotPreviewImage = spot.SpotImages.find((spotImage) => spotImage.preview === true);
+  // let spotPreviewImageUrl = spotPreviewImage.url;
+
   const [country, setCountry] = useState(spot.country);
   const [address, setAddress] = useState(spot.address);
   const [city, setCity] = useState(spot.city);
@@ -14,8 +17,8 @@ const SpotForm = ({spot, formType}) => {
   const [description, setDescription] = useState(spot.description);
   const [name, setName] = useState(spot.name);
   const [price, setPrice] = useState(spot.price);
-  const [previewImageUrl, setPreviewImageUrl] = useState(spot.previewImageUrl);
-  const [imageUrl2, setImageUrl2] = useState(spot.imageUrl2);
+  const [previewImageUrl, setPreviewImageUrl] = useState('');
+  const [imageUrl2, setImageUrl2] = useState(spot.SpotImaimageUrl2);
   const [imageUrl3, setImageUrl3] = useState(spot.imageUrl3);
   const [imageUrl4, setImageUrl4] = useState(spot.imageUrl4);
   const [imageUrl5, setImageUrl5] = useState(spot.imageUrl5);
@@ -253,7 +256,7 @@ const SpotForm = ({spot, formType}) => {
           </label>
           <hr style={{margin: "10px 0px"}}></hr>
         </div>
-        <button type='submit' id='create-spot-button'>Create Spot</button>
+        {formType==="Create" ? <button type='submit' id='create-spot-button'>Create Spot</button> : <button type='submit' id='create-spot-button'>Update Spot</button>}
       </form>
     </section>
   );

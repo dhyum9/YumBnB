@@ -9,7 +9,7 @@ import { fetchSpotDetails } from '../../store/spot';
 const SpotIndexItem = ({ spot, type }) => {
   const dispatch = useDispatch();
 
-  const onClickUpdate = () => {
+  const onClickUpdate = (e) => {
     dispatch(fetchSpotDetails(spot.id));
   }
 
