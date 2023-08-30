@@ -5,7 +5,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SpotIndex from "./components/SpotIndex";
 import SpotShow from "./components/SpotShow";
-import SpotForm from "./components/SpotForm";
+import UpdateSpotForm from "./components/UpdateSpotForm";
 import CreateSpotForm from "./components/CreateSpotForm";
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
             <SpotIndex type={"usersOnly"}/>
           </Route>
           <Route path='/spots/:spotId/edit'>
-            <SpotForm formType={"Update"}/>
+            <UpdateSpotForm />
           </Route>
           <Route path='/spots/:spotId'>
             <SpotShow />

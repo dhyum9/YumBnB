@@ -29,6 +29,7 @@ const SpotForm = ({spot, formType}) => {
     setErrors({});
 
     const payload = {
+      ...spot,
       address,
       city,
       state,
@@ -105,7 +106,7 @@ const SpotForm = ({spot, formType}) => {
                 className='create-spot-input'
               />
             </label>
-            <div class='create-spot-comma'>,</div>
+            <div className='create-spot-comma'>,</div>
             <label id='state'>
               State
               <div className='create-form-errors'>
@@ -134,7 +135,7 @@ const SpotForm = ({spot, formType}) => {
                 className='create-spot-input'
               />
             </label>
-            <div class='create-spot-comma'>,</div>
+            <div className='create-spot-comma'>,</div>
             <label id='lng'>
               Longitude
               <div className='create-form-errors'>
