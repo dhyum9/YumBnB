@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createSpot, fetchSpotDetails } from '../../store/spot';
@@ -18,7 +18,7 @@ const SpotForm = ({spot, formType}) => {
   const [name, setName] = useState(spot.name);
   const [price, setPrice] = useState(spot.price);
   const [previewImageUrl, setPreviewImageUrl] = useState('');
-  const [imageUrl2, setImageUrl2] = useState(spot.SpotImaimageUrl2);
+  const [imageUrl2, setImageUrl2] = useState('');
   const [imageUrl3, setImageUrl3] = useState(spot.imageUrl3);
   const [imageUrl4, setImageUrl4] = useState(spot.imageUrl4);
   const [imageUrl5, setImageUrl5] = useState(spot.imageUrl5);
@@ -26,6 +26,18 @@ const SpotForm = ({spot, formType}) => {
 
   const dispatch = useDispatch();
   const history = useHistory();
+
+  useEffect(() => {
+    setCountry(spot.country);
+    setAddress(spot.address);
+    setCity(spot.city);
+    setState(spot.state);
+    setLatitude(spot.lat);
+    setLongitude(spot.lng);
+    setDescription(spot.description);
+    setName(spot.name);
+    setPrice(spot.price);
+  }, [dispatch, spot]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -37,8 +37,12 @@
   font-weight: bold;
   background-color: #9a8c98;
   border-radius: 40px;
-  padding: 5px 8px;
+  padding: 6px 12px;
   margin: 15px;
+}
+
+#create-a-new-spot-link:hover{
+  box-shadow: 0px 0px 10px #22223b;
 }
 
 #create-a-new-spot-link:visited{

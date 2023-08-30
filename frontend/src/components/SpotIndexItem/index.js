@@ -2,16 +2,9 @@ import './spotIndexItem.css'
 import { NavLink } from 'react-router-dom';
 import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
 import DeleteSpotModal from '../DeleteSpotModal';
-import { useDispatch } from 'react-redux';
-import { fetchSpotDetails } from '../../store/spot';
 
 
 const SpotIndexItem = ({ spot, type }) => {
-  const dispatch = useDispatch();
-
-  const onClickUpdate = (e) => {
-    dispatch(fetchSpotDetails(spot.id));
-  }
 
   return (
     <div id='spot-card'>
@@ -33,7 +26,7 @@ const SpotIndexItem = ({ spot, type }) => {
       {type==="usersOnly" && (
         <div className='fourth-row'>
           <NavLink to={`/spots/${spot.id}/edit`}>
-            <button onClick={onClickUpdate} id='update-button'>
+            <button id='update-button'>
               Update
             </button>
           </NavLink>
