@@ -372,25 +372,25 @@ const validateCreateSpot = [
     .exists({ checkFalsy: true })
     .withMessage('Preview Image is required.'),
   check('imageUrl2')
-    .optional()
+    .optional({ checkFalsy: true })
     .custom(value =>
       (value.endsWith(".png") || value.endsWith(".jpg") || value.endsWith(".jpeg"))
     )
     .withMessage('Image URL must end in .png, .jpg, or .jpeg'),
   check('imageUrl3')
-    .optional()
+    .optional({ checkFalsy: true })
     .custom(value =>
       (value.endsWith(".png") || value.endsWith(".jpg") || value.endsWith(".jpeg"))
     )
     .withMessage('Image URL must end in .png, .jpg, or .jpeg'),
   check('imageUrl4')
-    .optional()
+    .optional({ checkFalsy: true })
     .custom(value =>
       (value.endsWith(".png") || value.endsWith(".jpg") || value.endsWith(".jpeg"))
     )
     .withMessage('Image URL must end in .png, .jpg, or .jpeg'),
   check('imageUrl5')
-    .optional()
+    .optional({ checkFalsy: true })
     .custom(value =>
       (value.endsWith(".png") || value.endsWith(".jpg") || value.endsWith(".jpeg"))
     )
