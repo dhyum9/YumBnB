@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createSpot, fetchSpotDetails } from '../../store/spot';
+import { createSpot, updateSpot, fetchSpotDetails } from '../../store/spot';
 import './SpotForm.css';
 
 const SpotForm = ({spot, formType}) => {
@@ -56,20 +56,36 @@ const SpotForm = ({spot, formType}) => {
       price
     };
 
-    const createdSpot = await dispatch(createSpot(payload))
-    .catch(async(res) => {
-      const data = await res.json();
-      if (data && data.errors) {
-        setErrors(data.errors);
+    if(formType==='Create'){
+      const createdSpot = await dispatch(createSpot(payload))
+      .catch(async(res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(data.errors);
+        }
+      });
+
+      if (createdSpot) {
+        await dispatch(fetchSpotDetails(createdSpot.id));
+        history.push(`/spots/${createdSpot.id}`);
       }
-    });
+    } else if (formType==='Update'){
+      const updatedSpot = await dispatch(updateSpot(payload, spot.id))
+      .catch(async(res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(data.errors);
+        }
+      });
+
+      if (updatedSpot) {
+        await dispatch(fetchSpotDetails(updatedSpot.id));
+        history.push(`/spots/${updatedSpot.id}`);
+      }
+    }
 
     // previewImageUrl ? dispatch(createSpotImage({url: previewImageUrl, preview: true})) : setErrors({...errors, previewImageUrl: "Preview Image is required"});
 
-    if (createdSpot) {
-      await dispatch(fetchSpotDetails(createdSpot.id));
-      history.push(`/spots/${createdSpot.id}`);
-    }
   };
 
   return (

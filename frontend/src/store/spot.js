@@ -81,6 +81,19 @@ export const createSpot = (payload) => async dispatch => {
 //   }
 // };
 
+export const updateSpot = (payload, spotId) => async dispatch => {
+  const res = await csrfFetch(`/api/spots/${spotId}`, {
+    method: 'PUT',
+    body: JSON.stringify(payload)
+  });
+
+  if (res.ok) {
+    const updatedSpot = await res.json();
+    dispatch(addSpot(updatedSpot));
+    return updatedSpot;
+  }
+};
+
 export const deleteSpot = (spotId) => async dispatch => {
   const res = await csrfFetch(`/api/spots/${spotId}`, {
     method: 'DELETE'
