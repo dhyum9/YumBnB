@@ -12,7 +12,9 @@ const SpotIndexItem = ({ spot, type }) => {
         <div>
           <img src={spot.previewImage} alt='Preview SpotImage goes here'></img>
           <div className='second-row'>
-            <div>{spot.city}, {spot.state}</div>
+            <div style={{overflow: "hidden"}}>
+              {spot.city}, {spot.state}
+            </div>
             <div>
               <i className="fa-solid fa-star"></i>
               {spot.avgRating}

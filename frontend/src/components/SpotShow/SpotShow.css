@@ -30,16 +30,17 @@
 #spot-information{
   font-size: 16px;
   margin: 10px 0;
+  word-wrap: break-word;
 }
 
 #fourth-row-right-col{
   width: 315px;
-  background-color: white;
   border-radius: 12px;
 }
 
 #square-reserve-container{
   border: 2px solid #22223b;
+  background-color: white;
   border-radius: 12px;
   padding: 20px;
   font-size: 22px;
