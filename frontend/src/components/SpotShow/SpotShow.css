@@ -1,0 +1,74 @@
+#spot-details-container{
+  background-color: aquamarine;
+  padding: 20px 60px;
+  max-width: 1000px;
+  margin: auto;
+  font-family: 'Manrope', sans-serif;
+}
+
+#spot-details-container > h1{
+  margin: 0;
+}
+
+#spot-details-second-row{
+  margin: 10px 0 20px;
+}
+
+#spot-details-fourth-row{
+  margin: 20px 0;
+  display: flex;
+}
+
+#fourth-row-left-col{
+  width: 65%;
+  margin-right: 20px;
+}
+
+#host-information{
+  font-size: 25px;
+}
+
+#spot-information{
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+#fourth-row-right-col{
+  width: 315px;
+  background-color: white;
+  border-radius: 12px;
+}
+
+#square-reserve-container{
+  border: 2px solid #22223b;
+  border-radius: 12px;
+  padding: 20px;
+  font-size: 22px;
+}
+
+#fourth-right-first{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#review-info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+#fourth-right-second > button{
+  background-color: #9a8c98;
+  color: white;
+  font-family: 'Manrope', sans-serif;
+  padding: 10px;
+  width: 100%;
+  border: 2px solid #22223b;
+  margin-top: 10px;
+}
+
+#fourth-right-second > button:hover{
+  box-shadow: 0px 0px 10px #22223b;
+}
