@@ -16,20 +16,20 @@ function Navigation({ isLoaded }){
         </div>
       </NavLink>
       <div id='nav-bar-top-right-with-link'>
-        <div id='create-a-new-spot-link'>
           {sessionUser && (
-            <NavLink exact={true} to='/spots'>
-              Create a New Spot
+            <NavLink activeStyle={{textDecoration:'none'}} exact={true} to='/spots'>
+              <div id='create-a-new-spot-link'>
+                Create a New Spot
+              </div>
             </NavLink>
           )}
-        </div>
+          {isLoaded && (
+            <div id='nav-bar-top-right'>
+              <i className="fa-solid fa-bars"></i>
+              <ProfileButton user={sessionUser} />
+            </div>
+          )}
       </div>
-        {isLoaded && (
-          <div id='nav-bar-top-right'>
-            <i className="fa-solid fa-bars"></i>
-            <ProfileButton user={sessionUser} />
-          </div>
-        )}
     </ul>
   );
 }

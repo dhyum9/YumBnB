@@ -18,18 +18,14 @@ const SpotShow = () => {
   }
 
  return (
-  <div>
+  <div id='spot-details-container'>
     <h1>{spot.name}</h1>
-    <div>{spot.city}, {spot.state}, {spot.country}</div>
+    <div id='spot-details-second-row'>{spot.city}, {spot.state}, {spot.country}</div>
     <div>
       Hosted by {spot.Owner.firstName} {spot.Owner.lastName}
     </div>
     <div id="images-grid">
-      {spot.SpotImages.map((spotImage) => {
-        return (
-          <SpotShowImage url={spotImage.url} key={spotImage.id}/>
-        );
-      })}
+      <SpotShowImage images={spot.SpotImages}/>
     </div>
   </div>
  );

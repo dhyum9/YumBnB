@@ -55,7 +55,6 @@ export const fetchSpotDetails = (spotId) => async dispatch => {
 export const createSpot = (payload) => async dispatch => {
   const res = await csrfFetch(`/api/spots`, {
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(payload)
   });
 
@@ -76,8 +75,19 @@ export const createSpotImage = (payload, spotId) => async dispatch => {
   if (res.ok) {
     const newSpotImage = await res.json();
     return newSpotImage;
-  } else {
-    return null;
+  }
+};
+
+export const updateSpot = (payload, spotId) => async dispatch => {
+  const res = await csrfFetch(`/api/spots/${spotId}`, {
+    method: 'PUT',
+    body: JSON.stringify(payload)
+  });
+
+  if (res.ok) {
+    const updatedSpot = await res.json();
+    dispatch(addSpot(updatedSpot));
+    return updatedSpot;
   }
 };
 
@@ -107,11 +117,11 @@ const spotsReducer = (state = initialState, action) => {
       newState = {...state, singleSpot: action.spot};
       return newState;
     case ADD_SPOT:
-      newState = {...state};
+      newState = {...state, allSpots: {...state.allSpots}};
       newState.allSpots[action.spot.id] = action.spot;
       return newState;
     case REMOVE_SPOT:
-      newState = {...state};
+      newState = {...state, allSpots: {...state.allSpots}};
       let spotId = action.spotId;
       delete newState.allSpots[spotId];
       return newState;

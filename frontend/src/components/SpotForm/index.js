@@ -1,34 +1,47 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createSpot, createSpotImage, fetchSpotDetails } from '../../store/spot';
+import { createSpot, createSpotImage, updateSpot, fetchSpotDetails } from '../../store/spot';
 import './SpotForm.css';
 
-const SpotForm = ({formType}) => {
-  const [country, setCountry] = useState('');
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [latitude, setLatitude] = useState('');
-  const [longitude, setLongitude] = useState('');
-  const [description, setDescription] = useState('');
-  const [name, setName] = useState('');
-  const [price, setPrice] = useState('');
+const SpotForm = ({spot, formType}) => {
+  const [country, setCountry] = useState(spot.country);
+  const [address, setAddress] = useState(spot.address);
+  const [city, setCity] = useState(spot.city);
+  const [state, setState] = useState(spot.state);
+  const [latitude, setLatitude] = useState(spot.lat);
+  const [longitude, setLongitude] = useState(spot.lng);
+  const [description, setDescription] = useState(spot.description);
+  const [name, setName] = useState(spot.name);
+  const [price, setPrice] = useState(spot.price);
   const [previewImageUrl, setPreviewImageUrl] = useState('');
   const [imageUrl2, setImageUrl2] = useState('');
-  const [imageUrl3, setImageUrl3] = useState('');
-  const [imageUrl4, setImageUrl4] = useState('');
-  const [imageUrl5, setImageUrl5] = useState('');
+  const [imageUrl3, setImageUrl3] = useState(spot.imageUrl3);
+  const [imageUrl4, setImageUrl4] = useState(spot.imageUrl4);
+  const [imageUrl5, setImageUrl5] = useState(spot.imageUrl5);
   const [errors, setErrors] = useState({});
 
   const dispatch = useDispatch();
   const history = useHistory();
+
+  useEffect(() => {
+    setCountry(spot.country);
+    setAddress(spot.address);
+    setCity(spot.city);
+    setState(spot.state);
+    setLatitude(spot.lat);
+    setLongitude(spot.lng);
+    setDescription(spot.description);
+    setName(spot.name);
+    setPrice(spot.price);
+  }, [dispatch, spot]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({});
 
     const payload = {
+      ...spot,
       address,
       city,
       state,
@@ -37,23 +50,52 @@ const SpotForm = ({formType}) => {
       lng: longitude,
       name,
       description,
-      price
+      price,
+      previewImageUrl,
+      imageUrl2,
+      imageUrl3,
+      imageUrl4,
+      imageUrl5
     };
 
-    const createdSpot = await dispatch(createSpot(payload))
-    .catch(async(res) => {
-      const data = await res.json();
-      if (data && data.errors) {
-        setErrors(data.errors);
+    const spotImagePayload = [];
+    if(previewImageUrl) spotImagePayload.push({url: previewImageUrl, preview: true});
+    if(imageUrl2) spotImagePayload.push({url: imageUrl2, preview: false});
+    if(imageUrl3) spotImagePayload.push({url: imageUrl3, preview: false});
+    if(imageUrl4) spotImagePayload.push({url: imageUrl4, preview: false});
+    if(imageUrl5) spotImagePayload.push({url: imageUrl5, preview: false});
+
+    if(formType==='Create'){
+      const createdSpot = await dispatch(createSpot(payload))
+      .catch(async(res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(data.errors);
+        }
+      });
+
+      if (createdSpot) {
+        for (let spotImage of spotImagePayload){
+          await dispatch(createSpotImage(spotImage, createdSpot.id))
+        }
+        await dispatch(fetchSpotDetails(createdSpot.id));
+        history.push(`/spots/${createdSpot.id}`);
       }
-    });
+    } else if (formType==='Update'){
+      const updatedSpot = await dispatch(updateSpot(payload, spot.id))
+      .catch(async(res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(data.errors);
+        }
+      });
 
-    // previewImageUrl ? dispatch(createSpotImage({url: previewImageUrl, preview: true})) : setErrors({...errors, previewImageUrl: "Preview Image is required"});
-
-    if (createdSpot) {
-      await dispatch(fetchSpotDetails(createdSpot.id));
-      history.push(`/spots/${createdSpot.id}`);
+      if (updatedSpot) {
+        await dispatch(fetchSpotDetails(updatedSpot.id));
+        history.push(`/spots/${updatedSpot.id}`);
+      }
     }
+
   };
 
   return (
@@ -105,7 +147,7 @@ const SpotForm = ({formType}) => {
                 className='create-spot-input'
               />
             </label>
-            <div class='create-spot-comma'>,</div>
+            <div className='create-spot-comma'>,</div>
             <label id='state'>
               State
               <div className='create-form-errors'>
@@ -134,7 +176,7 @@ const SpotForm = ({formType}) => {
                 className='create-spot-input'
               />
             </label>
-            <div class='create-spot-comma'>,</div>
+            <div className='create-spot-comma'>,</div>
             <label id='lng'>
               Longitude
               <div className='create-form-errors'>
@@ -208,51 +250,68 @@ const SpotForm = ({formType}) => {
           </label>
           <hr style={{margin: "10px 0px"}}></hr>
         </div>
-        <div id='create-spot-section-five'>
-          <div className='create-spot-section-text'>
-            <h4>Liven up your spot with photos</h4>
-            <div>Submit a link to at least one photo to publish your spot.</div>
+        {formType==="Create" && (
+          <div id='create-spot-section-five'>
+            <div className='create-spot-section-text'>
+              <h4>Liven up your spot with photos</h4>
+              <div>Submit a link to at least one photo to publish your spot.</div>
+            </div>
+            <label id='photos'>
+              <input
+                type="text"
+                placeholder="Preview Image Url"
+                value={previewImageUrl}
+                onChange={e => setPreviewImageUrl(e.target.value)}
+                className='create-spot-input create-spot-block-input'
+              />
+              <div className='create-form-errors'>
+                {errors.previewImageUrl && (<p>{errors.previewImageUrl}</p>)}
+              </div>
+              <input
+                type="text"
+                placeholder="Image Url"
+                value={imageUrl2}
+                onChange={e => setImageUrl2(e.target.value)}
+                className='create-spot-input create-spot-block-input'
+              />
+              <div className='create-form-errors'>
+                {errors.imageUrl2 && (<p>{errors.imageUrl2}</p>)}
+              </div>
+              <input
+                type="text"
+                placeholder="Image Url"
+                value={imageUrl3}
+                onChange={e => setImageUrl3(e.target.value)}
+                className='create-spot-input create-spot-block-input'
+              />
+              <div className='create-form-errors'>
+                {errors.imageUrl3 && (<p>{errors.imageUrl3}</p>)}
+              </div>
+              <input
+                type="text"
+                placeholder="Image Url"
+                value={imageUrl4}
+                onChange={e => setImageUrl4(e.target.value)}
+                className='create-spot-input create-spot-block-input'
+              />
+              <div className='create-form-errors'>
+                {errors.imageUrl4 && (<p>{errors.imageUrl4}</p>)}
+              </div>
+              <input
+                type="text"
+                placeholder="Image Url"
+                value={imageUrl5}
+                onChange={e => setImageUrl5(e.target.value)}
+                className='create-spot-input create-spot-block-input'
+              />
+              <div className='create-form-errors'>
+                {errors.imageUrl5 && (<p>{errors.imageUrl5}</p>)}
+              </div>
+            </label>
+            <hr style={{margin: "10px 0px"}}></hr>
           </div>
-          <label id='photos'>
-            <input
-              type="text"
-              placeholder="Preview Image Url"
-              value={previewImageUrl}
-              onChange={e => setPreviewImageUrl(e.target.value)}
-              className='create-spot-input create-spot-block-input'
-            />
-            <input
-              type="text"
-              placeholder="Image Url"
-              value={imageUrl2}
-              onChange={e => setImageUrl2(e.target.value)}
-              className='create-spot-input create-spot-block-input'
-            />
-            <input
-              type="text"
-              placeholder="Image Url"
-              value={imageUrl3}
-              onChange={e => setImageUrl3(e.target.value)}
-              className='create-spot-input create-spot-block-input'
-            />
-            <input
-              type="text"
-              placeholder="Image Url"
-              value={imageUrl4}
-              onChange={e => setImageUrl4(e.target.value)}
-              className='create-spot-input create-spot-block-input'
-            />
-            <input
-              type="text"
-              placeholder="Image Url"
-              value={imageUrl5}
-              onChange={e => setImageUrl5(e.target.value)}
-              className='create-spot-input create-spot-block-input'
-            />
-          </label>
-          <hr style={{margin: "10px 0px"}}></hr>
-        </div>
-        <button type='submit' id='create-spot-button'>Create Spot</button>
+        )}
+        {formType==="Create" ? <button type='submit' id='create-spot-button'>Create Spot</button> : <button type='submit' id='create-spot-button'>Update Spot</button>}
       </form>
     </section>
   );
