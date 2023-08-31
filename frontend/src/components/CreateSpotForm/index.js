@@ -8,7 +8,8 @@ const CreateSpotForm = () => {
     country: '',
     name: '',
     description: '',
-    price: ''
+    price: '',
+    SpotImages: []
   };
 
   return (

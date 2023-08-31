@@ -19,7 +19,7 @@ module.exports = {
         lat: 12.0199287,
         lng: -121.1232832,
         name: "Monte Vista Apartment",
-        description: "Budget One Bedroom Apartment",
+        description: "Budget One Bedroom Apartment! Enjoy your stay in this quaint city in one of the best spots in town.",
         price: 90.00
       },
       {
@@ -31,7 +31,7 @@ module.exports = {
         lat: 39.1132837,
         lng: 10.9228372,
         name: "Luxury Mansion",
-        description: "10 Bedrooms, 8.5 Bathrooms",
+        description: "10 Bedrooms, 8.5 Bathrooms. You won't ever find a place like this.",
         price: 1290.99
       },
       {
@@ -43,7 +43,7 @@ module.exports = {
         lat: 32.0192247,
         lng: 164.1238372,
         name: "Trap RV",
-        description: "RV in the middle of nowhere",
+        description: "RV in the middle of nowhere. Still cozy if you're stranded and need a budget option!",
         price: 23.01
       },
       {
@@ -55,8 +55,32 @@ module.exports = {
         lat: -87.0592827,
         lng: -141.1208372,
         name: "Beautiful Log Cabin",
-        description: "Three bedrooms, two bathrooms",
+        description: "Three bedrooms, two bathrooms. Enjoy the beautiful views of Colorado in this luxurious stay-in experience.",
         price: 209.50
+      },
+      {
+        ownerId: 1,
+        address: "420 Blazin Dr",
+        city: "Orlando",
+        state: "Florida",
+        country: "United States of America",
+        lat: -82.2592227,
+        lng: -121.1228372,
+        name: "Beach Condo",
+        description: "Two bedrooms, one bathroom. Beautiful view by the beach!",
+        price: 349.99
+      },
+      {
+        ownerId: 1,
+        address: "111 York Ave.",
+        city: "Manhattan",
+        state: "New York",
+        country: "United States of America",
+        lat: 27.0592827,
+        lng: 23.1208372,
+        name: "NY Apartment in the City",
+        description: "Enjoy one of the greatest views right in the middle of Manhattan.",
+        price: 499.99
       }
     ], { validate: true });
   },
