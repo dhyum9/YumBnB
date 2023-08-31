@@ -4,6 +4,9 @@
   width: 400px;
   font-family: 'Manrope', sans-serif;
   color: #22223b;
+  padding: 10px;
+  box-shadow: 0 0 5px rgb(34, 34, 59);
+  border-radius: 20px;
 }
 
 #spot-card:hover{
