@@ -3,18 +3,27 @@ import SpotShowImage from "../SpotShowImage";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { fetchSpotDetails } from "../../store/spot";
+import { fetchSpotReviews } from "../../store/review";
 import './SpotShow.css'
+import ReviewItem from "../ReviewItem";
 
 const SpotShow = () => {
   const dispatch = useDispatch();
   const {spotId} = useParams();
   const spot = useSelector(state => state.spots.singleSpot);
+  const reviewsObj = useSelector(state => state.reviews.spot);
+  const reviews = Object.values(reviewsObj);
 
   useEffect(() => {
-    dispatch(fetchSpotDetails(spotId))
+    dispatch(fetchSpotDetails(spotId));
+    dispatch(fetchSpotReviews(spotId));
   },[dispatch, spotId]);
 
   if(Object.keys(spot).length === 0) {
+    return null;
+  }
+
+  if(Object.keys(reviews).length === 0) {
     return null;
   }
 
@@ -23,7 +32,7 @@ const SpotShow = () => {
   };
 
  return (
-  <div id='spot-details-container'>
+  <main id='spot-details-container'>
     <h1>{spot.name}</h1>
     <div id='spot-details-second-row'>{spot.city}, {spot.state}, {spot.country}</div>
     <div id="spot-details-third-row">
@@ -58,9 +67,14 @@ const SpotShow = () => {
       </div>
     </div>
     <hr></hr>
-    <div id='review-section'>
-    </div>
-  </div>
+    <section id='review-section'>
+      {reviews.map((review) => {
+        return (
+          <ReviewItem review={review}/>
+        );
+      })}
+    </section>
+  </main>
  );
 }
 
