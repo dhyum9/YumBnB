@@ -6,6 +6,8 @@ import { fetchSpotDetails } from "../../store/spot";
 import { fetchSpotReviews } from "../../store/review";
 import './SpotShow.css'
 import SpotReviewItem from "../SpotReviewItem";
+import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
+import PostReviewModal from "../PostReviewModal";
 
 const SpotShow = () => {
   const dispatch = useDispatch();
@@ -13,6 +15,12 @@ const SpotShow = () => {
   const spot = useSelector(state => state.spots.singleSpot);
   const reviewsObj = useSelector(state => state.reviews.spot);
   const reviews = Object.values(reviewsObj);
+
+  const currentUserId = useSelector(state => {
+    if (state.session.user){
+      return state.session.user.id
+    }
+  });
 
   useEffect(() => {
     dispatch(fetchSpotDetails(spotId));
@@ -26,6 +34,14 @@ const SpotShow = () => {
   const onClick = () => {
     alert("Feature Coming Soon...");
   };
+
+  //Checks if we need a Post-Your-Review button
+  let postReviewSwitch = true;
+
+  reviews.forEach((review) => {
+    if (review.User.id === currentUserId) postReviewSwitch = false;
+  })
+  if(spot.Owner.id === currentUserId) postReviewSwitch = false;
 
  return (
   <main id='spot-details-container'>
@@ -73,6 +89,16 @@ const SpotShow = () => {
         <span>&#183;</span>
         <div style={{textAlign: "center", marginLeft:'12px'}}>{spot.numReviews} reviews</div>
       </div>
+      { postReviewSwitch && (
+        <div id='post-your-review-button'>
+          <div id='post-your-review-button-text'>
+            <OpenModalMenuItem
+                itemText="Post Your Review"
+                modalComponent={<PostReviewModal spotId={spot.id}/>}
+            />
+          </div>
+        </div>
+      )}
         {reviews.map((review) => {
           return (
             <SpotReviewItem review={review}/>

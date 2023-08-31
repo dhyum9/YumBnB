@@ -12,7 +12,7 @@ const SpotIndexItem = ({ spot, type }) => {
         <div>
           <img src={spot.previewImage} alt='Preview SpotImage goes here'></img>
           <div className='second-row'>
-            <div style={{overflow: "hidden"}}>
+            <div style={{overflow: "hidden", textOverflow: "ellipsis"}}>
               {spot.city}, {spot.state}
             </div>
             <div>

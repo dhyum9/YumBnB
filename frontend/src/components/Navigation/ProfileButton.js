@@ -76,7 +76,7 @@ function ProfileButton({ user }) {
           </>
         ) : (
           <>
-            <div className='login-signup-dropdown-buttons'>
+            <div id='login-signup-text' className='login-signup-dropdown-buttons'>
               <OpenModalMenuItem
                 itemText="Log In"
                 onItemClick={closeMenu}
@@ -84,7 +84,7 @@ function ProfileButton({ user }) {
               />
             </div>
             <hr></hr>
-            <div className='login-signup-dropdown-buttons'>
+            <div id='login-signup-text' className='login-signup-dropdown-buttons'>
               <OpenModalMenuItem
                 itemText="Sign Up"
                 onItemClick={closeMenu}

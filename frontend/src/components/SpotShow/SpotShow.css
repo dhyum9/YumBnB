@@ -78,3 +78,20 @@
   align-items: center;
   font-size: 30px;
 }
+
+#post-your-review-button{
+  background-color: #9a8c98;
+  color: white;
+  border: 2px solid #22223b;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+#post-your-review-button:hover{
+  box-shadow: 0px 0px 10px #22223b;
+}
