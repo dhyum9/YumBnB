@@ -23,10 +23,6 @@ const SpotShow = () => {
     return null;
   }
 
-  if(Object.keys(reviews).length === 0) {
-    return null;
-  }
-
   const onClick = () => {
     alert("Feature Coming Soon...");
   };
@@ -67,21 +63,23 @@ const SpotShow = () => {
       </div>
     </div>
     <hr></hr>
-    <section id='review-section'>
-    <div id='review-section-header'>
-      <div style={{display:'flex', alignItems:'center', marginRight:'12px'}}>
-        <i class="fa-solid fa-star"></i>
-        <div>{spot.avgStarRating}</div>
+    {reviews && (
+      <section id='review-section'>
+      <div id='review-section-header'>
+        <div style={{display:'flex', alignItems:'center', marginRight:'12px'}}>
+          <i class="fa-solid fa-star"></i>
+          <div>{spot.avgStarRating}</div>
+        </div>
+        <span>&#183;</span>
+        <div style={{textAlign: "center", marginLeft:'12px'}}>{spot.numReviews} reviews</div>
       </div>
-      <span>&#183;</span>
-      <div style={{textAlign: "center", marginLeft:'12px'}}>{spot.numReviews} reviews</div>
-    </div>
-      {reviews.map((review) => {
-        return (
-          <ReviewItem review={review}/>
-        );
-      })}
-    </section>
+        {reviews.map((review) => {
+          return (
+            <ReviewItem review={review}/>
+          );
+        })}
+      </section>
+    )}
   </main>
  );
 }
