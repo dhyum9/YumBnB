@@ -7,6 +7,7 @@ import SpotIndex from "./components/SpotIndex";
 import SpotShow from "./components/SpotShow";
 import UpdateSpotForm from "./components/UpdateSpotForm";
 import CreateSpotForm from "./components/CreateSpotForm";
+import ReviewIndex from "./components/ReviewIndex";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route exact path='/spots/current'>
             <SpotIndex type={"usersOnly"}/>
+          </Route>
+          <Route exact path='/reviews/current'>
+            <ReviewIndex />
           </Route>
           <Route path='/spots/:spotId/edit'>
             <UpdateSpotForm />

@@ -38,6 +38,10 @@ function ProfileButton({ user }) {
     closeMenu();
   };
 
+  const onClickClose = () => {
+    closeMenu();
+  }
+
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
   return (
@@ -51,9 +55,15 @@ function ProfileButton({ user }) {
             <li>Hello, {user.firstName}.</li>
             <li>{user.email}</li>
             <hr></hr>
-            <NavLink activeStyle={{textDecoration:'none'}} exact={true} to='/spots/current'>
-              <div id='manage-spots-link'>
+            <NavLink exact={true} to='/spots/current'>
+              <div onClick={onClickClose} id='manage-links'>
                 Manage Spots
+              </div>
+            </NavLink>
+            <hr></hr>
+            <NavLink exact={true} to='/reviews/current'>
+              <div onClick={onClickClose} id='manage-links'>
+                Manage Reviews
               </div>
             </NavLink>
             <hr></hr>

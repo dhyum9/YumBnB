@@ -111,7 +111,7 @@
   margin: 5px 0;
 }
 
-#manage-spots-link{
+#manage-links{
   color: #22223b;
   font-family: 'Manrope', sans-serif;
   font-size: 16px;
@@ -119,11 +119,11 @@
   background-color: white;
   border-radius: 40px;
   padding: 5px 8px;
-  width: 115px;
+  width: 130px;
   margin: 2px auto;
 }
 
-#manage-spots-link:hover{
+#manage-links:hover{
   box-shadow: 0px 0px 10px #22223b;
 }
 

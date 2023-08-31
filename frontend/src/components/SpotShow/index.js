@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { fetchSpotDetails } from "../../store/spot";
 import { fetchSpotReviews } from "../../store/review";
 import './SpotShow.css'
-import ReviewItem from "../ReviewItem";
+import SpotReviewItem from "../SpotReviewItem";
 
 const SpotShow = () => {
   const dispatch = useDispatch();
@@ -75,7 +75,7 @@ const SpotShow = () => {
       </div>
         {reviews.map((review) => {
           return (
-            <ReviewItem review={review}/>
+            <SpotReviewItem review={review}/>
           );
         })}
       </section>
