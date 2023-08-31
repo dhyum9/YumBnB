@@ -68,6 +68,14 @@ const SpotShow = () => {
     </div>
     <hr></hr>
     <section id='review-section'>
+    <div id='review-section-header'>
+      <div style={{display:'flex', alignItems:'center', marginRight:'12px'}}>
+        <i class="fa-solid fa-star"></i>
+        <div>{spot.avgStarRating}</div>
+      </div>
+      <span>&#183;</span>
+      <div style={{textAlign: "center", marginLeft:'12px'}}>{spot.numReviews} reviews</div>
+    </div>
       {reviews.map((review) => {
         return (
           <ReviewItem review={review}/>
