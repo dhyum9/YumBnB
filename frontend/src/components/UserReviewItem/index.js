@@ -8,17 +8,19 @@ const UserReviewItem = ({review}) => {
   let reviewMonth = months[reviewDateParts[1]];
   let reviewYear = reviewDateParts[0];
 
+  const onClick = () => {
+    alert("Feature Coming Soon...");
+  };
+
   return (
     <div id='review-item' style={{margin:"20px 0"}}>
       <div>{review.Spot.name}</div>
       <div style={{color:'grey'}}>{reviewMonth} {reviewYear}</div>
       <div style={{fontSize:"14px"}}>{review.review}</div>
-      <div className='fourth-row'>
-          {/* <NavLink>
-            <button id='update-button'>
-              Update
-            </button>
-          </NavLink> */}
+      <div className='fourth-row' style={{display:'flex', justifyContent:'start', margin: '10px -5px'}}>
+          <button onClick={onClick} id='update-button'>
+            Update
+          </button>
           <div id='delete-button'>
             <div id='delete-button-text'>
               <OpenModalMenuItem
