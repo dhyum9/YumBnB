@@ -1,6 +1,5 @@
 #spots-grid{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   row-gap: 10px;
   column-gap: 20px;
   margin: 15px;
@@ -8,13 +7,25 @@
   justify-items: center;
 }
 
-@media (max-width: 1250px) {
+@media screen and (max-width: 875px) {
+  #spots-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (min-width: 876px) and (max-width: 1275px) {
   #spots-grid{
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (min-width: 1650px) {
+@media screen and (min-width: 1276px) and (max-width: 1675px) {
+  #spots-grid{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1676px) {
   #spots-grid{
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
