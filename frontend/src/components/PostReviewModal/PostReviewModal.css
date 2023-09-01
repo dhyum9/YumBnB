@@ -14,7 +14,7 @@
 }
 
 #post-review-modal > h2 {
-  margin: 0 0 20px 0;
+  margin: 0
 }
 
 #post-review-modal > textarea {
@@ -39,4 +39,10 @@
 
 #post-review-modal > button:hover{
   box-shadow: 0 0 10px grey;
+}
+
+.create-review-errors{
+  color: red;
+  font-weight: 500;
+  font-size: 13px;
 }

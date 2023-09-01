@@ -4,14 +4,14 @@ import { useModal } from "../../context/Modal";
 import { deleteReview } from "../../store/review";
 import './DeleteReview.css'
 
-function DeleteReviewModal({reviewId}) {
+function DeleteReviewModal({reviewId, spotId}) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
 
 
   const onClickDelete = (e) => {
     e.preventDefault();
-    dispatch(deleteReview(reviewId)).then(closeModal);
+    dispatch(deleteReview(reviewId, spotId)).then(closeModal);
   }
 
   const onClickCancel = (e) => {

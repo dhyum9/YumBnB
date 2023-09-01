@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import './PostReviewModal.css';
 import { useModal } from "../../context/Modal";
 import StarsRatingInput from '../StarsRatingInput';
+import { createReview } from "../../store/review";
+import { fetchSpotDetails } from "../../store/spot";
+import './PostReviewModal.css';
 
-function PostReviewModal() {
+function PostReviewModal({spotId}) {
   const [reviewText, setReviewText] = useState("");
   const [stars, setStars] = useState(0);
   const [errors, setErrors] = useState({});
@@ -21,21 +23,19 @@ function PostReviewModal() {
       stars
     }
 
-    // const createdSpot = await dispatch(createSpot(payload))
-    // .catch(async(res) => {
-    //   const data = await res.json();
-    //   if (data && data.errors) {
-    //     setErrors(data.errors);
-    //   }
-    // });
+    const createdReview = await dispatch(createReview(payload, spotId))
+    .catch(async(res) => {
+      console.log("res:", res);
+      const data = await res.json();
+      if (data && data.errors) {
+        setErrors(data.errors);
+      }
+    });
 
-    // if (createdSpot) {
-    //   for (let spotImage of spotImagePayload){
-    //     await dispatch(createSpotImage(spotImage, createdSpot.id))
-    //   }
-    //   await dispatch(fetchSpotDetails(createdSpot.id));
-    //   history.push(`/spots/${createdSpot.id}`);
-    closeModal();
+    if (createdReview) {
+      dispatch(fetchSpotDetails(spotId));
+      closeModal();
+    }
   }
 
   const onChange = (number) => {
@@ -43,15 +43,19 @@ function PostReviewModal() {
   };
 
   return (
-    <form id='post-review-modal'>
+    <form onSubmit={handleSubmit} id='post-review-modal'>
       <h2>How was your stay?</h2>
+      <div className='create-review-errors'>
+        {errors.review && (<p>{errors.review}</p>)}
+        {errors.stars && (<p>{errors.stars}</p>)}
+      </div>
       <textarea
         placeholder="Write your review here."
         value={reviewText}
         onChange={e => setReviewText(e.target.value)}
       />
       <StarsRatingInput stars={stars} onChange={onChange}/>
-      <button>Submit Your Review</button>
+      <button type='submit'>Submit Your Review</button>
     </form>
   );
 }

@@ -7,8 +7,6 @@ const StarsRatingInput = ({ stars, onChange }) => {
     setActiveRating(stars)
   }, [stars])
 
-  console.log(stars);
-
   return (
     <>
       <div className="stars-rating-input" style={{ display:'flex', width: "30%", alignItems:'center', justifyContent:"space-between", margin:"10px" }}>

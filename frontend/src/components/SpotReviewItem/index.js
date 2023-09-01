@@ -1,13 +1,11 @@
-import { useSelector } from "react-redux";
 import DeleteReviewModal from "../DeleteReviewModal";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 
-const SpotReviewItem = ({review, currentUserId}) => {
+const SpotReviewItem = ({review, currentUserId, spotId}) => {
   const months = {'01': "January", '02': "February", '03': "March", '04': "April", '05': "May", '06': "June", '07': "July", '08': "August", '09': "September", '10': "October", '11': "November", '12': "December"};
   let reviewDateParts = review.createdAt.split('-');
   let reviewMonth = months[reviewDateParts[1]];
   let reviewYear = reviewDateParts[0];
-  console.log(currentUserId);
 
   return (
     <div id='review-item' style={{margin:"20px 0"}}>
@@ -19,7 +17,7 @@ const SpotReviewItem = ({review, currentUserId}) => {
           <div id='delete-button-text'>
             <OpenModalMenuItem
                 itemText="Delete"
-                modalComponent={<DeleteReviewModal reviewId={review.id}/>}
+                modalComponent={<DeleteReviewModal spotId={spotId} reviewId={review.id}/>}
             />
           </div>
         </div>

@@ -43,8 +43,6 @@ const SpotShow = () => {
     postReviewSwitch = false;
   }
 
-  console.log(currentUserId);
-
  return (
   <main id='spot-details-container'>
     <h1>{spot.name}</h1>
@@ -103,7 +101,7 @@ const SpotShow = () => {
       )}
         {reviews.map((review) => {
           return (
-            <SpotReviewItem currentUserId={currentUserId} review={review}/>
+            <SpotReviewItem currentUserId={currentUserId} review={review} spotId={spot.id}/>
           );
         })}
       </section>

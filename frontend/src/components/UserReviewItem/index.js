@@ -1,5 +1,4 @@
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
-import { NavLink } from "react-router-dom";
 import DeleteReviewModal from "../DeleteReviewModal";
 
 const UserReviewItem = ({review}) => {
