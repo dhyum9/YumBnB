@@ -8,6 +8,7 @@ const SpotIndexItem = ({ spot, type }) => {
 
   return (
     <div id='spot-card'>
+      <span className='tooltip-text'>{spot.name}</span>
       <NavLink to={`/spots/${spot.id}`} exact={true}>
         <div id='spot-card-inside' style={{color:"#013328"}}>
           <img src={spot.previewImage} alt='Preview SpotImage goes here'></img>

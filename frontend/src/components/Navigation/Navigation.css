@@ -92,6 +92,7 @@
   background-color: #e3dcd2;
   color: #013328;
   text-align: center;
+  z-index: 100;
 }
 
 #login-signup-text{
@@ -141,6 +142,7 @@
   border-radius: 40px;
   padding: 5px 8px;
   margin: 5px 5px;
+  cursor: pointer;
 }
 
 .login-signup-dropdown-buttons:hover{

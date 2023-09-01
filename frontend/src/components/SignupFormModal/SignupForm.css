@@ -48,6 +48,7 @@
   margin: 10px 0;
   font-family: 'Manrope', sans-serif;
   font-weight: 500;
+  cursor: pointer;
 }
 
 #signup-button:hover {
@@ -62,6 +63,8 @@
   padding: 8px;
   margin: 10px 0;
   font-family: 'Manrope', sans-serif;
+  box-shadow: none;
+  cursor: default;
 }
 
 .signup-errors{
