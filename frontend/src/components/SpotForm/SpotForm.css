@@ -5,17 +5,17 @@
   margin: auto;
   font-family: 'Manrope', sans-serif;
   font-size: 13px;
+  color: #013328;
 }
 
 .create-spot-section-text h4{
-  color: #22223b;
   margin: 0;
 }
 
 .create-spot-input{
   font-size: 12px;
   padding: 2px;
-  border: 1px solid #22223b;
+  border: 1px solid #013328;
   margin: 4px 0;
 }
 
@@ -74,11 +74,14 @@
   width: 95px;
   font-family: 'Manrope', sans-serif;
   font-size: 13px;
-  color: #22223b;
-  background-color: #c9ada7;
-  border: 2px solid #22223b;
-  box-shadow: 2px 2px 0 #22223b;
+  color: #e3dcd2;
+  background-color: #013328;
+  border: 2px solid #013328;
   margin: 10px auto 20px;
+}
+
+#create-spot-button:hover{
+  box-shadow: 0 0 10px grey;
 }
 
 .create-form-errors{

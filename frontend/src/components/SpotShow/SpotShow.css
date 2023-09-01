@@ -3,6 +3,8 @@
   max-width: 1000px;
   margin: auto;
   font-family: 'Manrope', sans-serif;
+  color: #013328;
+  font-weight: 500;
 }
 
 #spot-details-container > h1{
@@ -39,8 +41,8 @@
 }
 
 #square-reserve-container{
-  border: 2px solid #22223b;
-  background-color: white;
+  border: 2px solid #013328;
+  background-color: #e3dcd2;
   border-radius: 12px;
   padding: 20px;
   font-size: 22px;
@@ -60,17 +62,18 @@
 }
 
 #fourth-right-second > button{
-  background-color: #9a8c98;
-  color: white;
+  background-color: #cc8b65;
+  color: #013328;
   font-family: 'Manrope', sans-serif;
+  font-weight: 500;
   padding: 10px;
   width: 100%;
-  border: 2px solid #22223b;
+  border: 2px solid #013328;
   margin-top: 10px;
 }
 
 #fourth-right-second > button:hover{
-  box-shadow: 0px 0px 10px #22223b;
+  box-shadow: 0px 0px 10px grey;
 }
 
 #review-section-header{
@@ -80,9 +83,9 @@
 }
 
 #post-your-review-button{
-  background-color: #9a8c98;
-  color: white;
-  border: 2px solid #22223b;
+  background-color: #013328;
+  color: #e3dcd2;
+  border: 2px solid #013328;
   list-style-type: none;
   display: flex;
   align-items: center;
@@ -93,5 +96,5 @@
 }
 
 #post-your-review-button:hover{
-  box-shadow: 0px 0px 10px #22223b;
+  box-shadow: 0px 0px 10px grey;
 }

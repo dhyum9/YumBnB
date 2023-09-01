@@ -1,6 +1,8 @@
 #manage-reviews-container{
   padding: 20px 60px;
   font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  color: #013328;
 }
 
 #manage-reviews-container > h1{
