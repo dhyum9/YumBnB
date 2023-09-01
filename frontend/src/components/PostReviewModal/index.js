@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import './PostReviewModal.css';
+import { useModal } from "../../context/Modal";
+import StarsRatingInput from '../StarsRatingInput';
 
 function PostReviewModal() {
   const [reviewText, setReviewText] = useState("");
@@ -7,6 +10,7 @@ function PostReviewModal() {
   const [errors, setErrors] = useState({});
 
   const dispatch = useDispatch();
+  const { closeModal } = useModal();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,57 +35,22 @@ function PostReviewModal() {
     //   }
     //   await dispatch(fetchSpotDetails(createdSpot.id));
     //   history.push(`/spots/${createdSpot.id}`);
+    closeModal();
   }
+
+  const onChange = (number) => {
+    setStars(number);
+  };
+
   return (
-    <form>
+    <form id='post-review-modal'>
       <h2>How was your stay?</h2>
       <textarea
         placeholder="Write your review here."
         value={reviewText}
         onChange={e => setReviewText(e.target.value)}
       />
-      <div className="stars-input">
-        <div
-          // className={stars >= 1 ? "filled" : "empty"}
-          // onMouseEnter={() => { if (!disabled) setStars(1) }}
-          // onMouseLeave={() => { if (!disabled) setStars(stars) }}
-          // onClick={() => onChange(1)}
-        >
-          <i class="fa-regular fa-star"></i>
-        </div>
-        <div
-          // className={activeRating >= 2 ? "filled" : "empty"}
-          // onMouseEnter={() => { if (!disabled) setActiveRating(2) }}
-          // onMouseLeave={() => { if (!disabled) setActiveRating(rating) }}
-          // onClick={() => onChange(2)}
-        >
-          <i class="fa-regular fa-star"></i>
-        </div>
-        <div
-          // className={activeRating >= 3 ? "filled" : "empty"}
-          // onMouseEnter={() => { if (!disabled) setActiveRating(3) }}
-          // onMouseLeave={() => { if (!disabled) setActiveRating(rating) }}
-          // onClick={() => onChange(3)}
-        >
-          <i class="fa-regular fa-star"></i>
-        </div>
-        <div
-          // className={activeRating >= 4 ? "filled" : "empty"}
-          // onMouseEnter={() => { if (!disabled) setActiveRating(4) }}
-          // onMouseLeave={() => { if (!disabled) setActiveRating(rating) }}
-          // onClick={() => onChange(4)}
-        >
-          <i class="fa-regular fa-star"></i>
-        </div>
-        <div
-          // className={activeRating >= 5 ? "filled" : "empty"}
-          // onMouseEnter={() => { if (!disabled) setActiveRating(5) }}
-          // onMouseLeave={() => { if (!disabled) setActiveRating(rating) }}
-          // onClick={() => onChange(5)}
-        >
-          <i class="fa-regular fa-star"></i>
-        </div>
-      </div>
+      <StarsRatingInput stars={stars} onChange={onChange}/>
       <button>Submit Your Review</button>
     </form>
   );
