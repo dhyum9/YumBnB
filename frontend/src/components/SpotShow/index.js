@@ -15,12 +15,7 @@ const SpotShow = () => {
   const spot = useSelector(state => state.spots.singleSpot);
   const reviewsObj = useSelector(state => state.reviews.spot);
   const reviews = Object.values(reviewsObj);
-
-  const currentUserId = useSelector(state => {
-    if (state.session.user){
-      return state.session.user.id
-    }
-  });
+  const currentUser = useSelector(state => state.session.user);
 
   useEffect(() => {
     dispatch(fetchSpotDetails(spotId));
@@ -36,12 +31,19 @@ const SpotShow = () => {
   };
 
   //Checks if we need a Post-Your-Review button
+  let currentUserId;
   let postReviewSwitch = true;
+  if(currentUser) {
+    currentUserId = currentUser.id;
+    reviews.forEach((review) => {
+      if (review.User.id === currentUserId) postReviewSwitch = false;
+    })
+    if(spot.Owner.id === currentUserId) postReviewSwitch = false;
+  } else {
+    postReviewSwitch = false;
+  }
 
-  reviews.forEach((review) => {
-    if (review.User.id === currentUserId) postReviewSwitch = false;
-  })
-  if(spot.Owner.id === currentUserId) postReviewSwitch = false;
+  console.log(currentUserId);
 
  return (
   <main id='spot-details-container'>
@@ -101,7 +103,7 @@ const SpotShow = () => {
       )}
         {reviews.map((review) => {
           return (
-            <SpotReviewItem review={review}/>
+            <SpotReviewItem currentUserId={currentUserId} review={review}/>
           );
         })}
       </section>
