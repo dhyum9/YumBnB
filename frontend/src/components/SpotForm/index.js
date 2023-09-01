@@ -14,11 +14,11 @@ const SpotForm = ({spot, formType}) => {
   const [description, setDescription] = useState(spot.description);
   const [name, setName] = useState(spot.name);
   const [price, setPrice] = useState(spot.price);
-  const [previewImageUrl, setPreviewImageUrl] = useState('');
-  const [imageUrl2, setImageUrl2] = useState('');
-  const [imageUrl3, setImageUrl3] = useState(spot.imageUrl3);
-  const [imageUrl4, setImageUrl4] = useState(spot.imageUrl4);
-  const [imageUrl5, setImageUrl5] = useState(spot.imageUrl5);
+  const [previewImageUrl, setPreviewImageUrl] = useState(spot.SpotImages[0] ? spot.SpotImages[0].url : '');
+  const [imageUrl2, setImageUrl2] = useState(spot.SpotImages[1] ? spot.SpotImages[1].url : '');
+  const [imageUrl3, setImageUrl3] = useState(spot.SpotImages[2] ? spot.SpotImages[2].url : '');
+  const [imageUrl4, setImageUrl4] = useState(spot.SpotImages[3] ? spot.SpotImages[3].url : '');
+  const [imageUrl5, setImageUrl5] = useState(spot.SpotImages[4] ? spot.SpotImages[4].url : '');
   const [errors, setErrors] = useState({});
 
   const dispatch = useDispatch();
@@ -34,6 +34,11 @@ const SpotForm = ({spot, formType}) => {
     setDescription(spot.description);
     setName(spot.name);
     setPrice(spot.price);
+    setPreviewImageUrl(spot.SpotImages[0] ? spot.SpotImages[0].url : '');
+    setImageUrl2(spot.SpotImages[1] ? spot.SpotImages[1].url : '');
+    setImageUrl3(spot.SpotImages[2] ? spot.SpotImages[2].url : '');
+    setImageUrl4(spot.SpotImages[3] ? spot.SpotImages[3].url : '');
+    setImageUrl5(spot.SpotImages[4] ? spot.SpotImages[4].url : '');
   }, [dispatch, spot]);
 
   const handleSubmit = async (e) => {
@@ -46,8 +51,8 @@ const SpotForm = ({spot, formType}) => {
       city,
       state,
       country,
-      lat: latitude,
-      lng: longitude,
+      lat: latitude && latitude.toString(),
+      lng: longitude && longitude.toString(),
       name,
       description,
       price,
@@ -170,6 +175,7 @@ const SpotForm = ({spot, formType}) => {
               </div>
               <input
                 type="number"
+                step="0.0000001"
                 placeholder="Latitude"
                 value={latitude}
                 onChange={e => setLatitude(e.target.value)}
@@ -184,6 +190,7 @@ const SpotForm = ({spot, formType}) => {
               </div>
               <input
                 type="number"
+                step="0.0000001"
                 placeholder="Longitude"
                 value={longitude}
                 onChange={e => setLongitude(e.target.value)}
@@ -238,6 +245,7 @@ const SpotForm = ({spot, formType}) => {
           <label id='price'>
             <input
               type="number"
+              step=".01"
               min="0"
               placeholder="Price per night (USD)"
               value={price}
@@ -258,53 +266,53 @@ const SpotForm = ({spot, formType}) => {
             </div>
             <label id='photos'>
               <input
-                type="text"
+                type="url"
                 placeholder="Preview Image Url"
                 value={previewImageUrl}
                 onChange={e => setPreviewImageUrl(e.target.value)}
                 className='create-spot-input create-spot-block-input'
               />
-              <div className='create-form-errors'>
+              <div className='inline-create-form-errors'>
                 {errors.previewImageUrl && (<p>{errors.previewImageUrl}</p>)}
               </div>
               <input
-                type="text"
+                type="url"
                 placeholder="Image Url"
                 value={imageUrl2}
                 onChange={e => setImageUrl2(e.target.value)}
                 className='create-spot-input create-spot-block-input'
               />
-              <div className='create-form-errors'>
+              <div className='inline-create-form-errors'>
                 {errors.imageUrl2 && (<p>{errors.imageUrl2}</p>)}
               </div>
               <input
-                type="text"
+                type="url"
                 placeholder="Image Url"
                 value={imageUrl3}
                 onChange={e => setImageUrl3(e.target.value)}
                 className='create-spot-input create-spot-block-input'
               />
-              <div className='create-form-errors'>
+              <div className='inline-create-form-errors'>
                 {errors.imageUrl3 && (<p>{errors.imageUrl3}</p>)}
               </div>
               <input
-                type="text"
+                type="url"
                 placeholder="Image Url"
                 value={imageUrl4}
                 onChange={e => setImageUrl4(e.target.value)}
                 className='create-spot-input create-spot-block-input'
               />
-              <div className='create-form-errors'>
+              <div className='inline-create-form-errors'>
                 {errors.imageUrl4 && (<p>{errors.imageUrl4}</p>)}
               </div>
               <input
-                type="text"
+                type="url"
                 placeholder="Image Url"
                 value={imageUrl5}
                 onChange={e => setImageUrl5(e.target.value)}
                 className='create-spot-input create-spot-block-input'
               />
-              <div className='create-form-errors'>
+              <div className='inline-create-form-errors'>
                 {errors.imageUrl5 && (<p>{errors.imageUrl5}</p>)}
               </div>
             </label>
@@ -318,16 +326,3 @@ const SpotForm = ({spot, formType}) => {
 }
 
 export default SpotForm;
-
-
-  // const pokeTypes = useSelector(state => state.pokemon.types);
-
-  // useEffect(() => {
-  //   dispatch(getPokemonTypes());
-  // }, [dispatch]);
-
-  // useEffect(() => {
-  //   if (pokeTypes.length && !type) {
-  //     setType(pokeTypes[0]);
-  //   }
-  // }, [pokeTypes, type]);

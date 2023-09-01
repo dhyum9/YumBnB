@@ -9,11 +9,13 @@ const SpotIndexItem = ({ spot, type }) => {
   return (
     <div id='spot-card'>
       <NavLink to={`/spots/${spot.id}`} exact={true}>
-        <div>
+        <div id='spot-card-inside' style={{color:"#013328"}}>
           <img src={spot.previewImage} alt='Preview SpotImage goes here'></img>
           <div className='second-row'>
-            <div>{spot.city}, {spot.state}</div>
-            <div>
+            <div style={{overflow: "hidden", textOverflow: "ellipsis"}}>
+              {spot.city}, {spot.state}
+            </div>
+            <div style={{marginRight:"7px"}}>
               <i className="fa-solid fa-star"></i>
               {spot.avgRating}
             </div>

@@ -4,10 +4,12 @@ import * as sessionActions from '../../store/session';
 import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
@@ -36,7 +38,12 @@ function ProfileButton({ user }) {
     e.preventDefault();
     dispatch(sessionActions.logout());
     closeMenu();
+    history.replace("/");
   };
+
+  const onClickClose = () => {
+    closeMenu();
+  }
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
@@ -51,9 +58,15 @@ function ProfileButton({ user }) {
             <li>Hello, {user.firstName}.</li>
             <li>{user.email}</li>
             <hr></hr>
-            <NavLink activeStyle={{textDecoration:'none'}} exact={true} to='/spots/current'>
-              <div id='manage-spots-link'>
+            <NavLink exact={true} to='/spots/current'>
+              <div onClick={onClickClose} id='manage-links'>
                 Manage Spots
+              </div>
+            </NavLink>
+            <hr></hr>
+            <NavLink exact={true} to='/reviews/current'>
+              <div onClick={onClickClose} id='manage-links'>
+                Manage Reviews
               </div>
             </NavLink>
             <hr></hr>
@@ -63,7 +76,7 @@ function ProfileButton({ user }) {
           </>
         ) : (
           <>
-            <div className='login-signup-dropdown-buttons'>
+            <div id='login-signup-text' className='login-signup-dropdown-buttons'>
               <OpenModalMenuItem
                 itemText="Log In"
                 onItemClick={closeMenu}
@@ -71,7 +84,7 @@ function ProfileButton({ user }) {
               />
             </div>
             <hr></hr>
-            <div className='login-signup-dropdown-buttons'>
+            <div id='login-signup-text' className='login-signup-dropdown-buttons'>
               <OpenModalMenuItem
                 itemText="Sign Up"
                 onItemClick={closeMenu}

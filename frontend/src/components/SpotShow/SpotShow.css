@@ -1,0 +1,100 @@
+#spot-details-container{
+  padding: 20px 60px;
+  max-width: 1000px;
+  margin: auto;
+  font-family: 'Manrope', sans-serif;
+  color: #013328;
+  font-weight: 500;
+}
+
+#spot-details-container > h1{
+  margin: 0;
+}
+
+#spot-details-second-row{
+  margin: 10px 0 20px;
+}
+
+#spot-details-fourth-row{
+  margin: 20px 0;
+  display: flex;
+}
+
+#fourth-row-left-col{
+  width: 65%;
+  margin-right: 20px;
+}
+
+#host-information{
+  font-size: 25px;
+}
+
+#spot-information{
+  font-size: 16px;
+  margin: 10px 0;
+  word-wrap: break-word;
+}
+
+#fourth-row-right-col{
+  width: 315px;
+  border-radius: 12px;
+}
+
+#square-reserve-container{
+  border: 2px solid #013328;
+  background-color: #e3dcd2;
+  border-radius: 12px;
+  padding: 20px;
+  font-size: 22px;
+}
+
+#fourth-right-first{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#review-info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+#fourth-right-second > button{
+  background-color: #cc8b65;
+  color: #013328;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  padding: 10px;
+  width: 100%;
+  border: 2px solid #013328;
+  margin-top: 10px;
+}
+
+#fourth-right-second > button:hover{
+  box-shadow: 0px 0px 10px grey;
+}
+
+#review-section-header{
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+}
+
+#post-your-review-button{
+  background-color: #013328;
+  color: #e3dcd2;
+  border: 2px solid #013328;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+#post-your-review-button:hover{
+  box-shadow: 0px 0px 10px grey;
+}

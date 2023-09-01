@@ -3,11 +3,13 @@
   flex-direction: column;
   width: 400px;
   font-family: 'Manrope', sans-serif;
-  color: #22223b;
+  font-weight: 500;
+  padding: 12px;
+  border-radius: 20px;
 }
 
 #spot-card:hover{
-  box-shadow: 0px 0px 10px #22223b;
+  box-shadow: 0px 0px 15px grey;
   border-radius: 20px;
 }
 
@@ -21,7 +23,9 @@
 .second-row{
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 5px;
+  width: 100%;
 }
 
 .third-row{
@@ -38,9 +42,9 @@
 
 #update-button{
   font-family: 'Manrope', sans-serif;
-  background-color: #9a8c98;
-  color: white;
-  border: 2px solid #22223b;
+  background-color: #013328;
+  color: #e3dcd2;
+  border: 2px solid #013328;
   padding: 4px;
   width: 60px;
   margin: 0 5px;
@@ -48,13 +52,12 @@
 }
 
 #update-button:hover{
-  box-shadow: 0px 0px 10px #22223b;
+  box-shadow: 0px 0px 10px grey;
 }
 
 #delete-button{
-  background-color: #9a8c98;
-  color: white;
-  border: 2px solid #22223b;
+  background-color: #cc8b65;
+  color: #013328;
   list-style-type: none;
   display: flex;
   width: 60px;
@@ -64,10 +67,9 @@
 }
 
 #delete-button:hover{
-  box-shadow: 0px 0px 10px #22223b;
+  box-shadow: 0px 0px 10px grey;
 }
 
 #delete-button-text{
-  margin-left: 28px;
   font-size: 14px;
 }

@@ -12,82 +12,152 @@ module.exports = {
     await SpotImage.bulkCreate([
       {
         spotId: 1,
-        url: "https://photos.zillowstatic.com/fp/017dbf7b708722b80bd6979136010c49-cc_ft_384.webp",
+        url: "https://a0.muscache.com/im/pictures/5ba5c350-2b81-423d-aeba-4bd705f71177.jpg",
         preview: true
       },
       {
         spotId: 1,
-        url: "https://photos.zillowstatic.com/fp/6a62fd0297bb76017f230b06ce128bc5-cc_ft_384.webp",
+        url: "https://a0.muscache.com/im/pictures/f2a9d6ad-41f5-465c-836e-0c567b949fdc.jpg",
         preview: false
       },
       {
         spotId: 1,
-        url: "https://photos.zillowstatic.com/fp/73b9e5c07b6d40067ccb7fe24b9af407-cc_ft_384.webp",
+        url: "https://a0.muscache.com/im/pictures/cf2978df-bf58-4d08-b6b3-aa60b369c127.jpg",
         preview: false
       },
       {
         spotId: 1,
-        url: "https://photos.zillowstatic.com/fp/523c0bbf23d03259303e908d10dd0208-cc_ft_384.webp",
+        url: "https://a0.muscache.com/im/pictures/8d115e3d-799a-4bdd-aad7-f0beafef2b1a.jpg",
+        preview: false
+      },
+      {
+        spotId: 1,
+        url: "https://a0.muscache.com/im/pictures/b478fd54-c617-4feb-a627-3b28f7fdab1a.jpg",
         preview: false
       },
       {
         spotId: 2,
-        url: "https://photos.zillowstatic.com/fp/e998d30a3f1e7c656c1ab9ba0e97cd79-cc_ft_1344.webp",
+        url: "https://a0.muscache.com/im/pictures/2bfa9fd4-08cc-4014-b7ec-898f80a24525.jpg",
         preview: true
       },
       {
         spotId: 2,
-        url: "https://photos.zillowstatic.com/fp/3ab730de13a9661638048ed81b058135-uncropped_scaled_within_1344_1008.webp",
+        url: "https://a0.muscache.com/im/pictures/2ba6b606-5455-4cb6-979b-bfe52f305fc9.jpg",
         preview: false
       },
       {
         spotId: 2,
-        url: "https://photos.zillowstatic.com/fp/bf87e753d0a9fb22f25220763d20e541-uncropped_scaled_within_1344_1008.webp",
+        url: "https://a0.muscache.com/im/pictures/fc13ece6-aa87-488e-9571-79f27d1c0095.jpg",
         preview: false
       },
       {
         spotId: 2,
-        url: "https://photos.zillowstatic.com/fp/673868320635c86968cbbb93500bd449-uncropped_scaled_within_1344_1008.webp",
+        url: "https://a0.muscache.com/im/pictures/a38377fd-b3f0-4142-8876-ed87b82b6732.jpg",
         preview: false
       },
       {
         spotId: 2,
-        url: "https://photos.zillowstatic.com/fp/532ceb7baffa59505feff0299e798034-uncropped_scaled_within_1344_1008.webp",
+        url: "https://a0.muscache.com/im/pictures/7b44dbb8-6300-411f-9865-787c7a5a3b6e.jpg",
         preview: false
       },
       {
         spotId: 3,
-        url: "https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,q_75,w_1200/v1/crm/albuquerque/Breaking-Bad-RV-Tours-21-cbb53c305056a36_cbb53d39-5056-a36a-0901a1132764be33.jpg",
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-686839643401226468/original/670c9db8-5967-4ff5-a2e2-aa9f1d2285b9.jpeg",
         preview: true
       },
       {
         spotId: 3,
-        url: "https://virtualbackgrounds.site/wp-content/uploads/2022/03/breaking-bad-rv-interior.jpg",
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-686839643401226468/original/9398684c-3ca0-4736-ad11-87e3f5a73fd4.jpeg",
         preview: false
       },
       {
         spotId: 3,
-        url: "https://cdnb.artstation.com/p/assets/images/images/045/954/561/large/daniel-wogan-breaking-bx-rv-scene-4-v1.jpg?1643928401",
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-686839643401226468/original/197df604-1f53-49c6-9a84-ddcf1f3417c3.jpeg",
+        preview: false
+      },
+      {
+        spotId: 3,
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-686839643401226468/original/ce61efaf-419b-4048-a2c0-e6e02ea479f4.jpeg",
+        preview: false
+      },
+      {
+        spotId: 3,
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-686839643401226468/original/e808cd72-73b5-49af-8a87-f97d57694c6a.jpeg",
         preview: false
       },
       {
         spotId: 4,
-        url: "https://photos.zillowstatic.com/fp/06cb219fa4c6d253a613c1d5aca365ca-uncropped_scaled_within_1344_1008.webp",
+        url: "https://a0.muscache.com/im/pictures/2fa21497-e636-47f7-9b07-b11b4360c224.jpg",
         preview: true
       },
       {
         spotId: 4,
-        url: "https://photos.zillowstatic.com/fp/854aa23d96828b7c896d71750536f2b6-cc_ft_384.webp",
+        url: "https://a0.muscache.com/im/pictures/4297aca2-c6f5-4149-a8ed-159c743e9813.jpg",
         preview: false
       },
       {
         spotId: 4,
-        url: "https://photos.zillowstatic.com/fp/3609a78e2f3de5a4cb83cd9c3f059d74-uncropped_scaled_within_1344_1008.webp",
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-12592591/original/464878c5-9bf9-498e-8f94-2a7395d2558e.jpeg",
         preview: false
       },
       {
         spotId: 4,
-        url: "https://photos.zillowstatic.com/fp/0f373439fd38f87ff8d00b69295c6bc4-uncropped_scaled_within_1344_1008.webp",
+        url: "https://a0.muscache.com/im/pictures/ea3e2e59-0f68-48a3-8b4c-e8ceba812ab4.jpg",
+        preview: false
+      },
+      {
+        spotId: 4,
+        url: "https://a0.muscache.com/im/pictures/bfeba333-1926-417d-bc81-f5837e808142.jpg",
+        preview: false
+      },
+      {
+        spotId: 5,
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-922706446618287469/original/9e379a83-64f6-4d6f-abad-c39570583ba7.jpeg",
+        preview: true
+      },
+      {
+        spotId: 5,
+        url: "https://a0.muscache.com/im/pictures/c1a75ad8-7376-4bb0-b853-28555eefd6d1.jpg",
+        preview: false
+      },
+      {
+        spotId: 5,
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-922706446618287469/original/da9f9d1f-cde5-4f5d-9b49-50923697f7d4.jpeg",
+        preview: false
+      },
+      {
+        spotId: 5,
+        url: "https://a0.muscache.com/im/pictures/cdd7ec27-6124-4049-9866-c58e5a3c31cd.jpg",
+        preview: false
+      },
+      {
+        spotId: 5,
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-922706446618287469/original/363ee678-12d5-44b1-99dc-c6f2d48e0fff.jpeg",
+        preview: false
+      },
+      {
+        spotId: 6,
+        url: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-45688889/original/9565b6db-6264-4633-a451-dbf6c81da20b.jpeg",
+        preview: true
+      },
+      {
+        spotId: 6,
+        url: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-45688889/original/7116eef5-f35f-4237-9f2a-6903e58b293c.jpeg",
+        preview: false
+      },
+      {
+        spotId: 6,
+        url: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-45688889/original/f9f0af2f-0e38-4e82-ae1d-3f0f013d68cb.jpeg",
+        preview: false
+      },
+      {
+        spotId: 6,
+        url: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-45688889/original/edcdcaf6-b807-4c24-831b-d63b1f7dc870.jpeg",
+        preview: false
+      },
+      {
+        spotId: 6,
+        url: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-45688889/original/9a5ca54c-58b3-4440-b3e9-30550b755317.jpeg",
         preview: false
       }
     ], { validate: true });
