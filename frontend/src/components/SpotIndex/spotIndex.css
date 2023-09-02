@@ -1,7 +1,7 @@
 #spots-grid{
   display: grid;
-  row-gap: 10px;
-  column-gap: 20px;
+  row-gap: 8px;
+  column-gap: 4px;
   margin: 15px;
   align-items: center;
   justify-items: center;
