@@ -65,11 +65,16 @@ const SpotShow = () => {
             <div>${spot.price} <span style={{fontSize:"16px", display:"inline-block"}}> night</span></div>
             <div id='review-info'>
               <div style={{display:'flex', alignItems:'center', marginRight:"5px"}}>
-                <i class="fa-solid fa-star"></i>
-                <div>{spot.avgStarRating}</div>
+                <i class="fa-solid fa-star" style={{marginRight:"3px"}}></i>
+                {spot.avgStarRating ? (<div>{spot.avgStarRating}</div>) : (<div>New</div>)}
+                {/* <div>{spot.avgStarRating}</div> */}
               </div>
-              <span>&#183;</span>
-              <div style={{textAlign: "center", marginLeft:"5px"}}>{spot.numReviews} reviews</div>
+              {spot.numReviews > 0 && (
+                <>
+                  <span>&#183;</span>
+                  <div style={{textAlign: "center", marginLeft:"5px"}}>{spot.numReviews} reviews</div>
+                </>
+              )}
             </div>
           </div>
           <div id='fourth-right-second'>
@@ -98,6 +103,9 @@ const SpotShow = () => {
             />
           </div>
         </div>
+      )}
+      {(postReviewSwitch && spot.numReviews === 0) && (
+        <div style={{marginTop:'15px'}}>Be the first to post a review!</div>
       )}
         {reviews.map((review) => {
           return (
