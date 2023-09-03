@@ -118,7 +118,7 @@ const SpotShow = () => {
       {(postReviewSwitch && spot.numReviews === 0) && (
         <div style={{marginTop:'15px'}}>Be the first to post a review!</div>
       )}
-        {reviews.map((review) => {
+        {reviews.reverse().map((review) => {
           return (
             <SpotReviewItem currentUserId={currentUserId} review={review} spotId={spot.id}/>
           );
