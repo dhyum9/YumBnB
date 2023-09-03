@@ -71,7 +71,11 @@ const SpotShow = () => {
               {spot.numReviews > 0 && (
                 <>
                   <span>&#183;</span>
-                  <div style={{textAlign: "center", marginLeft:"5px"}}>{spot.numReviews} reviews</div>
+                  {spot.numReviews === 1 ? (
+                    <div style={{textAlign: "center", marginLeft:"5px"}}>{spot.numReviews} review</div>
+                  ) : (
+                    <div style={{textAlign: "center", marginLeft:"5px"}}>{spot.numReviews} reviews</div>
+                  )}
                 </>
               )}
             </div>
@@ -93,7 +97,11 @@ const SpotShow = () => {
         {spot.numReviews > 0 && (
                 <>
                   <span>&#183;</span>
-                  <div style={{textAlign: "center", marginLeft:"12px"}}>{spot.numReviews} reviews</div>
+                  {spot.numReviews === 1 ? (
+                    <div style={{textAlign: "center", marginLeft:"12px"}}>{spot.numReviews} review</div>
+                  ) : (
+                    <div style={{textAlign: "center", marginLeft:"12px"}}>{spot.numReviews} reviews</div>
+                  )}
                 </>
               )}
       </div>
