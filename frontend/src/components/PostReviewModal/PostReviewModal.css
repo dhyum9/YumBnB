@@ -14,7 +14,7 @@
 }
 
 #post-review-modal > h2 {
-  margin: 0 0 20px 0;
+  margin: 0 0 30px 0px;
 }
 
 #post-review-modal > textarea {
@@ -39,4 +39,20 @@
 
 #post-review-modal > button:hover{
   box-shadow: 0 0 10px grey;
+}
+
+#post-review-modal > button:disabled {
+  background-color: white;
+  color: grey;
+  border: 2px solid grey;
+  box-shadow: none;
+  cursor: default;
+}
+
+.create-review-errors{
+  color: red;
+  font-weight: 500;
+  font-size: 13px;
+  margin-top: -20px;
+  margin-bottom: 5px;
 }

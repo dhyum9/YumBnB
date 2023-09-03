@@ -24,8 +24,7 @@ function Navigation({ isLoaded }){
             </NavLink>
           )}
           {isLoaded && (
-            <div id='nav-bar-top-right'>
-              <i className="fa-solid fa-bars"></i>
+            <div>
               <ProfileButton user={sessionUser} />
             </div>
           )}

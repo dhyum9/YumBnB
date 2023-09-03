@@ -20,7 +20,7 @@ const SpotIndex = ({type}) => {
   if (spots.length === 0 || !spots) return null;
   return (
     <main id='spots-grid'>
-      {spots.map((spot) => {
+      {spots.reverse().map((spot) => {
         return (
           <SpotIndexItem key={spot.id} spot={spot} type={type}/>
         );

@@ -1,5 +1,4 @@
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
-import { NavLink } from "react-router-dom";
 import DeleteReviewModal from "../DeleteReviewModal";
 
 const UserReviewItem = ({review}) => {
@@ -16,7 +15,7 @@ const UserReviewItem = ({review}) => {
     <div id='review-item' style={{margin:"20px 0"}}>
       <div>{review.Spot.name}</div>
       <div style={{color:'grey'}}>{reviewMonth} {reviewYear}</div>
-      <div style={{fontSize:"14px"}}>{review.review}</div>
+      <div style={{fontSize:"14px", overflowWrap:"break-word"}}>{review.review}</div>
       <div className='fourth-row' style={{display:'flex', justifyContent:'start', margin: '10px -5px'}}>
           <button onClick={onClick} id='update-button'>
             Update
@@ -25,7 +24,7 @@ const UserReviewItem = ({review}) => {
             <div id='delete-button-text'>
               <OpenModalMenuItem
                   itemText="Delete"
-                  modalComponent={<DeleteReviewModal reviewId={review.id}/>}
+                  modalComponent={<DeleteReviewModal reviewId={review.id} type={"User"}/>}
               />
             </div>
           </div>

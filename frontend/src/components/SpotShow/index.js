@@ -15,12 +15,7 @@ const SpotShow = () => {
   const spot = useSelector(state => state.spots.singleSpot);
   const reviewsObj = useSelector(state => state.reviews.spot);
   const reviews = Object.values(reviewsObj);
-
-  const currentUserId = useSelector(state => {
-    if (state.session.user){
-      return state.session.user.id
-    }
-  });
+  const currentUser = useSelector(state => state.session.user);
 
   useEffect(() => {
     dispatch(fetchSpotDetails(spotId));
@@ -36,12 +31,17 @@ const SpotShow = () => {
   };
 
   //Checks if we need a Post-Your-Review button
+  let currentUserId;
   let postReviewSwitch = true;
-
-  reviews.forEach((review) => {
-    if (review.User.id === currentUserId) postReviewSwitch = false;
-  })
-  if(spot.Owner.id === currentUserId) postReviewSwitch = false;
+  if(currentUser) {
+    currentUserId = currentUser.id;
+    reviews.forEach((review) => {
+      if (review.User.id === currentUserId) postReviewSwitch = false;
+    })
+    if(spot.Owner.id === currentUserId) postReviewSwitch = false;
+  } else {
+    postReviewSwitch = false;
+  }
 
  return (
   <main id='spot-details-container'>
@@ -65,11 +65,19 @@ const SpotShow = () => {
             <div>${spot.price} <span style={{fontSize:"16px", display:"inline-block"}}> night</span></div>
             <div id='review-info'>
               <div style={{display:'flex', alignItems:'center', marginRight:"5px"}}>
-                <i class="fa-solid fa-star"></i>
-                <div>{spot.avgStarRating}</div>
+                <i class="fa-solid fa-star" style={{marginRight:"3px"}}></i>
+                {spot.avgStarRating ? (<div>{spot.avgStarRating}</div>) : (<div>New</div>)}
               </div>
-              <span>&#183;</span>
-              <div style={{textAlign: "center", marginLeft:"5px"}}>{spot.numReviews} reviews</div>
+              {spot.numReviews > 0 && (
+                <>
+                  <span>&#183;</span>
+                  {spot.numReviews === 1 ? (
+                    <div style={{textAlign: "center", marginLeft:"5px"}}>{spot.numReviews} review</div>
+                  ) : (
+                    <div style={{textAlign: "center", marginLeft:"5px"}}>{spot.numReviews} reviews</div>
+                  )}
+                </>
+              )}
             </div>
           </div>
           <div id='fourth-right-second'>
@@ -83,11 +91,19 @@ const SpotShow = () => {
       <section id='review-section'>
       <div id='review-section-header'>
         <div style={{display:'flex', alignItems:'center', marginRight:'12px'}}>
-          <i class="fa-solid fa-star"></i>
-          <div>{spot.avgStarRating}</div>
+          <i class="fa-solid fa-star" style={{marginRight:"10px"}} ></i>
+          {spot.avgStarRating ? (<div>{spot.avgStarRating}</div>) : (<div>New</div>)}
         </div>
-        <span>&#183;</span>
-        <div style={{textAlign: "center", marginLeft:'12px'}}>{spot.numReviews} reviews</div>
+        {spot.numReviews > 0 && (
+                <>
+                  <span>&#183;</span>
+                  {spot.numReviews === 1 ? (
+                    <div style={{textAlign: "center", marginLeft:"12px"}}>{spot.numReviews} review</div>
+                  ) : (
+                    <div style={{textAlign: "center", marginLeft:"12px"}}>{spot.numReviews} reviews</div>
+                  )}
+                </>
+              )}
       </div>
       { postReviewSwitch && (
         <div id='post-your-review-button'>
@@ -99,9 +115,12 @@ const SpotShow = () => {
           </div>
         </div>
       )}
-        {reviews.map((review) => {
+      {(postReviewSwitch && spot.numReviews === 0) && (
+        <div style={{marginTop:'15px'}}>Be the first to post a review!</div>
+      )}
+        {reviews.reverse().map((review) => {
           return (
-            <SpotReviewItem review={review}/>
+            <SpotReviewItem currentUserId={currentUserId} review={review} spotId={spot.id}/>
           );
         })}
       </section>
