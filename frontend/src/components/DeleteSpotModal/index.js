@@ -23,7 +23,7 @@ function DeleteSpotModal({spotId}) {
     <div id='spot-delete-button-modal'>
       <h1 style={{margin:'10px'}}>Confirm Delete</h1>
       <div style={{margin: '0px 0px 10px 0px'}}>Are you sure you want to remove this spot from the listings?</div>
-      <button id='spot-delete-yes-button' onClick={onClickDelete}>Yes(Delete Spot)</button>
+      <button id='spot-delete-yes-button' onClick={onClickDelete}>Yes (Delete Spot)</button>
       <button id='spot-delete-no-button' onClick={onClickCancel}>No (Keep Spot)</button>
     </div>
   );

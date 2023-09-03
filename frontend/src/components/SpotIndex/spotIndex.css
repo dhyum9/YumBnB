@@ -1,3 +1,27 @@
+#manage-spots-heading{
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  color: #013328;
+  margin: 0;
+  padding: 20px 30px;
+}
+
+#manage-spots-create-button{
+  margin: -5px 30px 10px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  background-color: #013328;
+  color: #e3dcd2;
+  border: 2px solid #013328;
+  border-radius: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#manage-spots-create-button:hover{
+  box-shadow: 0px 0px 10px grey;
+}
+
 #spots-grid{
   display: grid;
   row-gap: 8px;
