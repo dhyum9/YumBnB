@@ -50,12 +50,12 @@ function PostReviewModal({spotId}) {
         {errors.stars && (<p>{errors.stars}</p>)}
       </div>
       <textarea
-        placeholder="Write your review here."
+        placeholder="Leave your review here..."
         value={reviewText}
         onChange={e => setReviewText(e.target.value)}
       />
       <StarsRatingInput stars={stars} onChange={onChange}/>
-      <button type='submit'>Submit Your Review</button>
+      <button type='submit' disabled={true && (reviewText.length < 10 || stars < 1)}>Submit Your Review</button>
     </form>
   );
 }

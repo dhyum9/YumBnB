@@ -1,17 +1,24 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { deleteReview } from "../../store/review";
+import { deleteSpotReview, deleteUserReview } from "../../store/review";
 import './DeleteReview.css'
 
-function DeleteReviewModal({reviewId, spotId}) {
+function DeleteReviewModal({reviewId, spotId, type}) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
 
-
-  const onClickDelete = (e) => {
-    e.preventDefault();
-    dispatch(deleteReview(reviewId, spotId)).then(closeModal);
+  let onClickDelete;
+  if(type==="Spot"){
+    onClickDelete = (e) => {
+      e.preventDefault();
+      dispatch(deleteSpotReview(reviewId, spotId)).then(closeModal());
+    }
+  } else if (type==="User"){
+    onClickDelete = (e) => {
+      e.preventDefault();
+      dispatch(deleteUserReview(reviewId)).then(closeModal());
+    }
   }
 
   const onClickCancel = (e) => {

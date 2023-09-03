@@ -23,19 +23,19 @@ module.exports = {
         onDelete: 'cascade'
       },
       address: {
-        type: Sequelize.STRING(256),
+        type: Sequelize.STRING,
         allowNull: false
       },
       city: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.STRING,
         allowNull: false
       },
       state: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.STRING,
         allowNull: false
       },
       country: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.STRING,
         allowNull: false
       },
       lat: {
@@ -47,7 +47,7 @@ module.exports = {
         allowNull: false
       },
       name: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.STRING,
         allowNull: false
       },
       description: {

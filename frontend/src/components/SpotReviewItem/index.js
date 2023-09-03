@@ -11,13 +11,13 @@ const SpotReviewItem = ({review, currentUserId, spotId}) => {
     <div id='review-item' style={{margin:"20px 0"}}>
       <div>{review.User.firstName}</div>
       <div style={{color:'grey'}}>{reviewMonth} {reviewYear}</div>
-      <div style={{fontSize:"14px", marginBottom:"10px"}}>{review.review}</div>
+      <div style={{fontSize:"14px", marginBottom:"10px", overflowWrap:"break-word"}}>{review.review}</div>
       {review.User.id===currentUserId && (
         <div id='delete-button'>
           <div id='delete-button-text'>
             <OpenModalMenuItem
                 itemText="Delete"
-                modalComponent={<DeleteReviewModal spotId={spotId} reviewId={review.id}/>}
+                modalComponent={<DeleteReviewModal spotId={spotId} reviewId={review.id} type={"Spot"}/>}
             />
           </div>
         </div>
