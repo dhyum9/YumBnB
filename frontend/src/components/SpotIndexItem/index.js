@@ -9,15 +9,15 @@ const SpotIndexItem = ({ spot, type }) => {
   return (
     <div id='spot-card'>
       <span className='tooltip-text'>{spot.name}</span>
-      <NavLink to={`/spots/${spot.id}`} exact={true}>
+      <NavLink style={{textDecoration:'none'}} to={`/spots/${spot.id}`} exact={true}>
         <div id='spot-card-inside' style={{color:"#013328"}}>
           <img src={spot.previewImage} alt='Preview SpotImage goes here'></img>
           <div className='second-row'>
-            <div style={{overflow: "hidden", textOverflow: "ellipsis"}}>
+            <div id='spot-card-city-state'>
               {spot.city}, {spot.state}
             </div>
             <div style={{marginRight:"7px", display: 'flex', alignItems:'center'}}>
-              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star" style={{marginRight: "3px"}}></i>
               {spot.avgRating ? (<div>{Math.round(spot.avgRating * 100) / 100}</div>) : (<div>New</div>)}
             </div>
           </div>

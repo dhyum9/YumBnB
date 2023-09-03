@@ -9,7 +9,7 @@ function Navigation({ isLoaded }){
 
   return (
     <ul id='nav-bar'>
-      <NavLink exact to='/'>
+      <NavLink style={{color: "#e3dcd2", textDecoration:'none'}}exact to='/'>
         <div id='nav-bar-top-left'>
           <i className="fa-solid fa-person-running"></i>
           <h1>YumBnB</h1>
@@ -17,7 +17,7 @@ function Navigation({ isLoaded }){
       </NavLink>
       <div id='nav-bar-top-right-with-link'>
           {sessionUser && (
-            <NavLink activeStyle={{textDecoration:'none'}} exact={true} to='/spots'>
+            <NavLink style={{textDecoration:'none'}} exact={true} to='/spots'>
               <div id='create-a-new-spot-link'>
                 Create a New Spot
               </div>
