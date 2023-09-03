@@ -16,9 +16,9 @@ const SpotIndexItem = ({ spot, type }) => {
             <div style={{overflow: "hidden", textOverflow: "ellipsis"}}>
               {spot.city}, {spot.state}
             </div>
-            <div style={{marginRight:"7px"}}>
+            <div style={{marginRight:"7px", display: 'flex', alignItems:'center'}}>
               <i className="fa-solid fa-star"></i>
-              {spot.avgRating}
+              {spot.avgRating ? (<div>{Math.round(spot.avgRating * 100) / 100}</div>) : (<div>New</div>)}
             </div>
           </div>
           <div className='third-row'>
