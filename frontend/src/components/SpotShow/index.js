@@ -67,7 +67,6 @@ const SpotShow = () => {
               <div style={{display:'flex', alignItems:'center', marginRight:"5px"}}>
                 <i class="fa-solid fa-star" style={{marginRight:"3px"}}></i>
                 {spot.avgStarRating ? (<div>{spot.avgStarRating}</div>) : (<div>New</div>)}
-                {/* <div>{spot.avgStarRating}</div> */}
               </div>
               {spot.numReviews > 0 && (
                 <>
@@ -88,11 +87,15 @@ const SpotShow = () => {
       <section id='review-section'>
       <div id='review-section-header'>
         <div style={{display:'flex', alignItems:'center', marginRight:'12px'}}>
-          <i class="fa-solid fa-star"></i>
-          <div>{spot.avgStarRating}</div>
+          <i class="fa-solid fa-star" style={{marginRight:"10px"}} ></i>
+          {spot.avgStarRating ? (<div>{spot.avgStarRating}</div>) : (<div>New</div>)}
         </div>
-        <span>&#183;</span>
-        <div style={{textAlign: "center", marginLeft:'12px'}}>{spot.numReviews} reviews</div>
+        {spot.numReviews > 0 && (
+                <>
+                  <span>&#183;</span>
+                  <div style={{textAlign: "center", marginLeft:"12px"}}>{spot.numReviews} reviews</div>
+                </>
+              )}
       </div>
       { postReviewSwitch && (
         <div id='post-your-review-button'>

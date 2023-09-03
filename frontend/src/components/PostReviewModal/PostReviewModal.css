@@ -14,7 +14,7 @@
 }
 
 #post-review-modal > h2 {
-  margin: 0
+  margin: 0 0 20px 0px;
 }
 
 #post-review-modal > textarea {
@@ -45,4 +45,6 @@
   color: red;
   font-weight: 500;
   font-size: 13px;
+  margin-top: -20px;
+  margin-bottom: 5px;
 }
