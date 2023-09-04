@@ -25,7 +25,6 @@ function PostReviewModal({spotId}) {
 
     const createdReview = await dispatch(createReview(payload, spotId))
     .catch(async(res) => {
-      console.log("res:", res);
       const data = await res.json();
       if (data && data.errors) {
         setErrors(data.errors);

@@ -81,7 +81,31 @@ module.exports = {
         name: "NY Apartment in the City",
         description: "Enjoy one of the greatest views right in the middle of Manhattan.",
         price: 499.99
-      }
+      },
+      {
+        ownerId: 2,
+        address: "294 Wadsworth Blvd",
+        city: "Kissimmee",
+        state: "Florida",
+        country: "United States of America",
+        lat: 9.1132837,
+        lng: -172.9228372,
+        name: "Bowling Villa, As Seen on TV!",
+        description: "14 beds, 14.5 baths, sleeps 40 — CHECK IN: 4 PM — CHECK OUT: 10 AM — 20 mins from Disney World. Enjoy pool-sode TV, private two-lane bowling alley, wall-to-wall TV in living room, flat screen TVs in bedrooms, 2 refrigerators, and 2 washers and dryers.",
+        price: 731.00
+      },
+      {
+        ownerId: 3,
+        address: "18734 Euclid Dr",
+        city: "Cortez",
+        state: "Colorado",
+        country: "United States of America",
+        lat: 19.1132837,
+        lng: -12.9208372,
+        name: "Private Sage Canyon Cliff House Near Mesa Verde",
+        description: "Stay on the flank of Sleeping Ute Mountain in historic McElmo Canyon just 40 minutes from Mesa Verde and 20 minutes from the town of Cortez. The Cliff House is built right into the red rock cliff wall of a private red rock canyon alcove with comfortable amenities, internet, nearby petroglyphs and sweeping views down canyon. A perfect place to base yourself for your next creative endeavor or for exploring in the wilds of the four corners.",
+        price: 328.99
+      },
     ], { validate: true });
   },
 
