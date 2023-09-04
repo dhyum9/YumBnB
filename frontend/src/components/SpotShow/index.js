@@ -65,7 +65,7 @@ const SpotShow = () => {
             <div>${spot.price} <span style={{fontSize:"16px", display:"inline-block"}}> night</span></div>
             <div id='review-info'>
               <div style={{display:'flex', alignItems:'center', marginRight:"5px"}}>
-                <i class="fa-solid fa-star" style={{marginRight:"3px"}}></i>
+                <i className="fa-solid fa-star" style={{marginRight:"3px"}}></i>
                 {spot.avgStarRating ? (<div>{Math.round(spot.avgStarRating * 100) / 100}</div>) : (<div>New</div>)}
               </div>
               {spot.numReviews > 0 && (
@@ -91,7 +91,7 @@ const SpotShow = () => {
       <section id='review-section'>
       <div id='review-section-header'>
         <div style={{display:'flex', alignItems:'center', marginRight:'12px'}}>
-          <i class="fa-solid fa-star" style={{marginRight:"10px"}} ></i>
+          <i className="fa-solid fa-star" style={{marginRight:"10px"}} ></i>
           {spot.avgStarRating ? (<div>{Math.round(spot.avgStarRating * 100) / 100}</div>) : (<div>New</div>)}
         </div>
         {spot.numReviews > 0 && (
