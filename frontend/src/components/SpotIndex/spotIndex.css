@@ -31,25 +31,25 @@
   justify-items: center;
 }
 
-@media screen and (max-width: 875px) {
+@media screen and (max-width: 831px) {
   #spots-grid{
     grid-template-columns: 1fr;
   }
 }
 
-@media screen and (min-width: 876px) and (max-width: 1275px) {
+@media screen and (min-width: 832px) and (max-width: 1243px) {
   #spots-grid{
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media screen and (min-width: 1276px) and (max-width: 1675px) {
+@media screen and (min-width: 1244px) and (max-width: 1654px) {
   #spots-grid{
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
-@media screen and (min-width: 1676px) {
+@media screen and (min-width: 1655px) {
   #spots-grid{
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
