@@ -110,7 +110,7 @@ const SpotForm = ({spot, formType}) => {
         <div id='create-spot-section-one'>
           <div className='create-spot-section-text'>
             <h4>Where's your place located?</h4>
-            <div>Guests will only get your exact address once they booked a reservation.</div>
+            <div style={{marginBottom: "5px"}}>Guests will only get your exact address once they booked a reservation.</div>
           </div>
           <label>
             Country
