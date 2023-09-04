@@ -63,6 +63,26 @@
   cursor: default;
 }
 
+#demo-user-button{
+  background-color: #cc8865;
+  color: #013328;
+  border: 1px solid #cc8865;
+  padding: 5px 10px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 15px auto 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#demo-user-button:hover{
+  box-shadow: 0 0 10px grey;
+}
+
 .login-errors{
   color: red;
   font-size: 12px;
