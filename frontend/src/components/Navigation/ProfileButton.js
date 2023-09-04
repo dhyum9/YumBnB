@@ -59,13 +59,13 @@ function ProfileButton({ user }) {
             <li>Hello, {user.firstName}.</li>
             <li>{user.email}</li>
             <hr></hr>
-            <NavLink exact={true} to='/spots/current'>
+            <NavLink style={{textDecoration:'none'}} exact={true} to='/spots/current'>
               <div onClick={onClickClose} id='manage-links'>
                 Manage Spots
               </div>
             </NavLink>
             <hr></hr>
-            <NavLink exact={true} to='/reviews/current'>
+            <NavLink style={{textDecoration:'none'}} exact={true} to='/reviews/current'>
               <div onClick={onClickClose} id='manage-links'>
                 Manage Reviews
               </div>

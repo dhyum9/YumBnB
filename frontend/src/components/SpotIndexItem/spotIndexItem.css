@@ -16,10 +16,12 @@
   z-index: 1;
   background-color: #013328;
   color: #e3dcd2;
-  top: 25px;
-  left: 25px;
+  top: 4px;
+  width: 97%;
+  text-align: center;
   padding: 2px;
   transition: 0.3s;
+  border-radius: 20px 20px 0 0;
 }
 
 #spot-card:hover{
@@ -46,6 +48,12 @@
   width: 100%;
 }
 
+#spot-card-city-state{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration-color: red;
+}
+
 .third-row{
   display: flex;
   justify-content: left;
@@ -67,6 +75,7 @@
   width: 60px;
   margin: 0 5px;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 #update-button:hover{
@@ -82,6 +91,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 #delete-button:hover{

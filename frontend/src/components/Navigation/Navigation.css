@@ -10,14 +10,6 @@
   background-color: #013328;
 }
 
-#nav-bar > * {
-  text-decoration: none;
-}
-
-#nav-bar > *:visited {
-  color: #e3dcd2;
-}
-
 #nav-bar-top-left {
   display: flex;
   align-items: center;
@@ -109,6 +101,7 @@
   color: #e3dcd2;
   font-family: 'Manrope', sans-serif;
   font-size: 16px;
+  font-weight: 500;
   background-color: #013328;
   border-radius: 40px;
   padding: 5px 8px;
@@ -124,10 +117,11 @@
   color: #100c0d;
   font-family: 'Manrope', sans-serif;
   font-size: 16px;
+  font-weight: 500;
   border: none;
   background-color: #cc8b65;
   border-radius: 40px;
-  padding: 5px 8px;
+  padding: 5px 9px;
   margin-top: 2px;
   cursor: pointer;
 }
