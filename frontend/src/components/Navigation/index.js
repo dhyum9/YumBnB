@@ -19,6 +19,7 @@ function Navigation({ isLoaded }){
           {sessionUser && (
             <NavLink style={{textDecoration:'none'}} exact={true} to='/spots'>
               <div id='create-a-new-spot-link'>
+                <i style={{marginRight: "7px"}} className="fa-solid fa-circle-plus"></i>
                 Create a New Spot
               </div>
             </NavLink>

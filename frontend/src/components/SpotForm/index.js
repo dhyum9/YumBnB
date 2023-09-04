@@ -110,7 +110,7 @@ const SpotForm = ({spot, formType}) => {
         <div id='create-spot-section-one'>
           <div className='create-spot-section-text'>
             <h4>Where's your place located?</h4>
-            <div>Guests will only get your exact address once they booked a reservation.</div>
+            <div style={{marginBottom: "5px"}}>Guests will only get your exact address once they booked a reservation.</div>
           </div>
           <label>
             Country
@@ -203,7 +203,7 @@ const SpotForm = ({spot, formType}) => {
         <div id='create-spot-section-two'>
           <div className='create-spot-section-text'>
             <h4>Describe your place to guests</h4>
-            <div>Mention the best features of your space, any special amentities like fast wifi or parking, and what you love about the neighborhood.</div>
+            <div>Mention the best features of your space, any special amenities like fast wifi or parking, and what you love about the neighborhood.</div>
           </div>
           <label id='description'>
             <textarea
@@ -267,7 +267,7 @@ const SpotForm = ({spot, formType}) => {
             <label id='photos'>
               <input
                 type="url"
-                placeholder="Preview Image Url"
+                placeholder="Preview Image URL"
                 value={previewImageUrl}
                 onChange={e => setPreviewImageUrl(e.target.value)}
                 className='create-spot-input create-spot-block-input'
@@ -277,7 +277,7 @@ const SpotForm = ({spot, formType}) => {
               </div>
               <input
                 type="url"
-                placeholder="Image Url"
+                placeholder="Image URL"
                 value={imageUrl2}
                 onChange={e => setImageUrl2(e.target.value)}
                 className='create-spot-input create-spot-block-input'
@@ -287,7 +287,7 @@ const SpotForm = ({spot, formType}) => {
               </div>
               <input
                 type="url"
-                placeholder="Image Url"
+                placeholder="Image URL"
                 value={imageUrl3}
                 onChange={e => setImageUrl3(e.target.value)}
                 className='create-spot-input create-spot-block-input'
@@ -297,7 +297,7 @@ const SpotForm = ({spot, formType}) => {
               </div>
               <input
                 type="url"
-                placeholder="Image Url"
+                placeholder="Image URL"
                 value={imageUrl4}
                 onChange={e => setImageUrl4(e.target.value)}
                 className='create-spot-input create-spot-block-input'
@@ -307,7 +307,7 @@ const SpotForm = ({spot, formType}) => {
               </div>
               <input
                 type="url"
-                placeholder="Image Url"
+                placeholder="Image URL"
                 value={imageUrl5}
                 onChange={e => setImageUrl5(e.target.value)}
                 className='create-spot-input create-spot-block-input'

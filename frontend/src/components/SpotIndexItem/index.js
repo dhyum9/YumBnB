@@ -18,7 +18,7 @@ const SpotIndexItem = ({ spot, type }) => {
             </div>
             <div style={{marginRight:"7px", display: 'flex', alignItems:'center'}}>
               <i className="fa-solid fa-star" style={{marginRight: "3px"}}></i>
-              {spot.avgRating ? (<div>{Math.round(spot.avgRating * 100) / 100}</div>) : (<div>New</div>)}
+              {spot.avgRating ? (<div>{Number.parseFloat(spot.avgRating).toFixed(2)}</div>) : (<div>New</div>)}
             </div>
           </div>
           <div className='third-row'>

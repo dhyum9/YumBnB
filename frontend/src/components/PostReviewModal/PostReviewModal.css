@@ -19,6 +19,8 @@
 
 #post-review-modal > textarea {
   font-size: 12px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
   width: 80%;
   border: 1px solid #013328;
   height: 100px;
