@@ -30,6 +30,14 @@ function LoginFormModal() {
       });
   };
 
+  const DemoUserLogin = () => {
+    let payload = {
+      credential: "Demo-lition",
+      password: "password"
+    }
+    dispatch(sessionActions.login(payload)).then(closeModal);
+  }
+
   return (
     <div id='login'>
       <h1 id='login-title'>Log In</h1>
@@ -60,6 +68,7 @@ function LoginFormModal() {
           />
         </label>
         <button type="submit" id='login-button' disabled={(credential.length >= 4 && password.length >= 6) ? false : true}>Log In</button>
+        <button onClick={DemoUserLogin} id='demo-user-button'>Demo User</button>
       </form>
     </div>
   );
