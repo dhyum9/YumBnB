@@ -31,6 +31,7 @@
 
 #spot-card:hover .tooltip-text{
   opacity: 1;
+  z-index: 1;
 }
 
 #spot-card img {
