@@ -18,7 +18,6 @@ const SpotIndex = ({type}) => {
     }
   }, [dispatch, type]);
 
-  if (spots.length === 0 || !spots) return null;
   return (
     <div id='spots-index'>
       {type==="usersOnly" && (
