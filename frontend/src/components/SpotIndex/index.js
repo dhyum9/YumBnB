@@ -23,9 +23,11 @@ const SpotIndex = ({type}) => {
       {type==="usersOnly" && (
         <>
           <h1 id="manage-spots-heading">Manage Your Spots</h1>
-          <NavLink exact={true} to="/spots">
-            <button id='manage-spots-create-button'>Create a New Spot</button>
-          </NavLink>
+          {spots.length === 0 && (
+            <NavLink exact={true} to="/spots">
+              <button id='manage-spots-create-button'>Create a New Spot</button>
+            </NavLink>
+          )}
         </>
       )}
       <main id='spots-grid'>

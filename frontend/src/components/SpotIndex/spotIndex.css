@@ -1,13 +1,12 @@
 #manage-spots-heading{
   font-family: 'Manrope', sans-serif;
-  font-weight: 500;
   color: #013328;
   margin: 0;
-  padding: 20px 30px;
+  padding: 20px 40px 5px;
 }
 
 #manage-spots-create-button{
-  margin: -5px 30px 10px;
+  margin: 10px 40px;
   font-family: 'Manrope', sans-serif;
   font-weight: 500;
   background-color: #013328;
