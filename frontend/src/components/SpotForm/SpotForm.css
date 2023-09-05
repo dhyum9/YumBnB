@@ -79,6 +79,7 @@
   background-color: #013328;
   border: 2px solid #013328;
   margin: 10px auto 20px;
+  cursor: pointer;
 }
 
 #create-spot-button:hover{
