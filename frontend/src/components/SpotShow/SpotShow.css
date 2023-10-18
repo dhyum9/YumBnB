@@ -28,6 +28,7 @@
 
 #host-information{
   font-size: 22px;
+  padding: 24px 0;
 }
 
 #spot-information{
@@ -79,17 +80,19 @@
 }
 
 .spot-show-google-map-section{
-  background-color: red;
+  /* background-color: red; */
 }
 
 .spot-show-google-map-header{
   font-size: 22px;
+  padding: 24px 0;
 }
 
 #review-section-header{
   display: flex;
   align-items: center;
   font-size: 22px;
+  padding: 24px 0;
 }
 
 #post-your-review-button{
