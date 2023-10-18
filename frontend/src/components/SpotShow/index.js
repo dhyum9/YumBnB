@@ -8,6 +8,7 @@ import './SpotShow.css'
 import SpotReviewItem from "../SpotReviewItem";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import PostReviewModal from "../PostReviewModal";
+import MapContainer from "../Maps";
 
 const SpotShow = () => {
   const dispatch = useDispatch();
@@ -89,6 +90,7 @@ const SpotShow = () => {
     <hr></hr>
     <div className='spot-show-google-map-section'>
       <div className='spot-show-google-map-header'>Where you'll be</div>
+      <MapContainer />
     </div>
     <hr></hr>
     {reviews && (
@@ -124,7 +126,7 @@ const SpotShow = () => {
       )}
         {reviews.reverse().map((review) => {
           return (
-            <SpotReviewItem currentUserId={currentUserId} review={review} spotId={spot.id}/>
+            <SpotReviewItem key={review.id} currentUserId={currentUserId} review={review} spotId={spot.id}/>
           );
         })}
       </section>
