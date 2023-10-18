@@ -87,6 +87,10 @@ const SpotShow = () => {
       </div>
     </div>
     <hr></hr>
+    <div className='spot-show-google-map-section'>
+      <div className='spot-show-google-map-header'>Where you'll be</div>
+    </div>
+    <hr></hr>
     {reviews && (
       <section id='review-section'>
       <div id='review-section-header'>

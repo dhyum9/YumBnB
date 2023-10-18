@@ -27,11 +27,11 @@
 }
 
 #host-information{
-  font-size: 25px;
+  font-size: 22px;
 }
 
 #spot-information{
-  font-size: 16px;
+  font-size: 15px;
   margin: 10px 0;
   word-wrap: break-word;
 }
@@ -78,10 +78,18 @@
   box-shadow: 0px 0px 10px grey;
 }
 
+.spot-show-google-map-section{
+  background-color: red;
+}
+
+.spot-show-google-map-header{
+  font-size: 22px;
+}
+
 #review-section-header{
   display: flex;
   align-items: center;
-  font-size: 30px;
+  font-size: 22px;
 }
 
 #post-your-review-button{
