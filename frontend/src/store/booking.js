@@ -2,7 +2,7 @@ import { csrfFetch } from "./csrf";
 // import { fetchSpotDetails } from "./spot";
 
 // const LOAD_SPOT_REVIEWS = "review/loadSpotReviews"
-const LOAD_USER_REVIEWS = "review/loadUserReviews"
+const LOAD_USER_BOOKINGS = "booking/loadUserBookings"
 // const ADD_REVIEW = "review/addReview"
 // const REMOVE_REVIEW = "review/removeReview"
 
@@ -11,9 +11,9 @@ const LOAD_USER_REVIEWS = "review/loadUserReviews"
 //   spotReviews
 // });
 
-const loadUserReviews = (userReviews) => ({
-  type: LOAD_USER_REVIEWS,
-  userReviews
+const loadUserBookings = (userBookings) => ({
+  type: LOAD_USER_BOOKINGS,
+  userBookings
 });
 
 // const addReview = (review) => ({
@@ -35,12 +35,12 @@ const loadUserReviews = (userReviews) => ({
 //   }
 // };
 
-export const fetchUserReviews = () => async dispatch => {
-  const res = await fetch(`/api/reviews/current`);
+export const fetchUserBookings = () => async dispatch => {
+  const res = await fetch(`/api/bookings/current`);
 
   if (res.ok) {
     const data = await res.json();
-    dispatch(loadUserReviews(data.Reviews));
+    dispatch(loadUserBookings(data.Bookings));
   }
 };
 
@@ -95,7 +95,7 @@ const bookingsReducer = (state = initialState, action) => {
     //   return newState;
       case LOAD_USER_BOOKINGS:
         let user = {};
-        action.userBookingss.forEach(userBooking => {
+        action.userBookings.forEach(userBooking => {
           user[userBooking.id] = userBooking;
         })
         newState = {...state, user};

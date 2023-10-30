@@ -1,24 +1,24 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import UserReviewItem from '../UserReviewItem';
-import { fetchUserReviews } from '../../store/review';
+import UserBookingItem from '../UserBookingItem';
+import { fetchUserBookings } from '../../store/booking';
 import './BookingIndex.css';
 
 const BookingIndex = () => {
   const dispatch = useDispatch();
-  const reviewsObj = useSelector(state => state.reviews.user);
-  const reviews = Object.values(reviewsObj);
+  const bookingsObj = useSelector(state => state.bookings.user);
+  const bookings = Object.values(bookingsObj);
 
   useEffect(() => {
-    dispatch(fetchUserReviews());
+    dispatch(fetchUserBookings());
   }, [dispatch]);
 
   return (
     <main id='manage-bookings-container'>
       <h1>Manage Bookings</h1>
-      {reviews.reverse().map((review) => {
+      {bookings.reverse().map((booking) => {
         return (
-          <UserReviewItem review={review}/>
+          <UserBookingItem booking={booking}/>
         );
       })}
     </main>
