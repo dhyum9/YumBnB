@@ -71,6 +71,12 @@ function ProfileButton({ user }) {
               </div>
             </NavLink>
             <hr></hr>
+            <NavLink style={{textDecoration:'none'}} exact={true} to='/bookings/current'>
+              <div onClick={onClickClose} id='manage-links'>
+                Manage Bookings
+              </div>
+            </NavLink>
+            <hr></hr>
             <li>
               <button id='log-out-button' onClick={logout}>Log Out</button>
             </li>
