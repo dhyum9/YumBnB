@@ -3,7 +3,6 @@ import { csrfFetch } from "./csrf";
 
 // const LOAD_SPOT_REVIEWS = "review/loadSpotReviews"
 const LOAD_USER_BOOKINGS = "booking/loadUserBookings"
-// const ADD_BOOKING = "booking/addBooking"
 // const REMOVE_REVIEW = "review/removeReview"
 
 // const loadSpotReviews = (spotReviews) => ({
@@ -15,11 +14,6 @@ const loadUserBookings = (userBookings) => ({
   type: LOAD_USER_BOOKINGS,
   userBookings
 });
-
-// const addBooking = (booking) => ({
-//   type: ADD_BOOKING,
-//   booking
-// });
 
 // const removeReview = (reviewId) => ({
 //   type: REMOVE_REVIEW,
@@ -52,7 +46,6 @@ export const createBooking = (payload, spotId) => async dispatch => {
 
   if (res.ok) {
     const newBooking = await res.json();
-    // dispatch(fetchSpotReviews(spotId));
     return newBooking;
   }
 };

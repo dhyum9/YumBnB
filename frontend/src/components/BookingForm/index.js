@@ -99,6 +99,8 @@ const BookingForm = ({booking, formType}) => {
     }
   })
 
+  console.log("ERRORS: ", errors);
+
   return (
     <div>
       <form onSubmit={handleSubmit} id='create-spot-form'>
@@ -114,6 +116,7 @@ const BookingForm = ({booking, formType}) => {
             isClearable
           />
         </div>
+        <div>{errors.startDate && (<p>{errors.startDate}</p>)}</div>
         <div>
           END DATE
           <DatePicker
@@ -127,6 +130,7 @@ const BookingForm = ({booking, formType}) => {
             isClearable
           />
         </div>
+        <div>{errors.endDate && (<p>{errors.endDate}</p>)}</div>
         {formType==="Create" ? <button type='submit' id='create-spot-button'>Create Booking</button> : <button type='submit' id='create-spot-button'>Update Booking</button>}
       </form>
       <div>
