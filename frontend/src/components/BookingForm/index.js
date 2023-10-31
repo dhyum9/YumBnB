@@ -62,9 +62,6 @@ const BookingForm = ({booking, formType}) => {
 
   // };
 
-  console.log('Start Date: ', startDate);
-  console.log('End Date: ', endDate);
-
   const convertDate = (date) => {
     const months = {
       'Jan': "01",
@@ -82,10 +79,6 @@ const BookingForm = ({booking, formType}) => {
     let dateParts = String(date).split(" ");
     return `${dateParts[3]}-${months[dateParts[1]]}-${dateParts[2]}`
   }
-
-  console.log('Converted Start Date: ', convertDate(startDate));
-  console.log('Converted End Date: ', convertDate(endDate));
-
 
   return (
     <section>
