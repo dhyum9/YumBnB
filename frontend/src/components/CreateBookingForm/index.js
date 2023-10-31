@@ -5,14 +5,6 @@ import { useEffect } from "react";
 import { fetchSpotDetails } from "../../store/spot";
 
 const CreateBookingForm = () => {
-  const dispatch = useDispatch();
-  const { spotId } = useParams();
-  const spot = useSelector(state => state.spots.singleSpot);
-
-  useEffect(() => {
-    dispatch(fetchSpotDetails(spotId));
-  },[dispatch, spotId]);
-
   const startDate = new Date();
   const endDate = new Date();
 
@@ -22,7 +14,7 @@ const CreateBookingForm = () => {
   };
 
   return (
-    <BookingForm formType={"Create"} spot={spot} booking={booking}/>
+    <BookingForm formType={"Create"} booking={booking}/>
   );
 }
 

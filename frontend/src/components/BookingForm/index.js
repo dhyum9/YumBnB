@@ -1,66 +1,75 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
+import { fetchSpotDetails } from '../../store/spot';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 // import { createSpot, createSpotImage, updateSpot, fetchSpotDetails } from '../../store/spot';
 import './BookingForm.css';
 
-const BookingForm = ({spot, booking, formType}) => {
+const BookingForm = ({booking, formType}) => {
   const [startDate, setStartDate] = useState(booking.startDate);
   const [endDate, setEndDate] = useState(booking.endDate);
   const [errors, setErrors] = useState({});
 
-  const dispatch = useDispatch();
   const history = useHistory();
+  const dispatch = useDispatch();
+  const { spotId } = useParams();
+  const spot = useSelector(state => state.spots.singleSpot);
+
+  useEffect(() => {
+    dispatch(fetchSpotDetails(spotId));
+  },[dispatch, spotId]);
+
+  if (!spot["id"]) return null;
 
   // useEffect(() => {
   //   setStartDate(booking.startDate);
   //   setEndDate(booking.endDate);
   // }, [dispatch, booking]);
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setErrors({});
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrors({});
 
-  //   const payload = {
-  //     ...booking,
-  //     startDate,
-  //     endDate
-  //   };
+    const payload = {
+      ...booking,
+      startDate,
+      endDate
+    };
 
-  //   if(formType==='Create'){
-  //     const createdSpot = await dispatch(createSpot(payload))
-  //     .catch(async(res) => {
-  //       const data = await res.json();
-  //       if (data && data.errors) {
-  //         setErrors(data.errors);
-  //       }
-  //     });
+    if(formType==='Create'){
+      const createdSpot = await dispatch(createSpot(payload))
+      .catch(async(res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(data.errors);
+        }
+      });
 
-  //     if (createdSpot) {
-  //       for (let spotImage of spotImagePayload){
-  //         await dispatch(createSpotImage(spotImage, createdSpot.id))
-  //       }
-  //       await dispatch(fetchSpotDetails(createdSpot.id));
-  //       history.push(`/spots/${createdSpot.id}`);
-  //     }
-  //   } else if (formType==='Update'){
-  //     const updatedSpot = await dispatch(updateSpot(payload, spot.id))
-  //     .catch(async(res) => {
-  //       const data = await res.json();
-  //       if (data && data.errors) {
-  //         setErrors(data.errors);
-  //       }
-  //     });
+      if (createdSpot) {
+        for (let spotImage of spotImagePayload){
+          await dispatch(createSpotImage(spotImage, createdSpot.id))
+        }
+        await dispatch(fetchSpotDetails(createdSpot.id));
+        history.push(`/spots/${createdSpot.id}`);
+      }
+    } else if (formType==='Update'){
+      const updatedSpot = await dispatch(updateSpot(payload, spot.id))
+      .catch(async(res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(data.errors);
+        }
+      });
 
-  //     if (updatedSpot) {
-  //       await dispatch(fetchSpotDetails(updatedSpot.id));
-  //       history.push(`/spots/${updatedSpot.id}`);
-  //     }
-  //   }
+      if (updatedSpot) {
+        await dispatch(fetchSpotDetails(updatedSpot.id));
+        history.push(`/spots/${updatedSpot.id}`);
+      }
+    }
 
-  // };
+  };
 
   const convertDate = (date) => {
     const months = {
@@ -80,8 +89,10 @@ const BookingForm = ({spot, booking, formType}) => {
     return `${dateParts[3]}-${months[dateParts[1]]}-${dateParts[2]}`
   }
 
-  let previewImageUrl;
+  //Sets Preview Image to first Spot Image
+  let previewImageUrl = spot.SpotImages[0].url;
 
+  //Overrides Preview Image only if preview property is true
   spot.SpotImages.forEach((imageObj) => {
     if (imageObj.preview === true) {
       previewImageUrl = imageObj.url;
@@ -90,7 +101,7 @@ const BookingForm = ({spot, booking, formType}) => {
 
   return (
     <div>
-      <form id='create-spot-form'>
+      <form onSubmit={handleSubmit} id='create-spot-form'>
         {formType==="Create" ? <h3>Confirm your Booking</h3> : <h3>Edit your Booking</h3>}
         <div>
           START DATE
@@ -128,7 +139,7 @@ const BookingForm = ({spot, booking, formType}) => {
         {spot.numReviews}
       </div>
       <div>
-        <img src={previewImageUrl}></img>
+        {previewImageUrl && <img src={previewImageUrl}></img>}
       </div>
     </div>
   );
