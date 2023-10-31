@@ -3,7 +3,7 @@ import { csrfFetch } from "./csrf";
 
 // const LOAD_SPOT_REVIEWS = "review/loadSpotReviews"
 const LOAD_USER_BOOKINGS = "booking/loadUserBookings"
-// const ADD_REVIEW = "review/addReview"
+// const ADD_BOOKING = "booking/addBooking"
 // const REMOVE_REVIEW = "review/removeReview"
 
 // const loadSpotReviews = (spotReviews) => ({
@@ -16,9 +16,9 @@ const loadUserBookings = (userBookings) => ({
   userBookings
 });
 
-// const addReview = (review) => ({
-//   type: ADD_REVIEW,
-//   review
+// const addBooking = (booking) => ({
+//   type: ADD_BOOKING,
+//   booking
 // });
 
 // const removeReview = (reviewId) => ({
@@ -44,19 +44,18 @@ export const fetchUserBookings = () => async dispatch => {
   }
 };
 
-// export const createReview = (payload, spotId) => async dispatch => {
-//   const res = await csrfFetch(`/api/spots/${spotId}/reviews`, {
-//     method: 'POST',
-//     body: JSON.stringify(payload)
-//   });
+export const createBooking = (payload, spotId) => async dispatch => {
+  const res = await csrfFetch(`/api/spots/${spotId}/bookings`, {
+    method: 'POST',
+    body: JSON.stringify(payload)
+  });
 
-//   if (res.ok) {
-//     const newReview = await res.json();
-//     // await dispatch(addReview(newReview));
-//     dispatch(fetchSpotReviews(spotId));
-//     return newReview;
-//   }
-// };
+  if (res.ok) {
+    const newBooking = await res.json();
+    // dispatch(fetchSpotReviews(spotId));
+    return newBooking;
+  }
+};
 
 // export const deleteSpotReview = (reviewId, spotId) => async dispatch => {
 //   const res = await csrfFetch(`/api/reviews/${reviewId}`, {

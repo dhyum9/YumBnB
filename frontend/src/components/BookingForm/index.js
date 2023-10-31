@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { fetchSpotDetails } from '../../store/spot';
+import { createBooking } from '../../store/booking';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-// import { createSpot, createSpotImage, updateSpot, fetchSpotDetails } from '../../store/spot';
 import './BookingForm.css';
 
 const BookingForm = ({booking, formType}) => {
@@ -23,54 +23,6 @@ const BookingForm = ({booking, formType}) => {
 
   if (!spot["id"]) return null;
 
-  // useEffect(() => {
-  //   setStartDate(booking.startDate);
-  //   setEndDate(booking.endDate);
-  // }, [dispatch, booking]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setErrors({});
-
-    const payload = {
-      ...booking,
-      startDate,
-      endDate
-    };
-
-    if(formType==='Create'){
-      const createdSpot = await dispatch(createSpot(payload))
-      .catch(async(res) => {
-        const data = await res.json();
-        if (data && data.errors) {
-          setErrors(data.errors);
-        }
-      });
-
-      if (createdSpot) {
-        for (let spotImage of spotImagePayload){
-          await dispatch(createSpotImage(spotImage, createdSpot.id))
-        }
-        await dispatch(fetchSpotDetails(createdSpot.id));
-        history.push(`/spots/${createdSpot.id}`);
-      }
-    } else if (formType==='Update'){
-      const updatedSpot = await dispatch(updateSpot(payload, spot.id))
-      .catch(async(res) => {
-        const data = await res.json();
-        if (data && data.errors) {
-          setErrors(data.errors);
-        }
-      });
-
-      if (updatedSpot) {
-        await dispatch(fetchSpotDetails(updatedSpot.id));
-        history.push(`/spots/${updatedSpot.id}`);
-      }
-    }
-
-  };
-
   const convertDate = (date) => {
     const months = {
       'Jan': "01",
@@ -88,6 +40,54 @@ const BookingForm = ({booking, formType}) => {
     let dateParts = String(date).split(" ");
     return `${dateParts[3]}-${months[dateParts[1]]}-${dateParts[2]}`
   }
+
+  // useEffect(() => {
+  //   setStartDate(booking.startDate);
+  //   setEndDate(booking.endDate);
+  // }, [dispatch, booking]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrors({});
+
+    const payload = {
+      ...booking,
+      startDate: convertDate(startDate),
+      endDate: convertDate(endDate)
+    };
+
+    console.log('PAYLOAD: ', payload);
+
+    if(formType==='Create'){
+      const createdBooking = await dispatch(createBooking(payload, spotId))
+      .catch(async(res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(data.errors);
+        }
+      });
+
+      if (createdBooking) {
+        // await dispatch(fetchSpotDetails(createdSpot.id));
+        history.push(`/bookings/current`);
+      }
+    }
+    // else if (formType==='Update'){
+    //   const updatedSpot = await dispatch(updateSpot(payload, spot.id))
+    //   .catch(async(res) => {
+    //     const data = await res.json();
+    //     if (data && data.errors) {
+    //       setErrors(data.errors);
+    //     }
+    //   });
+
+    //   if (updatedSpot) {
+    //     await dispatch(fetchSpotDetails(updatedSpot.id));
+    //     history.push(`/spots/${updatedSpot.id}`);
+    //   }
+    // }
+
+  };
 
   //Sets Preview Image to first Spot Image
   let previewImageUrl = spot.SpotImages[0].url;
