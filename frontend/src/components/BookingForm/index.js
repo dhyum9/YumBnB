@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { fetchSpotDetails } from '../../store/spot';
-import { createBooking } from '../../store/booking';
+import { createBooking, fetchSpotBookings } from '../../store/booking';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './BookingForm.css';
+import SpotBookingItem from '../SpotBookingItem';
 
 const BookingForm = ({booking, formType}) => {
   const [startDate, setStartDate] = useState(booking.startDate);
@@ -16,9 +17,12 @@ const BookingForm = ({booking, formType}) => {
   const dispatch = useDispatch();
   const { spotId } = useParams();
   const spot = useSelector(state => state.spots.singleSpot);
+  const bookingsObj = useSelector(state => state.bookings.spot);
+  const spotBookings = Object.values(bookingsObj);
 
   useEffect(() => {
     dispatch(fetchSpotDetails(spotId));
+    dispatch(fetchSpotBookings(spotId));
   },[dispatch, spotId]);
 
   if (!spot["id"]) return null;
@@ -133,6 +137,14 @@ const BookingForm = ({booking, formType}) => {
         <div>{errors.endDate && (<p>{errors.endDate}</p>)}</div>
         {formType==="Create" ? <button type='submit' id='create-spot-button'>Create Booking</button> : <button type='submit' id='create-spot-button'>Update Booking</button>}
       </form>
+      <div>
+        CURRENT BOOKINGS:
+        {spotBookings.reverse().map((booking) => {
+          return (
+            <SpotBookingItem key={booking.id} booking={booking}/>
+          );
+        })}
+      </div>
       <div>
         For {spot.name}
       </div>
