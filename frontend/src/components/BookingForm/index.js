@@ -6,7 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 // import { createSpot, createSpotImage, updateSpot, fetchSpotDetails } from '../../store/spot';
 import './BookingForm.css';
 
-const BookingForm = ({booking, formType}) => {
+const BookingForm = ({spot, booking, formType}) => {
   const [startDate, setStartDate] = useState(booking.startDate);
   const [endDate, setEndDate] = useState(booking.endDate);
   const [errors, setErrors] = useState({});
@@ -80,9 +80,16 @@ const BookingForm = ({booking, formType}) => {
     return `${dateParts[3]}-${months[dateParts[1]]}-${dateParts[2]}`
   }
 
+  let previewImageUrl;
+
+  spot.SpotImages.forEach((imageObj) => {
+    if (imageObj.preview === true) {
+      previewImageUrl = imageObj.url;
+    }
+  })
+
   return (
-    <section>
-      <div>{}</div>
+    <div>
       <form id='create-spot-form'>
         {formType==="Create" ? <h3>Confirm your Booking</h3> : <h3>Edit your Booking</h3>}
         <div>
@@ -92,6 +99,8 @@ const BookingForm = ({booking, formType}) => {
             selected={startDate}
             onChange={date => setStartDate(date)}
             startDate={startDate}
+            monthsShown={3}
+            isClearable
           />
         </div>
         <div>
@@ -103,11 +112,25 @@ const BookingForm = ({booking, formType}) => {
             startDate={startDate}
             endDate={endDate}
             minDate={startDate}
+            monthsShown={3}
+            isClearable
           />
         </div>
         {formType==="Create" ? <button type='submit' id='create-spot-button'>Create Booking</button> : <button type='submit' id='create-spot-button'>Update Booking</button>}
       </form>
-    </section>
+      <div>
+        For {spot.name}
+      </div>
+      <div>
+        {Number.parseFloat(spot.avgStarRating).toFixed(2)}
+      </div>
+      <div>
+        {spot.numReviews}
+      </div>
+      <div>
+        <img src={previewImageUrl}></img>
+      </div>
+    </div>
   );
 }
 
