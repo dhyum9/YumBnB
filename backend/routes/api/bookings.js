@@ -50,9 +50,15 @@ router.get('/current', requireAuth, async (req, res, next) => {
       }
     });
 
+    let owner = await User.findOne({
+      where: {
+        id: spot.ownerId
+      }
+    })
+
     const newSpot = {
       id: spot.id,
-      ownerId: spot.ownerId,
+      Owner: owner,
       address: spot.address,
       city: spot.city,
       state: spot.state,
