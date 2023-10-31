@@ -679,6 +679,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
 
     for (let booking of bookingsList){
       let finalBooking = {
+        id: booking.id,
         spotId: booking.spotId,
         startDate: booking.startDate,
         endDate: booking.endDate

@@ -8,9 +8,12 @@ import './SpotShow.css'
 import SpotReviewItem from "../SpotReviewItem";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import PostReviewModal from "../PostReviewModal";
+import MapContainer from "../Maps";
+import { useHistory } from "react-router-dom";
 
 const SpotShow = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const {spotId} = useParams();
   const spot = useSelector(state => state.spots.singleSpot);
   const reviewsObj = useSelector(state => state.reviews.spot);
@@ -27,7 +30,7 @@ const SpotShow = () => {
   }
 
   const onClick = () => {
-    alert("Feature Coming Soon...");
+    history.push(`/spots/${spotId}/bookings`)
   };
 
   //Checks if we need a Post-Your-Review button
@@ -87,6 +90,11 @@ const SpotShow = () => {
       </div>
     </div>
     <hr></hr>
+    <div className='spot-show-google-map-section'>
+      <div className='spot-show-google-map-header'>Where you'll be</div>
+      <MapContainer />
+    </div>
+    <hr></hr>
     {reviews && (
       <section id='review-section'>
       <div id='review-section-header'>
@@ -120,7 +128,7 @@ const SpotShow = () => {
       )}
         {reviews.reverse().map((review) => {
           return (
-            <SpotReviewItem currentUserId={currentUserId} review={review} spotId={spot.id}/>
+            <SpotReviewItem key={review.id} currentUserId={currentUserId} review={review} spotId={spot.id}/>
           );
         })}
       </section>
