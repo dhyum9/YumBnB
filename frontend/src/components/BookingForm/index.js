@@ -1,25 +1,23 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-// import 'react-dates/initialize';
-// import 'react-dates/lib/css/_datepicker.css';
-// import { DateRangePicker } from 'react-dates';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 // import { createSpot, createSpotImage, updateSpot, fetchSpotDetails } from '../../store/spot';
 import './BookingForm.css';
 
 const BookingForm = ({booking, formType}) => {
   const [startDate, setStartDate] = useState(booking.startDate);
   const [endDate, setEndDate] = useState(booking.endDate);
-  const [focusedInput, setFocusedInput] = useState(null);
   const [errors, setErrors] = useState({});
 
   const dispatch = useDispatch();
   const history = useHistory();
 
-  useEffect(() => {
-    setStartDate(booking.startDate);
-    setEndDate(booking.endDate);
-  }, [dispatch, booking]);
+  // useEffect(() => {
+  //   setStartDate(booking.startDate);
+  //   setEndDate(booking.endDate);
+  // }, [dispatch, booking]);
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
@@ -64,26 +62,56 @@ const BookingForm = ({booking, formType}) => {
 
   // };
 
-  const handleDatesChange = ({ startDate, endDate }) => {
-    setStartDate(startDate);
-    setEndDate(endDate);
-  };
+  console.log('Start Date: ', startDate);
+  console.log('End Date: ', endDate);
+
+  const convertDate = (date) => {
+    const months = {
+      'Jan': "01",
+      'Feb': "02",
+      'Mar': "03",
+      'Apr': "04",
+      'May': "05",
+      'Jun': "06",
+      'Jul': "07",
+      'Aug': "08",
+      'Sep': "09",
+      'Oct': "10",
+      'Nov': "11",
+      'Dec': "12"};
+    let dateParts = String(date).split(" ");
+    return `${dateParts[3]}-${months[dateParts[1]]}-${dateParts[2]}`
+  }
+
+  console.log('Converted Start Date: ', convertDate(startDate));
+  console.log('Converted End Date: ', convertDate(endDate));
+
 
   return (
     <section>
+      <div>{}</div>
       <form id='create-spot-form'>
         {formType==="Create" ? <h3>Confirm your Booking</h3> : <h3>Edit your Booking</h3>}
-        {/* <div id='date-picker'>
-          <DateRangePicker
+        <div>
+          START DATE
+          <DatePicker
+            selectsStart
+            selected={startDate}
+            onChange={date => setStartDate(date)}
             startDate={startDate}
-            startDateId="date_picker_start_date_id"
-            endDate={endDate}
-            endDateId="date_picker_end_date_id"
-            onDatesChange={handleDatesChange}
-            focusedInput={focusedInput}
-            onFocusChange={focusedInput => setFocusedInput(focusedInput)}
           />
-        </div> */}
+        </div>
+        <div>
+          END DATE
+          <DatePicker
+            selectsEnd
+            selected={endDate}
+            onChange={date => setEndDate(date)}
+            startDate={startDate}
+            endDate={endDate}
+            minDate={startDate}
+          />
+        </div>
         {formType==="Create" ? <button type='submit' id='create-spot-button'>Create Booking</button> : <button type='submit' id='create-spot-button'>Update Booking</button>}
       </form>
     </section>

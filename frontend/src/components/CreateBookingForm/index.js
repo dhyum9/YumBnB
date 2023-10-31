@@ -1,9 +1,12 @@
 import BookingForm from "../BookingForm";
 
 const CreateBookingForm = () => {
+  const startDate = new Date();
+  const endDate = new Date();
+
   const booking = {
-    startDate: '',
-    endDate: ''
+    startDate,
+    endDate
   };
 
   return (
