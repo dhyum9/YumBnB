@@ -9,9 +9,11 @@ import SpotReviewItem from "../SpotReviewItem";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import PostReviewModal from "../PostReviewModal";
 import MapContainer from "../Maps";
+import { useHistory } from "react-router-dom";
 
 const SpotShow = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const {spotId} = useParams();
   const spot = useSelector(state => state.spots.singleSpot);
   const reviewsObj = useSelector(state => state.reviews.spot);
@@ -28,7 +30,7 @@ const SpotShow = () => {
   }
 
   const onClick = () => {
-    alert("Feature Coming Soon...");
+    history.push(`/spots/${spotId}/bookings`)
   };
 
   //Checks if we need a Post-Your-Review button

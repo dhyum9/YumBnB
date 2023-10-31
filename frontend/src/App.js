@@ -9,6 +9,7 @@ import UpdateSpotForm from "./components/UpdateSpotForm";
 import CreateSpotForm from "./components/CreateSpotForm";
 import ReviewIndex from "./components/ReviewIndex";
 import BookingIndex from "./components/BookingIndex";
+import CreateBookingForm from "./components/CreateBookingForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,9 @@ function App() {
           </Route>
           <Route path='/spots/:spotId/edit'>
             <UpdateSpotForm />
+          </Route>
+          <Route path='/spots/:spotId/bookings'>
+            <CreateBookingForm />
           </Route>
           <Route path='/spots/:spotId'>
             <SpotShow />
