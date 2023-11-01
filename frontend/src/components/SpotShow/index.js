@@ -29,21 +29,31 @@ const SpotShow = () => {
     return null;
   }
 
-  const onClick = () => {
+  const toBookings = () => {
     history.push(`/spots/${spotId}/bookings`)
   };
 
-  //Checks if we need a Post-Your-Review button
+  const handleClick = () => {
+    window.alert('Feature coming soon!');
+  }
+
+  //Sets all the switch variables
   let currentUserId;
   let postReviewSwitch = true;
+  let reserveButtonStatus = "guest";
+
   if(currentUser) {
     currentUserId = currentUser.id;
     reviews.forEach((review) => {
       if (review.User.id === currentUserId) postReviewSwitch = false;
     })
-    if(spot.Owner.id === currentUserId) postReviewSwitch = false;
+    if(spot.Owner.id === currentUserId) {
+      postReviewSwitch = false;
+      reserveButtonStatus = "owner";
+    }
   } else {
     postReviewSwitch = false;
+    reserveButtonStatus = "none";
   }
 
  return (
@@ -84,7 +94,9 @@ const SpotShow = () => {
             </div>
           </div>
           <div id='fourth-right-second'>
-            <button onClick={onClick}>Reserve</button>
+            {reserveButtonStatus === "guest" && <button onClick={toBookings}>Reserve</button>}
+            {reserveButtonStatus === "owner" && <button onClick={handleClick}>See Bookings</button>}
+            {reserveButtonStatus === "none" && <button onClick={handleClick}>Log In to Reserve</button>}
           </div>
         </div>
       </div>
