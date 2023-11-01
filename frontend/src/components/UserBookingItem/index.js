@@ -19,6 +19,10 @@ const UserBookingItem = ({booking}) => {
     history.push(`/spots/${booking.spotId}`)
   }
 
+  const toEditBooking = () => {
+    history.push(`/bookings/${booking.id}/edit`)
+  }
+
   return (
     <div id='user-booking-item' style={{margin:"20px 0"}}>
       <img className='user-booking-item-img' src={booking.Spot.previewImage} onClick={toSpotDetails}></img>
@@ -27,7 +31,7 @@ const UserBookingItem = ({booking}) => {
         <div className='user-booking-item-owner'>Hosted by {booking.Spot.Owner.firstName} {booking.Spot.Owner.lastName}</div>
         <div className='user-booking-item-date'>{convertDate(booking.startDate)} - {convertDate(booking.endDate)}</div>
         <div className='user-booking-item-button-row'>
-            <button id='update-button'>
+            <button onClick={toEditBooking} id='update-button'>
               Update
             </button>
             <div id='delete-button'>

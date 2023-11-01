@@ -6,6 +6,50 @@ const { Spot, SpotImage, Review, User, Booking } = require('../../db/models');
 
 const router = express.Router();
 
+//get-details-of-a-booking-from-an-id
+router.get('/:bookingId', async (req, res, next) => {
+  let bookingId = req.params.bookingId;
+
+  const booking = await Booking.findOne({
+    where: {
+      id: bookingId
+    }
+  });
+
+  if (!booking) {
+
+    const err = new Error("Booking couldn't be found");
+    return res.status(404).json({
+      message: err.message
+    });
+
+  }
+
+  let easyBooking = booking.toJSON();
+
+  // let newSpot = {
+  //   id: easySpot.id,
+  //   ownerId: easySpot.ownerId,
+  //   address: easySpot.address,
+  //   city: easySpot.city,
+  //   state: easySpot.state,
+  //   country: easySpot.country,
+  //   lat: easySpot.lat,
+  //   lng: easySpot.lng,
+  //   name: easySpot.name,
+  //   description: easySpot.description,
+  //   price: easySpot.price,
+  //   createdAt: easySpot.createdAt,
+  //   updatedAt: easySpot.updatedAt,
+  //   numReviews: reviewsList.length,
+  //   avgStarRating: avgRating,
+  //   SpotImages: easySpot.SpotImages,
+  //   Owner: easySpot.User
+  // }
+
+  res.json(easyBooking);
+});
+
 //get-all-of-the-users-current-bookings
 router.get('/current', requireAuth, async (req, res, next) => {
   let userId = req.user.id;
