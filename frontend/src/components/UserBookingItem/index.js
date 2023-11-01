@@ -26,20 +26,20 @@ const UserBookingItem = ({booking}) => {
         <div className='user-booking-item-spot-name' onClick={toSpotDetails}>{booking.Spot.name}</div>
         <div className='user-booking-item-owner'>Hosted by {booking.Spot.Owner.firstName} {booking.Spot.Owner.lastName}</div>
         <div className='user-booking-item-date'>{convertDate(booking.startDate)} - {convertDate(booking.endDate)}</div>
-      </div>
-      {/* <div className='fourth-row' style={{display:'flex', justifyContent:'start', margin: '10px -5px'}}>
-          <button onClick={onClick} id='update-button'>
-            Update
-          </button>
-          <div id='delete-button'>
-            <div id='delete-button-text'>
-              <OpenModalMenuItem
-                  itemText="Delete"
-                  modalComponent={<DeleteReviewModal reviewId={review.id} type={"User"}/>}
-              />
+        <div className='user-booking-item-button-row'>
+            <button id='update-button'>
+              Update
+            </button>
+            <div id='delete-button'>
+              <div id='delete-button-text'>
+                <OpenModalMenuItem
+                    itemText="Delete"
+                    modalComponent={<DeleteReviewModal bookingId={booking.id} type={"User"}/>}
+                />
+              </div>
             </div>
           </div>
-        </div> */}
+      </div>
     </div>
   );
 }
