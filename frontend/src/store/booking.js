@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 
 const LOAD_SPOT_BOOKINGS = "booking/loadSpotBookings"
 const LOAD_USER_BOOKINGS = "booking/loadUserBookings"
+const LOAD_BOOKING = "booking/loadBooking"
 // const REMOVE_REVIEW = "review/removeReview"
 
 const loadSpotBookings = (spotBookings) => ({
@@ -13,6 +14,11 @@ const loadSpotBookings = (spotBookings) => ({
 const loadUserBookings = (userBookings) => ({
   type: LOAD_USER_BOOKINGS,
   userBookings
+});
+
+const loadBooking = (booking) => ({
+  type: LOAD_BOOKING,
+  booking
 });
 
 // const removeReview = (reviewId) => ({
@@ -35,6 +41,15 @@ export const fetchUserBookings = () => async dispatch => {
   if (res.ok) {
     const data = await res.json();
     dispatch(loadUserBookings(data.Bookings));
+  }
+};
+
+export const fetchBookingDetails = (bookingId) => async dispatch => {
+  const res = await csrfFetch(`/api/bookings/${bookingId}`);
+
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(loadBooking(data));
   }
 };
 
@@ -73,7 +88,7 @@ export const createBooking = (payload, spotId) => async dispatch => {
 //   }
 // };
 
-const initialState = { spot: {}, user: {} };
+const initialState = { spot: {}, user: {}, singleBooking: {} };
 
 const bookingsReducer = (state = initialState, action) => {
   let newState;
@@ -91,6 +106,9 @@ const bookingsReducer = (state = initialState, action) => {
         user[userBooking.id] = userBooking;
       })
       newState = {...state, user};
+      return newState;
+    case LOAD_BOOKING:
+      newState = {...state, singleBooking: action.booking};
       return newState;
     // case REMOVE_REVIEW:
     //   newState = {...state, spot: {...state.spot}, user: {...state.user}};

@@ -18,7 +18,7 @@ const BookingIndex = () => {
       <h1>Manage Bookings</h1>
       {bookings.reverse().map((booking) => {
         return (
-          <UserBookingItem booking={booking}/>
+          <UserBookingItem key={booking.id} booking={booking}/>
         );
       })}
     </main>
