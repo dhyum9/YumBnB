@@ -100,6 +100,7 @@ const BookingForm = ({booking, formType}) => {
     }
   })
 
+  //Excludes already booked dates from Datepicker
   let reservedDates = [];
 
   for (let spotBooking of spotBookings){
@@ -107,10 +108,7 @@ const BookingForm = ({booking, formType}) => {
     let startDate = new Date(`${spotBooking.startDate}T00:00`);
     let endDate = new Date(`${spotBooking.endDate}T00:00`);
 
-    // console.log("BOOKING: ", booking.startDate);
-    // console.log("SPOT BOOKING: ", startDate);
-
-    if(startDate === booking.startDate){
+    if(startDate.toString() === booking.startDate.toString()){
       continue;
     }
 
