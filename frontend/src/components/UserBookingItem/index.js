@@ -38,7 +38,7 @@ const UserBookingItem = ({booking}) => {
               <div id='delete-button-text'>
                 <OpenModalMenuItem
                     itemText="Delete"
-                    modalComponent={<DeleteBookingModal bookingId={booking.id} type={"User"}/>}
+                    modalComponent={<DeleteBookingModal bookingId={booking.id}/>}
                 />
               </div>
             </div>

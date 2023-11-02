@@ -1,34 +1,24 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { deleteSpotReview, deleteUserReview } from "../../store/review";
-import './DeleteBookingModal.css'
 import { deleteBooking } from "../../store/booking";
+import './DeleteBookingModal.css'
 
-function DeleteBookingModal({bookingId, type}) {
+function DeleteBookingModal({bookingId}) {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
-  let onClickDelete;
-
-  if(type==="Spot"){
-    onClickDelete = (e) => {
-      e.preventDefault();
-      // dispatch(deleteSpotReview(reviewId, spotId)).then(closeModal());
-    }
-  } else if (type==="User"){
-    onClickDelete = async (e) => {
-      e.preventDefault();
-      const bookingDeleted = await dispatch(deleteBooking(bookingId))
-      .catch(async(res) => {
-        const data = await res.json();
-        if (data && data.message) {
-          setErrors(data);
-        }
-      });
-      if (bookingDeleted) closeModal();
-    }
+  const onClickDelete = async (e) => {
+    e.preventDefault();
+    const bookingDeleted = await dispatch(deleteBooking(bookingId))
+    .catch(async(res) => {
+      const data = await res.json();
+      if (data && data.message) {
+        setErrors(data);
+      }
+    });
+    if (bookingDeleted) closeModal();
   }
 
   const onClickCancel = (e) => {
