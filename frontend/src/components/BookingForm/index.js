@@ -100,6 +100,28 @@ const BookingForm = ({booking, formType}) => {
     }
   })
 
+  let reservedDates = [];
+
+  for (let spotBooking of spotBookings){
+
+    let startDate = new Date(`${spotBooking.startDate}T00:00`);
+    let endDate = new Date(`${spotBooking.endDate}T00:00`);
+
+    // console.log("BOOKING: ", booking.startDate);
+    // console.log("SPOT BOOKING: ", startDate);
+
+    if(startDate === booking.startDate){
+      continue;
+    }
+
+    let loop = new Date(startDate);
+    while (loop <= endDate) {
+      reservedDates.push(new Date(loop));
+      let newDate = loop.setDate(loop.getDate() + 1);
+      loop = new Date(newDate);
+    }
+  }
+
   return (
     <div>
       <form onSubmit={handleSubmit} id='create-spot-form'>
@@ -110,6 +132,7 @@ const BookingForm = ({booking, formType}) => {
             selectsStart
             selected={startDate}
             onChange={date => setStartDate(date)}
+            excludeDates={reservedDates}
             startDate={startDate}
             monthsShown={3}
             isClearable
@@ -122,6 +145,7 @@ const BookingForm = ({booking, formType}) => {
             selectsEnd
             selected={endDate}
             onChange={date => setEndDate(date)}
+            excludeDates={reservedDates}
             startDate={startDate}
             endDate={endDate}
             minDate={startDate}
