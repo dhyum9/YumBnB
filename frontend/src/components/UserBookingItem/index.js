@@ -20,7 +20,7 @@ const UserBookingItem = ({booking}) => {
   }
 
   const toEditBooking = () => {
-    history.push(`/bookings/${booking.id}/edit`)
+    history.push(`/spot/${booking.spotId}/bookings/${booking.id}/edit`);
   }
 
   return (

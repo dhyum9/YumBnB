@@ -37,7 +37,7 @@ function App() {
           <Route exact path='/bookings/current'>
             <BookingIndex />
           </Route>
-          <Route path='/bookings/:bookingId/edit'>
+          <Route path='/spot/:spotId/bookings/:bookingId/edit'>
             <UpdateBookingForm />
           </Route>
           <Route path='/spots/:spotId/edit'>

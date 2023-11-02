@@ -25,6 +25,11 @@ const BookingForm = ({booking, formType}) => {
     dispatch(fetchSpotBookings(spotId));
   },[dispatch, spotId]);
 
+  useEffect(() => {
+    setStartDate(booking.startDate);
+    setEndDate(booking.endDate);
+  }, [dispatch, booking]);
+
   if (!spot["id"]) return null;
 
   const convertDate = (date) => {
@@ -44,11 +49,6 @@ const BookingForm = ({booking, formType}) => {
     let dateParts = String(date).split(" ");
     return `${dateParts[3]}-${months[dateParts[1]]}-${dateParts[2]}`
   }
-
-  // useEffect(() => {
-  //   setStartDate(booking.startDate);
-  //   setEndDate(booking.endDate);
-  // }, [dispatch, booking]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -102,8 +102,6 @@ const BookingForm = ({booking, formType}) => {
       previewImageUrl = imageObj.url;
     }
   })
-
-  console.log("ERRORS: ", errors);
 
   return (
     <div>

@@ -13,10 +13,20 @@ const UpdateBookingForm = () => {
     dispatch(fetchBookingDetails(bookingId));
    }, [dispatch, bookingId]);
 
-   console.log(booking);
+   let newStartDate = new Date(booking.startDate);
+   console.log('NEW START DATE: ', newStartDate)
+   let newEndDate = new Date(booking.endDate);
+
+   var newBooking = {
+    id: booking.id,
+    spotId: booking.spotId,
+    userId: booking.userId,
+    startDate: newStartDate,
+    endDate: newEndDate
+   }
 
    return (
-    <BookingForm formType={"Update"} booking={booking}/>
+    <BookingForm formType={"Update"} booking={newBooking}/>
    );
 };
 
