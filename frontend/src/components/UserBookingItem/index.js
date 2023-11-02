@@ -1,5 +1,5 @@
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
-import DeleteReviewModal from "../DeleteReviewModal";
+import DeleteBookingModal from "../DeleteBookingModal";
 import './UserBookingItem.css';
 import { useHistory } from "react-router-dom";
 
@@ -38,7 +38,7 @@ const UserBookingItem = ({booking}) => {
               <div id='delete-button-text'>
                 <OpenModalMenuItem
                     itemText="Delete"
-                    modalComponent={<DeleteReviewModal bookingId={booking.id} type={"User"}/>}
+                    modalComponent={<DeleteBookingModal bookingId={booking.id} type={"User"}/>}
                 />
               </div>
             </div>

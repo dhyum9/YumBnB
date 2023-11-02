@@ -4,7 +4,7 @@ import { csrfFetch } from "./csrf";
 const LOAD_SPOT_BOOKINGS = "booking/loadSpotBookings"
 const LOAD_USER_BOOKINGS = "booking/loadUserBookings"
 const LOAD_BOOKING = "booking/loadBooking"
-// const REMOVE_REVIEW = "review/removeReview"
+const REMOVE_BOOKING = "booking/removeBooking"
 
 const loadSpotBookings = (spotBookings) => ({
   type: LOAD_SPOT_BOOKINGS,
@@ -21,10 +21,10 @@ const loadBooking = (booking) => ({
   booking
 });
 
-// const removeReview = (reviewId) => ({
-//   type: REMOVE_REVIEW,
-//   reviewId
-// });
+const removeBooking = (bookingId) => ({
+  type: REMOVE_BOOKING,
+  bookingId
+});
 
 export const fetchSpotBookings = (spotId) => async dispatch => {
   const res = await csrfFetch(`/api/spots/${spotId}/bookings`);
@@ -77,17 +77,17 @@ export const updateBooking = (payload, bookingId) => async dispatch => {
   }
 };
 
-// export const deleteSpotReview = (reviewId, spotId) => async dispatch => {
-//   const res = await csrfFetch(`/api/reviews/${reviewId}`, {
-//     method: 'DELETE'
-//   });
+export const deleteBooking = (bookingId) => async dispatch => {
+  const res = await csrfFetch(`/api/bookings/${bookingId}`, {
+    method: 'DELETE'
+  });
 
-//   if (res.ok) {
-//     dispatch(removeReview(reviewId));
-//     await dispatch(fetchSpotDetails(spotId));
-//     return reviewId;
-//   }
-// };
+  if (res.ok) {
+    dispatch(removeBooking(bookingId));
+    // await dispatch(fetchSpotDetails(spotId));
+    return bookingId;
+  }
+};
 
 // export const deleteUserReview = (reviewId) => async dispatch => {
 //   const res = await csrfFetch(`/api/reviews/${reviewId}`, {
@@ -122,12 +122,12 @@ const bookingsReducer = (state = initialState, action) => {
     case LOAD_BOOKING:
       newState = {...state, singleBooking: action.booking};
       return newState;
-    // case REMOVE_REVIEW:
-    //   newState = {...state, spot: {...state.spot}, user: {...state.user}};
-    //   let reviewId = action.reviewId;
-    //   delete newState.spot[reviewId];
-    //   delete newState.user[reviewId];
-    //   return newState;
+    case REMOVE_BOOKING:
+      newState = {...state, spot: {...state.spot}, user: {...state.user}};
+      let bookingId = action.bookingId;
+      delete newState.spot[bookingId];
+      delete newState.user[bookingId];
+      return newState;
     default:
       return state;
   }
