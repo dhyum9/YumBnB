@@ -65,6 +65,18 @@ export const createBooking = (payload, spotId) => async dispatch => {
   }
 };
 
+export const updateBooking = (payload, bookingId) => async dispatch => {
+  const res = await csrfFetch(`/api/bookings/${bookingId}`, {
+    method: 'PUT',
+    body: JSON.stringify(payload)
+  });
+
+  if (res.ok) {
+    const updatedBooking = await res.json();
+    return updatedBooking;
+  }
+};
+
 // export const deleteSpotReview = (reviewId, spotId) => async dispatch => {
 //   const res = await csrfFetch(`/api/reviews/${reviewId}`, {
 //     method: 'DELETE'

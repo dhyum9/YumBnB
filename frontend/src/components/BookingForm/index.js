@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { fetchSpotDetails } from '../../store/spot';
-import { createBooking, fetchSpotBookings } from '../../store/booking';
+import { createBooking, fetchSpotBookings, updateBooking } from '../../store/booking';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './BookingForm.css';
@@ -60,8 +60,6 @@ const BookingForm = ({booking, formType}) => {
       endDate: convertDate(endDate)
     };
 
-    console.log('PAYLOAD: ', payload);
-
     if(formType==='Create'){
       const createdBooking = await dispatch(createBooking(payload, spotId))
       .catch(async(res) => {
@@ -72,24 +70,23 @@ const BookingForm = ({booking, formType}) => {
       });
 
       if (createdBooking) {
-        // await dispatch(fetchSpotDetails(createdSpot.id));
         history.push(`/bookings/current`);
+        window.alert("Your booking has been created. Enjoy your trip!");
+      }
+    } else if (formType==='Update'){
+      const updatedBooking = await dispatch(updateBooking(payload, booking.id))
+      .catch(async(res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(data.errors);
+        }
+      });
+
+      if (updatedBooking) {
+        history.push(`/bookings/current`);
+        window.alert("Your booking has been updated.");
       }
     }
-    // else if (formType==='Update'){
-    //   const updatedSpot = await dispatch(updateSpot(payload, spot.id))
-    //   .catch(async(res) => {
-    //     const data = await res.json();
-    //     if (data && data.errors) {
-    //       setErrors(data.errors);
-    //     }
-    //   });
-
-    //   if (updatedSpot) {
-    //     await dispatch(fetchSpotDetails(updatedSpot.id));
-    //     history.push(`/spots/${updatedSpot.id}`);
-    //   }
-    // }
 
   };
 
