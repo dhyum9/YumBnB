@@ -148,7 +148,7 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
     return res.status(400).json({
       message: err.message,
       errors: {
-        endDate: 'endDate cannot be on or before startDate'
+        endDate: 'Checkout date cannot be on or before Check-In date.'
       }
     });
   }
@@ -167,11 +167,14 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
   })
 
   for (let booking of bookingsList){
+
+    if(booking.id === bookingId) continue;
+
     let existingStartDate = new Date (booking.startDate);
     let finalExistingStartDate = existingStartDate.getTime();
 
-    let existingEndEvent = new Date (booking.endDate);
-    let finalExistingEndDate = existingEndEvent.getTime();
+    let existingEndDate = new Date (booking.endDate);
+    let finalExistingEndDate = existingEndDate.getTime();
 
     if (finalStartDate >= finalExistingStartDate && finalStartDate <= finalExistingEndDate){
       const err = new Error('Sorry, this spot is already booked for the specified dates');
