@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { deleteSpotReview, deleteUserReview } from "../../store/review";
@@ -7,6 +7,7 @@ import { deleteBooking } from "../../store/booking";
 
 function DeleteBookingModal({bookingId, type}) {
   const dispatch = useDispatch();
+  const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
   let onClickDelete;
@@ -17,9 +18,16 @@ function DeleteBookingModal({bookingId, type}) {
       // dispatch(deleteSpotReview(reviewId, spotId)).then(closeModal());
     }
   } else if (type==="User"){
-    onClickDelete = (e) => {
+    onClickDelete = async (e) => {
       e.preventDefault();
-      dispatch(deleteBooking(bookingId)).then(closeModal());
+      const bookingDeleted = await dispatch(deleteBooking(bookingId))
+      .catch(async(res) => {
+        const data = await res.json();
+        if (data && data.message) {
+          setErrors(data);
+        }
+      });
+      if (bookingDeleted) closeModal();
     }
   }
 
@@ -32,8 +40,9 @@ function DeleteBookingModal({bookingId, type}) {
     <div id='booking-delete-button-modal'>
       <h1 style={{margin:'10px'}}>Confirm Delete</h1>
       <h3 style={{margin: '0px 0px 10px 0px'}}>Are you sure you want to delete this booking?</h3>
-      <button id='review-delete-yes-button' onClick={onClickDelete}>Yes(Delete Booking)</button>
-      <button id='review-delete-no-button' onClick={onClickCancel}>No (Keep Booking)</button>
+      <div>{errors.message && (<p>{errors.message}</p>)}</div>
+      <button id='booking-delete-yes-button' onClick={onClickDelete}>Yes(Delete Booking)</button>
+      <button id='booking-delete-no-button' onClick={onClickCancel}>Cancel</button>
     </div>
   );
 }
