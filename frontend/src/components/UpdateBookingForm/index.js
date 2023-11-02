@@ -13,9 +13,9 @@ const UpdateBookingForm = () => {
     dispatch(fetchBookingDetails(bookingId));
    }, [dispatch, bookingId]);
 
-   let newStartDate = new Date(booking.startDate);
-   console.log('NEW START DATE: ', newStartDate)
-   let newEndDate = new Date(booking.endDate);
+   //Converts dates to local time and to be accepted by DatePicker
+   let newStartDate = new Date(`${booking.startDate}T00:00`);
+   let newEndDate = new Date(`${booking.endDate}T00:00`);
 
    var newBooking = {
     id: booking.id,
