@@ -120,6 +120,8 @@ const BookingForm = ({booking, formType}) => {
     }
   }
 
+  let now = new Date();
+
   return (
     <div>
       <form onSubmit={handleSubmit} id='create-spot-form'>
@@ -132,6 +134,7 @@ const BookingForm = ({booking, formType}) => {
             onChange={date => setStartDate(date)}
             excludeDates={reservedDates}
             startDate={startDate}
+            minDate={now}
             monthsShown={3}
             isClearable
           />
