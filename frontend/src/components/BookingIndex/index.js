@@ -27,21 +27,18 @@ const BookingIndex = () => {
     }
   }
 
-  console.log("PAST BOOKINGS: ", pastBookings);
-  console.log("FUTURE BOOKINGS: ", futureBookings);
-
   return (
     <main id='manage-bookings-container'>
       <h1>Manage Bookings</h1>
       {futureBookings.reverse().map((booking) => {
         return (
-          <UserBookingItem key={booking.id} booking={booking}/>
+          <UserBookingItem key={booking.id} booking={booking} type={'future'}/>
         );
       })}
       <h3>Where you've been</h3>
       {pastBookings.reverse().map((booking) => {
         return (
-          <UserBookingItem key={booking.id} booking={booking}/>
+          <UserBookingItem key={booking.id} booking={booking} type={'past'}/>
         );
       })}
     </main>
