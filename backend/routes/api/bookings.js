@@ -176,6 +176,7 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
     let existingEndDate = new Date (booking.endDate);
     let finalExistingEndDate = existingEndDate.getTime();
 
+    //if booking start date is in between an existing booking's start and end date
     if (finalStartDate >= finalExistingStartDate && finalStartDate <= finalExistingEndDate){
       const err = new Error('Sorry, this spot is already booked for the specified dates');
       return res.status(403).json({
@@ -185,7 +186,8 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
         }
       });
     }
-    if (finalEndDate >= finalExistingStartDate && finalEndDate <= finalExistingEndDate){
+    //if booking end date occurs after an existing booking's start date
+    if (finalEndDate >= finalExistingStartDate){
       const err = new Error('Sorry, this spot is already booked for the specified dates');
       return res.status(403).json({
         message: err.message,
