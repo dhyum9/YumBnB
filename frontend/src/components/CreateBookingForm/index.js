@@ -5,8 +5,8 @@ import { useEffect } from "react";
 import { fetchSpotDetails } from "../../store/spot";
 
 const CreateBookingForm = () => {
-  const startDate = new Date();
-  const endDate = new Date();
+  const startDate = null;
+  const endDate = null;
 
   const booking = {
     startDate,

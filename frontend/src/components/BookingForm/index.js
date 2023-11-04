@@ -120,7 +120,8 @@ const BookingForm = ({booking, formType}) => {
     }
   }
 
-  let now = new Date();
+  let minDate = new Date();
+  minDate.setDate(minDate.getDate() + 1);
 
   return (
     <div>
@@ -134,8 +135,9 @@ const BookingForm = ({booking, formType}) => {
             onChange={date => setStartDate(date)}
             excludeDates={reservedDates}
             startDate={startDate}
-            minDate={now}
+            minDate={minDate}
             monthsShown={3}
+            placeholderText="Your trip's start date"
             isClearable
           />
         </div>
@@ -149,8 +151,9 @@ const BookingForm = ({booking, formType}) => {
             excludeDates={reservedDates}
             startDate={startDate}
             endDate={endDate}
-            minDate={startDate}
+            minDate={minDate}
             monthsShown={3}
+            placeholderText="Your trip's end date"
             isClearable
           />
         </div>
