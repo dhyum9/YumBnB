@@ -24,6 +24,7 @@
 
 #spot-delete-yes-button:hover{
   box-shadow: 0px 0px 10px grey;
+  cursor: pointer;
 }
 
 #spot-delete-no-button{
@@ -38,4 +39,5 @@
 
 #spot-delete-no-button:hover{
   box-shadow: 0px 0px 10px grey;
+  cursor: pointer;
 }

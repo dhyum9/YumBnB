@@ -24,6 +24,7 @@
 
 #booking-delete-yes-button:hover{
   box-shadow: 0px 0px 10px grey;
+  cursor: pointer;
 }
 
 #booking-delete-no-button{
@@ -37,5 +38,6 @@
 }
 
 #booking-delete-no-button:hover{
-  box-shadow: 0px 0px 10px #22223b;
+  box-shadow: 0px 0px 10px grey;
+  cursor: pointer;
 }
