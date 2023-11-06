@@ -9,6 +9,56 @@
   margin: 0;
 }
 
+.no-bookings-banner{
+  /* background-color: rebeccapurple; */
+  border: 1px solid grey;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  margin: 35px 0 0 0;
+}
+
+.no-bookings-banner-text{
+  /* background-color: aliceblue; */
+  width: 35%;
+  padding: 35px;
+}
+
+.no-bookings-banner-heading{
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.no-bookings-banner-subheading{
+  font-weight: 400;
+  font-size: 13px;
+  margin: 10px 0;
+}
+
+.no-bookings-banner-button{
+  background-color: #013328;
+  color: #e3dcd2;
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 13px 30px;
+  border: 2px solid #013328;
+  border-radius: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.no-bookings-banner-button:hover{
+  box-shadow: 0px 0px 10px grey;
+}
+
+.no-bookings-banner-image{
+  height: 285px;
+  width: 65%;
+  object-fit: cover;
+  border-radius: 0 7px 7px 0;
+}
+
 #manage-bookings-container > h3{
   margin: 35px 0 0 0;
 }
