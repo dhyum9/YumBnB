@@ -186,8 +186,8 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
         }
       });
     }
-    //if booking end date occurs after an existing booking's start date
-    if (finalEndDate >= finalExistingStartDate){
+    //if booking "sandwiches" existing booking
+    if (finalStartDate < finalExistingStartDate && finalEndDate >= finalExistingStartDate){
       const err = new Error('Sorry, this spot is already booked for the specified dates');
       return res.status(403).json({
         message: err.message,

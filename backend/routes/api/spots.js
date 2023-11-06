@@ -761,7 +761,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
       });
     }
 
-    if (finalEndDate >= finalExistingStartDate){
+    if (finalStartDate < finalExistingStartDate && finalEndDate >= finalExistingStartDate){
       const err = new Error('Sorry, this spot is already booked for the specified dates');
       return res.status(403).json({
         message: err.message,
