@@ -6,6 +6,7 @@ import { createBooking, fetchSpotBookings, updateBooking } from '../../store/boo
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './BookingForm.css';
+import NoImage from './no-image-available.jpeg';
 import SpotBookingItem from '../SpotBookingItem';
 
 const BookingForm = ({booking, formType}) => {
@@ -124,9 +125,9 @@ const BookingForm = ({booking, formType}) => {
   minDate.setDate(minDate.getDate() + 1);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} id='create-spot-form'>
-        {formType==="Create" ? <h3>Confirm your Booking</h3> : <h3>Edit your Booking</h3>}
+    <div id='booking-form-page'>
+      <form onSubmit={handleSubmit} id='create-booking-form'>
+        {formType==="Create" ? <h1>Confirm your Booking</h1> : <h1>Edit your Booking</h1>}
         <div>
           START DATE
           <DatePicker
@@ -160,25 +161,37 @@ const BookingForm = ({booking, formType}) => {
         <div>{errors.endDate && (<p>{errors.endDate}</p>)}</div>
         {formType==="Create" ? <button type='submit' id='create-spot-button'>Create Booking</button> : <button type='submit' id='create-spot-button'>Update Booking</button>}
       </form>
-      <div>
-        CURRENT BOOKINGS:
-        {spotBookings.reverse().map((booking) => {
-          return (
-            <SpotBookingItem key={booking.id} booking={booking}/>
-          );
-        })}
-      </div>
-      <div>
-        For {spot.name}
-      </div>
-      <div>
-        {Number.parseFloat(spot.avgStarRating).toFixed(2)}
-      </div>
-      <div>
-        {spot.numReviews}
-      </div>
-      <div>
-        {previewImageUrl && <img src={previewImageUrl}></img>}
+      <div id='booking-form-spot-info'>
+          {/* <div>
+            CURRENT BOOKINGS:
+            {spotBookings.reverse().map((booking) => {
+              return (
+                <SpotBookingItem key={booking.id} booking={booking}/>
+              );
+            })}
+          </div> */}
+          <div className='booking-form-spot-details'>
+            {previewImageUrl ?
+              <img className='booking-form-spot-image' src={previewImageUrl}></img> :
+              <img className='booking-form-spot-image' src={NoImage}></img>}
+            <div className='booking-form-spot-details-text'>
+              <div>
+                {spot.name}
+              </div>
+              <div>
+                {Number.parseFloat(spot.avgStarRating).toFixed(2)}
+              </div>
+              <div>
+                ({spot.numReviews} reviews)
+              </div>
+            </div>
+          </div>
+          <div className='booking-form-price-details'>
+
+          </div>
+          <div className='booking-form-total-price'>
+
+          </div>
       </div>
     </div>
   );

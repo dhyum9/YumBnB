@@ -1,0 +1,14 @@
+#booking-form-page{
+  display: flex;
+}
+
+#create-booking-form{
+  background-color: lightpink;
+}
+
+.booking-form-spot-image{
+  width: 125px;
+  height: 95px;
+  object-fit: cover;
+  border-radius: 10px;
+}
