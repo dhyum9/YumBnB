@@ -7,6 +7,8 @@ import { fetchSpotReviews } from "../../store/review";
 import './SpotShow.css'
 import SpotReviewItem from "../SpotReviewItem";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
+import OpenModalButton from "../OpenModalButton";
+import LoginFormModal from "../LoginFormModal";
 import PostReviewModal from "../PostReviewModal";
 import MapContainer from "../Maps";
 import { useHistory } from "react-router-dom";
@@ -96,7 +98,11 @@ const SpotShow = () => {
           <div id='fourth-right-second'>
             {reserveButtonStatus === "guest" && <button onClick={toBookings}>Reserve</button>}
             {reserveButtonStatus === "owner" && <button onClick={handleClick}>See Bookings</button>}
-            {reserveButtonStatus === "none" && <button onClick={handleClick}>Log In to Reserve</button>}
+            {reserveButtonStatus === "none" &&
+            <button onClick={handleClick}>Log In to Reserve</button> &&
+            <OpenModalButton
+            buttonText="Log In to Reserve"
+            modalComponent={<LoginFormModal />}/>}
           </div>
         </div>
       </div>
