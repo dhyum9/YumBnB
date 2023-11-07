@@ -10,8 +10,23 @@ import NoImage from './no-image-available.jpeg';
 import SpotBookingItem from '../SpotBookingItem';
 
 const BookingForm = ({booking, formType}) => {
+
+  //Helper function to calculate number of days between startDate and endDate
+  const getNumNights = (startDate, endDate) => {
+    let loop = new Date(startDate);
+    let count = 0;
+
+    while (loop < endDate) {
+      count++;
+      loop.setDate(loop.getDate() + 1);
+    }
+
+    return count;
+  }
+
   const [startDate, setStartDate] = useState(booking.startDate);
   const [endDate, setEndDate] = useState(booking.endDate);
+  const [numNights, setNumNights] = useState(getNumNights(startDate, endDate));
   const [errors, setErrors] = useState({});
 
   const history = useHistory();
@@ -30,6 +45,10 @@ const BookingForm = ({booking, formType}) => {
     setStartDate(booking.startDate);
     setEndDate(booking.endDate);
   }, [dispatch, booking]);
+
+  useEffect(() => {
+    setNumNights(getNumNights(startDate, endDate))
+  }, [startDate, endDate]);
 
   if (!spot["id"]) return null;
 
@@ -121,6 +140,7 @@ const BookingForm = ({booking, formType}) => {
     }
   }
 
+  //Set minimum date for datepicker
   let minDate = new Date();
   minDate.setDate(minDate.getDate() + 1);
 
@@ -174,7 +194,7 @@ const BookingForm = ({booking, formType}) => {
           <li>Treat your Host's home like your own</li>
         </ul>
         <hr></hr>
-        {formType==="Create" ? <button type='submit' id='create-booking-button'>Create Booking</button> : <button type='submit' id='create-spot-button'>Update Booking</button>}
+        {formType==="Create" ? <button type='submit' id='create-booking-button'>Create Booking</button> : <button type='submit' id='update-booking-button'>Update Booking</button>}
       </form>
       <div id='booking-form-spot-info'>
           {/* <div>
@@ -194,14 +214,19 @@ const BookingForm = ({booking, formType}) => {
                 <div className='booking-form-spot-name'>
                   {spot.name}
                 </div>
-                <div>
-                  <i className="fa-solid fa-star" style={{marginRight:"3px"}}></i>
-                  {Number.parseFloat(spot.avgStarRating).toFixed(2)} <span>({spot.numReviews} reviews)</span>
+                <div className='booking-form-review-info'>
+                  <i className="fa-solid fa-star" id='booking-form-star-icon'></i>
+                  {Number.parseFloat(spot.avgStarRating).toFixed(2)} <span className='booking-form-num-reviews'>({spot.numReviews} reviews)</span>
                 </div>
               </div>
             </div>
+            <hr></hr>
             <div className='booking-form-price-details'>
-                  <div>Price details</div>
+              <h3>Price details</h3>
+              <div>
+                ${Number.parseFloat(spot.price).toFixed(2)} x {numNights} nights
+              </div>
+
             </div>
             <div className='booking-form-total-price'>
                 Total(USD)
