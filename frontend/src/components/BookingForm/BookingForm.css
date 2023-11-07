@@ -1,12 +1,62 @@
 #booking-form-page{
   display: flex;
   justify-content: center;
+  padding: 30px 60px;
   font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  color: #013328;
+  margin: 0;
 }
 
 #create-booking-form{
-  background-color: lightpink;
+  /* background-color: lightpink; */
   margin: 0 20px 0 0;
+}
+
+.booking-form-heading{
+  margin: 0 0 20px 0;
+}
+
+.booking-datepicker-label{
+  margin: 0px;
+  font-weight: 600;
+  /* background-color: lightcyan; */
+}
+
+.booking-check-in-container{
+  /* background-color: azure; */
+  margin: 10px 0;
+}
+
+.booking-check-out-container{
+  /* background-color: azure; */
+  margin: 10px 0 30px 0;
+}
+
+#booking-form-ground-rules-text{
+  margin: 0 0 10px 0;
+}
+
+#booking-form-ground-rules-list{
+  margin: 0 0 30px 0;
+  line-height: 30px;
+}
+
+#create-booking-button{
+  padding: 15px 30px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #e3dcd2;
+  background-color: #013328;
+  border: none;
+  margin: 30px 0;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+#create-booking-button:hover{
+  box-shadow: 0 0 10px grey;
 }
 
 .booking-form-spot-details{

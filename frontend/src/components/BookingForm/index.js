@@ -127,11 +127,12 @@ const BookingForm = ({booking, formType}) => {
   return (
     <div id='booking-form-page'>
       <form onSubmit={handleSubmit} id='create-booking-form'>
-        {formType==="Create" ? <h1>Confirm your Booking</h1> : <h1>Edit your Booking</h1>}
-        <label for='booking-check-in-date'>
+        {formType==="Create" ? <h1 className='booking-form-heading'>Confirm your Booking</h1> : <h1 className='booking-form-heading'>Edit your Booking</h1>}
+        <h2>Your trip</h2>
+        <label for='booking-check-in-datepicker' className='booking-datepicker-label'>
           Check-In
         </label>
-        <div>
+        <div className='booking-check-in-container'>
           <DatePicker
             selectsStart
             selected={startDate}
@@ -142,12 +143,14 @@ const BookingForm = ({booking, formType}) => {
             monthsShown={3}
             placeholderText="Your trip's start date"
             isClearable
-            id='booking-check-in-date'
+            id='booking-check-in-datepicker'
           />
         </div>
         <div>{errors.startDate && (<p>{errors.startDate}</p>)}</div>
-        <div>
-          END DATE
+        <label for='booking-check-out-datepicker' className='booking-datepicker-label'>
+          Checkout
+        </label>
+        <div className='booking-check-out-container'>
           <DatePicker
             selectsEnd
             selected={endDate}
@@ -159,10 +162,19 @@ const BookingForm = ({booking, formType}) => {
             monthsShown={3}
             placeholderText="Your trip's end date"
             isClearable
+            id='booking-check-out-datepicker'
           />
         </div>
         <div>{errors.endDate && (<p>{errors.endDate}</p>)}</div>
-        {formType==="Create" ? <button type='submit' id='create-spot-button'>Create Booking</button> : <button type='submit' id='create-spot-button'>Update Booking</button>}
+        <hr></hr>
+        <h2>Ground Rules</h2>
+        <div id='booking-form-ground-rules-text'>We ask every guest to remember a few simple things about what makes a great guest.</div>
+        <ul id='booking-form-ground-rules-list'>
+          <li>Follow the house rules</li>
+          <li>Treat your Host's home like your own</li>
+        </ul>
+        <hr></hr>
+        {formType==="Create" ? <button type='submit' id='create-booking-button'>Create Booking</button> : <button type='submit' id='create-spot-button'>Update Booking</button>}
       </form>
       <div id='booking-form-spot-info'>
           {/* <div>
