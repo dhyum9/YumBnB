@@ -80,14 +80,14 @@
   height: 95px;
   object-fit: cover;
   border-radius: 10px;
-  margin: 0 5px 20px 0;
+  margin: 0 8px 20px 0;
 }
 
 .booking-form-spot-details-text{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin: 0 0 20px 5px;
+  margin: 0 0 20px 8px;
 }
 
 .booking-form-spot-name{
@@ -108,4 +108,21 @@
 
 .booking-form-num-reviews{
   font-weight: 300;
+}
+
+.booking-form-price-calculations{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 20px 0;
+  /* background-color: lightgoldenrodyellow; */
+}
+
+.booking-form-total-price{
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0 0 0;
+}
+
+.booking-form-total-label{
+  font-weight: 700;
 }

@@ -144,6 +144,9 @@ const BookingForm = ({booking, formType}) => {
   let minDate = new Date();
   minDate.setDate(minDate.getDate() + 1);
 
+  //Multiplication helper function
+  const multiply = (num1, num2) => num1*num2;
+
   return (
     <div id='booking-form-page'>
       <form onSubmit={handleSubmit} id='create-booking-form'>
@@ -223,13 +226,23 @@ const BookingForm = ({booking, formType}) => {
             <hr></hr>
             <div className='booking-form-price-details'>
               <h3>Price details</h3>
-              <div>
-                ${Number.parseFloat(spot.price).toFixed(2)} x {numNights} nights
+              <div className='booking-form-price-calculations'>
+                <div>
+                  ${Number.parseFloat(spot.price).toFixed(2)} x {numNights} nights
+                </div>
+                <div>
+                  ${Number.parseFloat(multiply(spot.price, numNights)).toFixed(2)}
+                </div>
               </div>
-
             </div>
+            <hr></hr>
             <div className='booking-form-total-price'>
+              <div className='booking-form-total-label'>
                 Total(USD)
+              </div>
+              <div>
+                ${Number.parseFloat(multiply(spot.price, numNights)).toFixed(2)}
+              </div>
             </div>
           </div>
       </div>
