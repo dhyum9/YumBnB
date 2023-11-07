@@ -128,8 +128,10 @@ const BookingForm = ({booking, formType}) => {
     <div id='booking-form-page'>
       <form onSubmit={handleSubmit} id='create-booking-form'>
         {formType==="Create" ? <h1>Confirm your Booking</h1> : <h1>Edit your Booking</h1>}
+        <label for='booking-check-in-date'>
+          Check-In
+        </label>
         <div>
-          START DATE
           <DatePicker
             selectsStart
             selected={startDate}
@@ -140,6 +142,7 @@ const BookingForm = ({booking, formType}) => {
             monthsShown={3}
             placeholderText="Your trip's start date"
             isClearable
+            id='booking-check-in-date'
           />
         </div>
         <div>{errors.startDate && (<p>{errors.startDate}</p>)}</div>
@@ -171,26 +174,26 @@ const BookingForm = ({booking, formType}) => {
             })}
           </div> */}
           <div className='booking-form-spot-details'>
-            {previewImageUrl ?
-              <img className='booking-form-spot-image' src={previewImageUrl}></img> :
-              <img className='booking-form-spot-image' src={NoImage}></img>}
-            <div className='booking-form-spot-details-text'>
-              <div>
-                {spot.name}
-              </div>
-              <div>
-                {Number.parseFloat(spot.avgStarRating).toFixed(2)}
-              </div>
-              <div>
-                ({spot.numReviews} reviews)
+            <div className='booking-form-spot-details-first-row'>
+              {previewImageUrl ?
+                <img className='booking-form-spot-image' src={previewImageUrl}></img> :
+                <img className='booking-form-spot-image' src={NoImage}></img>}
+              <div className='booking-form-spot-details-text'>
+                <div className='booking-form-spot-name'>
+                  {spot.name}
+                </div>
+                <div>
+                  <i className="fa-solid fa-star" style={{marginRight:"3px"}}></i>
+                  {Number.parseFloat(spot.avgStarRating).toFixed(2)} <span>({spot.numReviews} reviews)</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div className='booking-form-price-details'>
-
-          </div>
-          <div className='booking-form-total-price'>
-
+            <div className='booking-form-price-details'>
+                  <div>Price details</div>
+            </div>
+            <div className='booking-form-total-price'>
+                Total(USD)
+            </div>
           </div>
       </div>
     </div>
