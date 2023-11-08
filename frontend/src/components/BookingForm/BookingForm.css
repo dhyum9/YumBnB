@@ -18,7 +18,7 @@
 }
 
 .booking-datepicker-label{
-  margin: 0px;
+  margin: 0px 7px 0 0;
   font-weight: 600;
   /* background-color: lightcyan; */
 }
@@ -125,4 +125,12 @@
 
 .booking-form-total-label{
   font-weight: 700;
+}
+
+.booking-form-errors{
+  color: red;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 0 0 7px;
+  /* background-color: aqua; */
 }
