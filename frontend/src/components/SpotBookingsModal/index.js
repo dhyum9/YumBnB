@@ -16,13 +16,13 @@ const SpotBookingsModal = ({ spotId }) => {
   return (
     <main id='spot-bookings-modal-container'>
       <h1>Upcoming Bookings</h1>
-      <div>
+      <ul>
         {spotBookings.reverse().map((booking) => {
           return (
             <SpotBookingItem key={booking.id} booking={booking}/>
           );
         })}
-      </div>
+      </ul>
     </main>
   );
 }
