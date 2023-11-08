@@ -200,14 +200,6 @@ const BookingForm = ({booking, formType}) => {
         {formType==="Create" ? <button type='submit' id='create-booking-button'>Create Booking</button> : <button type='submit' id='update-booking-button'>Update Booking</button>}
       </form>
       <div id='booking-form-spot-info'>
-          {/* <div>
-            CURRENT BOOKINGS:
-            {spotBookings.reverse().map((booking) => {
-              return (
-                <SpotBookingItem key={booking.id} booking={booking}/>
-              );
-            })}
-          </div> */}
           <div className='booking-form-spot-details'>
             <div className='booking-form-spot-details-first-row'>
               {previewImageUrl ?

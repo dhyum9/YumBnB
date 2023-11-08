@@ -12,6 +12,7 @@ import LoginFormModal from "../LoginFormModal";
 import PostReviewModal from "../PostReviewModal";
 import MapContainer from "../Maps";
 import { useHistory } from "react-router-dom";
+import SpotBookingsModal from "../SpotBookingsModal";
 
 const SpotShow = () => {
   const dispatch = useDispatch();
@@ -35,9 +36,9 @@ const SpotShow = () => {
     history.push(`/spots/${spotId}/bookings`)
   };
 
-  const handleClick = () => {
-    window.alert('Feature coming soon!');
-  }
+  // const handleClick = () => {
+  //   window.alert('Feature coming soon!');
+  // }
 
   //Sets all the switch variables
   let currentUserId;
@@ -97,12 +98,14 @@ const SpotShow = () => {
           </div>
           <div id='fourth-right-second'>
             {reserveButtonStatus === "guest" && <button onClick={toBookings}>Reserve</button>}
-            {reserveButtonStatus === "owner" && <button onClick={handleClick}>See Bookings</button>}
+            {reserveButtonStatus === "owner" &&
+              <OpenModalButton
+              buttonText="See Bookings"
+              modalComponent={<SpotBookingsModal spotId={spotId}/>}/>}
             {reserveButtonStatus === "none" &&
-            <button onClick={handleClick}>Log In to Reserve</button> &&
-            <OpenModalButton
-            buttonText="Log In to Reserve"
-            modalComponent={<LoginFormModal />}/>}
+              <OpenModalButton
+              buttonText="Log In to Reserve"
+              modalComponent={<LoginFormModal />}/>}
           </div>
         </div>
       </div>
