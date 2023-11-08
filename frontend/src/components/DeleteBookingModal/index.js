@@ -29,7 +29,7 @@ function DeleteBookingModal({bookingId}) {
   return (
     <div id='booking-delete-button-modal'>
       <h1 style={{margin:'10px'}}>Confirm Delete</h1>
-      <div style={{margin: '0px 0px 10px 0px'}}>Are you sure you want to delete this booking and cancel your trip?</div>
+      <div style={{margin: '0px 0px 10px 0px'}}>Are you sure you want to delete this booking and cancel the trip?</div>
       <div>{errors.message && (<p>{errors.message}</p>)}</div>
       <button id='booking-delete-yes-button' onClick={onClickDelete}>Yes (Delete Booking)</button>
       <button id='booking-delete-no-button' onClick={onClickCancel}>No (Keep Booking)</button>

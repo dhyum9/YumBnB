@@ -15,7 +15,7 @@ const SpotBookingsModal = ({ spotId }) => {
 
   return (
     <main id='spot-bookings-modal-container'>
-      <h1>Upcoming Bookings</h1>
+      <h1 id='spot-bookings-modal-header'>Upcoming Bookings</h1>
       <ul>
         {spotBookings.reverse().map((booking) => {
           return (
