@@ -1,0 +1,17 @@
+#spot-bookings-modal-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e3dcd2;
+  padding: 20px;
+  border-radius: 10px;
+  font-family: 'Manrope', sans-serif;
+  color: #013328;
+  border: 4px solid #013328;
+  z-index: 2;
+}
+
+#spot-bookings-modal-header{
+  margin: 0;
+  text-decoration: underline;
+}

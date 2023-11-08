@@ -1,9 +1,9 @@
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
-import DeleteReviewModal from "../DeleteReviewModal";
+import DeleteBookingModal from "../DeleteBookingModal";
 import './UserBookingItem.css';
 import { useHistory } from "react-router-dom";
 
-const UserBookingItem = ({booking}) => {
+const UserBookingItem = ({booking, type}) => {
   const history = useHistory();
 
   const convertDate = (date) => {
@@ -19,6 +19,10 @@ const UserBookingItem = ({booking}) => {
     history.push(`/spots/${booking.spotId}`)
   }
 
+  const toEditBooking = () => {
+    history.push(`/spot/${booking.spotId}/bookings/${booking.id}/edit`);
+  }
+
   return (
     <div id='user-booking-item' style={{margin:"20px 0"}}>
       <img className='user-booking-item-img' src={booking.Spot.previewImage} onClick={toSpotDetails}></img>
@@ -26,20 +30,22 @@ const UserBookingItem = ({booking}) => {
         <div className='user-booking-item-spot-name' onClick={toSpotDetails}>{booking.Spot.name}</div>
         <div className='user-booking-item-owner'>Hosted by {booking.Spot.Owner.firstName} {booking.Spot.Owner.lastName}</div>
         <div className='user-booking-item-date'>{convertDate(booking.startDate)} - {convertDate(booking.endDate)}</div>
-      </div>
-      {/* <div className='fourth-row' style={{display:'flex', justifyContent:'start', margin: '10px -5px'}}>
-          <button onClick={onClick} id='update-button'>
-            Update
-          </button>
-          <div id='delete-button'>
-            <div id='delete-button-text'>
-              <OpenModalMenuItem
-                  itemText="Delete"
-                  modalComponent={<DeleteReviewModal reviewId={review.id} type={"User"}/>}
-              />
-            </div>
+        {type === 'future' &&
+          <div className='user-booking-item-button-row'>
+              <button onClick={toEditBooking} id='update-button'>
+                Update
+              </button>
+              <div id='delete-button'>
+                <div id='delete-button-text'>
+                  <OpenModalMenuItem
+                      itemText="Delete"
+                      modalComponent={<DeleteBookingModal bookingId={booking.id}/>}
+                  />
+                </div>
+              </div>
           </div>
-        </div> */}
+        }
+      </div>
     </div>
   );
 }

@@ -1,0 +1,20 @@
+#spot-booking-item{
+  margin: 10px 0;
+  /* background-color: lightblue; */
+}
+
+.spot-booking-item-user-info{
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.spot-booking-item-date{
+  font-size: 14px;
+  font-weight: 300;
+  color: grey;
+}
+
+.spot-booking-item-button-row{
+  display: flex;
+  margin: 5px 0px 0px -5px;
+}

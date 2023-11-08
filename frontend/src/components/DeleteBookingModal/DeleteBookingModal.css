@@ -1,4 +1,4 @@
-#spot-delete-button-modal{
+#booking-delete-button-modal{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,7 +12,7 @@
   color: #013328;
 }
 
-#spot-delete-yes-button{
+#booking-delete-yes-button{
   background-color: red;
   width: 100%;
   font-family: 'Manrope', sans-serif;
@@ -22,12 +22,12 @@
   padding: 10px;
 }
 
-#spot-delete-yes-button:hover{
+#booking-delete-yes-button:hover{
   box-shadow: 0px 0px 10px grey;
   cursor: pointer;
 }
 
-#spot-delete-no-button{
+#booking-delete-no-button{
   background-color: white;
   width: 100%;
   font-family: 'Manrope', sans-serif;
@@ -37,7 +37,7 @@
   padding: 10px;
 }
 
-#spot-delete-no-button:hover{
+#booking-delete-no-button:hover{
   box-shadow: 0px 0px 10px grey;
   cursor: pointer;
 }

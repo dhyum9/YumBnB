@@ -6,11 +6,13 @@ import { fetchSpotDetails } from "../../store/spot";
 
 const CreateBookingForm = () => {
   const startDate = new Date();
+  startDate.setDate(startDate.getDate() + 1);
   const endDate = new Date();
+  endDate.setDate(endDate.getDate() + 2);
 
   const booking = {
-    startDate,
-    endDate
+    startDate: startDate,
+    endDate: endDate
   };
 
   return (

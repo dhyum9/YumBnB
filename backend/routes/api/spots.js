@@ -651,7 +651,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
     });
   }
 
-  if (spot.toJSON().ownerId === currentUserId){
+  // if (spot.toJSON().ownerId === currentUserId){
 
     let finalBookings = [];
 
@@ -673,24 +673,25 @@ router.get('/:spotId/bookings', requireAuth, async (req, res, next) => {
       Bookings: finalBookings
     });
 
-  } else {
+  // }
+  // else {
 
-    let finalBookings = [];
+  //   let finalBookings = [];
 
-    for (let booking of bookingsList){
-      let finalBooking = {
-        id: booking.id,
-        spotId: booking.spotId,
-        startDate: booking.startDate,
-        endDate: booking.endDate
-      }
-      finalBookings.push(finalBooking);
-    }
+  //   for (let booking of bookingsList){
+  //     let finalBooking = {
+  //       id: booking.id,
+  //       spotId: booking.spotId,
+  //       startDate: booking.startDate,
+  //       endDate: booking.endDate
+  //     }
+  //     finalBookings.push(finalBooking);
+  //   }
 
-    res.json({
-      Bookings: finalBookings
-    });
-  }
+  //   res.json({
+  //     Bookings: finalBookings
+  //   });
+  // }
 });
 
 //create-a-booking-from-a-spot-based-on-the-spots-id
@@ -760,7 +761,8 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
         }
       });
     }
-    if (finalEndDate >= finalExistingStartDate && finalEndDate <= finalExistingEndDate){
+
+    if (finalStartDate < finalExistingStartDate && finalEndDate >= finalExistingStartDate){
       const err = new Error('Sorry, this spot is already booked for the specified dates');
       return res.status(403).json({
         message: err.message,

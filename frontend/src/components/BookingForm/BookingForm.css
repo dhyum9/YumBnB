@@ -1,0 +1,128 @@
+#booking-form-page{
+  display: flex;
+  justify-content: center;
+  padding: 30px 60px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  color: #013328;
+  margin: 0;
+}
+
+#create-booking-form{
+  /* background-color: lightpink; */
+  margin: 0 20px 0 0;
+}
+
+.booking-form-heading{
+  margin: 0 0 20px 0;
+}
+
+.booking-datepicker-label{
+  margin: 0px;
+  font-weight: 600;
+  /* background-color: lightcyan; */
+}
+
+.booking-check-in-container{
+  /* background-color: azure; */
+  margin: 10px 0;
+}
+
+.booking-check-out-container{
+  /* background-color: azure; */
+  margin: 10px 0 30px 0;
+}
+
+#booking-form-ground-rules-text{
+  margin: 0 0 10px 0;
+}
+
+#booking-form-ground-rules-list{
+  margin: 0 0 30px 0;
+  line-height: 30px;
+}
+
+#create-booking-button,
+#update-booking-button{
+  padding: 15px 30px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #e3dcd2;
+  background-color: #013328;
+  border: none;
+  margin: 20px 0;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+#create-booking-button:hover,
+#update-booking-button:hover{
+  box-shadow: 0 0 10px grey;
+}
+
+.booking-form-spot-details{
+  border: 1px solid grey;
+  border-radius: 10px;
+  /* background-color: lightblue; */
+  max-width: 445px;
+  padding: 25px;
+  margin: 0 0 0 20px;
+}
+
+.booking-form-spot-details-first-row{
+  display: flex;
+  justify-content: space-between;
+}
+
+.booking-form-spot-image{
+  width: 125px;
+  height: 95px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 0 8px 20px 0;
+}
+
+.booking-form-spot-details-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0 0 20px 8px;
+}
+
+.booking-form-spot-name{
+  font-size: 14px;
+  color: #013328;
+  font-weight: 400;
+  /* background-color: bisque; */
+}
+
+.booking-form-review-info{
+  font-size: 12px;
+  font-weight: 500;
+}
+
+#booking-form-star-icon{
+  margin: 0 3px 0 0;
+}
+
+.booking-form-num-reviews{
+  font-weight: 300;
+}
+
+.booking-form-price-calculations{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 20px 0;
+  /* background-color: lightgoldenrodyellow; */
+}
+
+.booking-form-total-price{
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0 0 0;
+}
+
+.booking-form-total-label{
+  font-weight: 700;
+}

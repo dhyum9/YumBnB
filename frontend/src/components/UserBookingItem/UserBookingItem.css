@@ -1,6 +1,6 @@
 #user-booking-item{
   margin: 20px 0;
-  background-color: lightblue;
+  /* background-color: lightblue; */
   display: flex;
   align-items: center;
 }
@@ -16,7 +16,6 @@
   box-shadow: 0px 0px 10px grey;
   cursor: pointer;
 }
-
 
 .user-booking-item-info{
   padding: 10px 15px;
@@ -42,4 +41,9 @@
   font-size: 14px;
   font-weight: 300;
   color: grey;
+}
+
+.user-booking-item-button-row{
+  display: flex;
+  margin: 5px 0px 0px -5px;
 }

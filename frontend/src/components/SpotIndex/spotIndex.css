@@ -1,12 +1,14 @@
+#spots-index{
+  padding: 30px 60px;
+}
+
 #manage-spots-heading{
   font-family: 'Manrope', sans-serif;
   color: #013328;
-  margin: 0;
-  padding: 20px 40px 5px;
+  margin: 0 0 20px 0;
 }
 
 #manage-spots-create-button{
-  margin: 10px 40px;
   font-family: 'Manrope', sans-serif;
   font-weight: 500;
   background-color: #013328;
@@ -25,30 +27,29 @@
   display: grid;
   row-gap: 8px;
   column-gap: 4px;
-  margin: 15px;
   align-items: center;
   justify-items: center;
 }
 
-@media screen and (max-width: 831px) {
+@media screen and (max-width: 892px) {
   #spots-grid{
     grid-template-columns: 1fr;
   }
 }
 
-@media screen and (min-width: 832px) and (max-width: 1243px) {
+@media screen and (min-width: 893px) and (max-width: 1303px) {
   #spots-grid{
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media screen and (min-width: 1244px) and (max-width: 1654px) {
+@media screen and (min-width: 1304px) and (max-width: 1714px) {
   #spots-grid{
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
-@media screen and (min-width: 1655px) {
+@media screen and (min-width: 1715px) {
   #spots-grid{
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }

@@ -89,6 +89,30 @@ router.get('/current', requireAuth, async (req, res, next) => {
   });
 });
 
+//get-details-of-a-booking-from-an-id
+router.get('/:bookingId', async (req, res, next) => {
+  let bookingId = req.params.bookingId;
+
+  const booking = await Booking.findOne({
+    where: {
+      id: bookingId
+    }
+  });
+
+  if (!booking) {
+
+    const err = new Error("Booking couldn't be found");
+    return res.status(404).json({
+      message: err.message
+    });
+
+  }
+
+  let easyBooking = booking.toJSON();
+
+  res.json(easyBooking);
+});
+
 //edit-a-booking
 router.put('/:bookingId', requireAuth, async (req, res) => {
   let {startDate, endDate} = req.body;
@@ -124,7 +148,7 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
     return res.status(400).json({
       message: err.message,
       errors: {
-        endDate: 'endDate cannot be on or before startDate'
+        endDate: 'Checkout date cannot be on or before Check-In date.'
       }
     });
   }
@@ -143,12 +167,16 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
   })
 
   for (let booking of bookingsList){
+
+    if(booking.id === bookingId) continue;
+
     let existingStartDate = new Date (booking.startDate);
     let finalExistingStartDate = existingStartDate.getTime();
 
-    let existingEndEvent = new Date (booking.endDate);
-    let finalExistingEndDate = existingEndEvent.getTime();
+    let existingEndDate = new Date (booking.endDate);
+    let finalExistingEndDate = existingEndDate.getTime();
 
+    //if booking start date is in between an existing booking's start and end date
     if (finalStartDate >= finalExistingStartDate && finalStartDate <= finalExistingEndDate){
       const err = new Error('Sorry, this spot is already booked for the specified dates');
       return res.status(403).json({
@@ -158,7 +186,8 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
         }
       });
     }
-    if (finalEndDate >= finalExistingStartDate && finalEndDate <= finalExistingEndDate){
+    //if booking "sandwiches" existing booking
+    if (finalStartDate < finalExistingStartDate && finalEndDate >= finalExistingStartDate){
       const err = new Error('Sorry, this spot is already booked for the specified dates');
       return res.status(403).json({
         message: err.message,
