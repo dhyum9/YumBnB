@@ -20,10 +20,6 @@ const UpdateBookingForm = () => {
    let newStartDate = new Date(`${booking.startDate}T00:00`);
    let newEndDate = new Date(`${booking.endDate}T00:00`);
 
-
-   console.log('START DATE: ',newStartDate);
-   console.log('END DATE: ', newEndDate);
-
    var newBooking = {
     id: booking.id,
     spotId: booking.spotId,
