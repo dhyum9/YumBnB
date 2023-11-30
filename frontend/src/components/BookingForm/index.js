@@ -155,6 +155,7 @@ const BookingForm = ({booking, formType}) => {
         <label for='booking-check-in-datepicker' className='booking-datepicker-label'>
           Check-In
         </label>
+        {errors.startDate && (<div className='booking-form-errors'>{errors.startDate}</div>)}
         <div className='booking-check-in-container'>
           <DatePicker
             selectsStart
@@ -169,10 +170,10 @@ const BookingForm = ({booking, formType}) => {
             id='booking-check-in-datepicker'
           />
         </div>
-        <div>{errors.startDate && (<p>{errors.startDate}</p>)}</div>
         <label for='booking-check-out-datepicker' className='booking-datepicker-label'>
           Checkout
         </label>
+        {errors.endDate && (<div className='booking-form-errors'>{errors.endDate}</div>)}
         <div className='booking-check-out-container'>
           <DatePicker
             selectsEnd
@@ -188,7 +189,6 @@ const BookingForm = ({booking, formType}) => {
             id='booking-check-out-datepicker'
           />
         </div>
-        <div>{errors.endDate && (<p>{errors.endDate}</p>)}</div>
         <hr></hr>
         <h2>Ground Rules</h2>
         <div id='booking-form-ground-rules-text'>We ask every guest to remember a few simple things about what makes a great guest.</div>

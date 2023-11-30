@@ -729,7 +729,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
     return res.status(400).json({
       message: err.message,
       errors: {
-        endDate: 'endDate cannot be on or before startDate'
+        endDate: 'Checkout date cannot be on or before Check-In date.'
       }
     });
   }
@@ -757,7 +757,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
       return res.status(403).json({
         message: err.message,
         errors: {
-          startDate: 'Start date conflicts with an existing booking'
+          startDate: 'Start date conflicts with an existing booking.'
         }
       });
     }
@@ -767,7 +767,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
       return res.status(403).json({
         message: err.message,
         errors: {
-          startDate: 'End date conflicts with an existing booking'
+          startDate: 'End date conflicts with an existing booking.'
         }
       });
     }
