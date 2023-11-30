@@ -137,7 +137,7 @@ module.exports = {
       },
       {
         spotId: 6,
-        url: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-45688889/original/9565b6db-6264-4633-a451-dbf6c81da20b.jpeg",
+        url: "https://a0.muscache.com/im/pictures/miso/Hosting-934905666925500794/original/d4c6f269-db5b-4aca-a4e1-38d215904523.jpeg",
         preview: true
       },
       {
